@@ -1,4 +1,4 @@
-# Final Project Boilerplate
+# Final Project
 
 The project has 2 main folders:
 
