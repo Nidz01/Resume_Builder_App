@@ -1,4 +1,4 @@
-# Final Project
+# Resume Builder App
 
 The project has 2 main folders:
 
