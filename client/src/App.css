@@ -1,39 +1,27 @@
-.App {
-  display: flex;
-  flex-direction: row;
+@font-face {
+  font-family: "Roboto";
+  src: url("https://fonts.googleapis.com/css?family=Roboto:300,900&display=swap")
+    format("truetype");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+
+.box {
+  -webkit-box-shadow: 6px 30px 30px 9px rgb(225, 225, 225, 0.3);
+  -moz-box-shadow: 6px 30px 30px 9px rgb(225, 225, 225, 0.3);
+  box-shadow: 6px 30px 30px 9px rgb(225, 225, 225, 0.3);
+  margin-top: 15px;
+  border-radius: 7px;
+  padding-bottom: 10px;
+  background-color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box1 {
+  -webkit-box-shadow: -6px -10px 10px -9px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: -6px -10px 10px -9px rgba(17, 10, 10, 0.3);
+  box-shadow: 10px 10px 80px 1px rgba(10, 6, 6, 0.3);
+  margin-top: 15px;
+  border-radius: 7px;
+  padding: 10px;
+  background-color: white;
 }
