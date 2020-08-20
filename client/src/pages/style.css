@@ -258,4 +258,8 @@ header .signup form .content .form-group input[type="submit"] {
     margin-top: 3rem;
     margin-bottom: 2rem;
   }
+  .userValidation {
+    color: red;
+    font-size: 8;
+  }
 }

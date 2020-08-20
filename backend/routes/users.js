@@ -36,14 +36,15 @@ module.exports = (db) => {
   router.post('/', (req, res) => {
 
     // extract the data from req.body
+   
     const {name, email, password} = req.body;
 
-    console.log({name}, {email},{password});
+   // console.log({name}, {email},{password});
 
     // create an insert query in the db
 
     const query = {
-      text: `INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *;`,
+      text: `INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *;`,
       values: [name, email, password]
     };
 
