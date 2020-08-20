@@ -27,13 +27,6 @@ export default function Register(props) {
             <div class="form-group">
               <input
                 type="text"
-                placeholder="Enter your name"
-                name="first_name"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
                 placeholder="Enter your username"
                 name="username"
               />
