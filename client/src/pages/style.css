@@ -177,7 +177,7 @@ header .signup form .content .form-group input {
   font-size: 1.1rem;
   padding-left: 1rem;
   /* text-transform: capitalize; */
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   background-color: #f0f0f0;
   border-radius: 4px;
 }
@@ -189,6 +189,12 @@ header .signup form .content .form-group input[type="submit"] {
   cursor: pointer;
   background-image: linear-gradient(to right, #bc4e9c, #f80759);
   color: #fff;
+}
+
+.userValidation {
+  color: red;
+  font-size: 12px;
+  height: 10px;
 }
 
 @media screen and (max-width: 967px) {
@@ -258,8 +264,5 @@ header .signup form .content .form-group input[type="submit"] {
     margin-top: 3rem;
     margin-bottom: 2rem;
   }
-  .userValidation {
-    color: red;
-    font-size: 8;
-  }
+
 }

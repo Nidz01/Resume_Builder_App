@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
+import { Overlay, Popover } from "react-bootstrap";
 
 export default function Register(props) {
   const [state, setState] = useState({
@@ -9,7 +10,13 @@ export default function Register(props) {
     password: "",
     confirmPassword: ""
   })
-  const [error, setError] = useState("");
+ // const [error, setError] = useState("");
+ const [error, setError] = useState({
+  userError: "",
+  emailError: "",
+  passwordError: "",
+  confirmError: ""
+})
 
   const Change = (event) => { 
   const { name, value } = event.target
@@ -21,23 +28,48 @@ export default function Register(props) {
   
   const save = (event) => {
     event.preventDefault();
-    if (state.name === '' && state.email === '' && state.password === '') {
-      setError("Required field");
-      return
-    }
+    setError('')
     if (state.userName === '') {
-      setError("Required field");
-      return
-    }
-    if (state.email === '') {
-      setError("Required field");
-      return
-    }
-    setError('');
+     setError(prev => ({
+       ...prev,
+       userError:"Required field" 
+     }) 
+    );
     
-    alert('save')
-   // axios.post('/users', { email: state.email, password: state.password, name: state.userName }
-  //  ).catch(error => setError(error));
+    }
+
+    if (state.email=== '') {
+      setError(prev => ({
+        ...prev,
+        emailError:"Required field" 
+      }) 
+     );
+      
+     }
+
+     if (state.password=== '') {
+      setError(prev => ({
+        ...prev,
+        passwordError:"Required field" 
+      }) 
+     );
+      
+     }
+
+     if (state.confirmPassword=== '') {
+      setError(prev => ({
+        ...prev,
+        confirmError:"Required field" 
+      }) 
+     );
+      
+     }
+   
+   // setError('');
+    if (!error) {
+      axios.post('/users', { email: state.email, password: state.password, name: state.userName,withCredentials: true  })
+      .catch(error => setError(error));
+    }
   }
   
   return (
@@ -63,7 +95,6 @@ export default function Register(props) {
             <div className="text">
               <h1>create account</h1>
             </div>
-            <section className="userValidation">{error}</section>
             <div className="form-group">
               <input
                 type="text"
@@ -71,7 +102,7 @@ export default function Register(props) {
                 name="userName"
                 onChange={Change}
               />
-          
+           <section className="userValidation">{error.userError}</section>
             </div>
             <div className="form-group">
               <input
@@ -80,6 +111,7 @@ export default function Register(props) {
                 name="email"
                 onChange={Change}
               />
+              <section className="userValidation">{error.emailError}</section>
             </div>
             <div className="form-group">
               <input
@@ -88,6 +120,7 @@ export default function Register(props) {
                 name="password"
                 onChange={Change}
               />
+              <section className="userValidation">{error.passwordError}</section>
             </div>
             <div className="form-group">
               <input
@@ -96,12 +129,13 @@ export default function Register(props) {
                 name="confirmPassword"
                 onChange={Change}
               />
+              <section className="userValidation">{error.confirmError}</section>
             </div>
-
             <div className="form-group">
               <input  type="submit" value="SIGNUP" />
             </div>
           </div>
+
         </form>
       </main>
     </header>

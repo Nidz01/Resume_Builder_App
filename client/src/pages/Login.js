@@ -2,10 +2,14 @@ import React from 'react';
 import "./style.css";
 
 export default function Login(props) {
+  const login = () => {
+    alert(props)
+  }
   return (
     <header>
       <main class="container flex flex-column items-center justify-center login">
         <form
+         onSubmit={login}
           class="flex justify-between login-form"
           style={{ paddingRight: "0px" }}
         >

@@ -50,7 +50,10 @@ module.exports = (db) => {
 
     db
       .query(query)
-      .then(result => res.json(result[0]))
+      .then(result => {
+        res.cookie('userId', result[0].id)
+        res.json(result[0])
+  }) 
       .catch(err => console.log(err));
 
     // return the newly created user back
