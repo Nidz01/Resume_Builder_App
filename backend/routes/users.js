@@ -39,43 +39,36 @@ module.exports = (db) => {
     // extract the data from req.body
    
     const {name, email, password} = req.body;
-   
-
-    // create an insert query in the db
-
-    const query = {
-      text: `INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *;`,
-      values: [name, email, password]
-    };
-
-    db
-      .query(query)
-      .then(result => {
-        res.cookie('userId', result[0].id)
-        res.json(result[0])
-  }) 
-      .catch(err => console.log(err));
-
-    // return the newly created user back
-  });
-
-  // Verify if user exists
-  router.post('/register', (req, res) => {
-    const {userName, email} = req.body;
+    
     const query = {
       text: `SELECT * FROM users WHERE username=$1 or email=$2;`,
-      values: [userName, email]
+      values: [name, email]
     };
     
     db
       .query(query)
       .then(result => {
-        console.log(result)
-        res.json(result[0])
+        if (result[0]=== undefined) {
+          bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(password, salt, function(err, hash) { 
+              const query = {
+                text: `INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *;`,
+                values: [name, email, hash]
+              };
+              db
+                .query(query)
+                .then(result => {
+                 res.cookie('userId', result[0].id)
+                }) 
+                .catch(err => console.log(err));
+            });
+          }); 
+        } else {
+          res.json(false)
+        }    
       }) 
       .catch(err => console.log(err));
-  });
-
+    });
   
   router.post('/login', (req, res) => {
     const {userName, password} = req.body;

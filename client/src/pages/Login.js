@@ -1,7 +1,7 @@
 import "./style.css";
 import axios from 'axios';
 import React, { useState } from "react";
-const bcrypt = require('bcryptjs');
+
 
 export default function Login(props) {
   

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
-const bcrypt = require('bcryptjs');
 
 export default function Register(props) {
   const [state, setState] = useState({
@@ -86,9 +85,9 @@ export default function Register(props) {
     }
 
     if (anyError === false) {
-      axios.post('/users/register', { userName: state.userName, email: state.email})
+      axios.post('/users', { email: state.email, password: state.password, name: state.userName,withCredentials: true  })
       .then(response => {
-        if(response.data !== ""){
+        if(response.data === false){
           setError(prev => ({
             ...prev,
           confirmError: "Username or email already exists !" 
@@ -97,15 +96,7 @@ export default function Register(props) {
           return
         }
       })
-      .catch(error => console.log(error))
-      //use bcrypt for password  to save it in DB
-      bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(state.password, salt, function(err, hash) {
-          axios.post('/users', { email: state.email, password: hash, name: state.userName,withCredentials: true  })
-          .then(user => setState(user))
-          .catch(error => setError(error));
-        });
-      });
+      .catch(error => setError(error));
     }
   }
   
