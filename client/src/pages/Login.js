@@ -1,10 +1,27 @@
-import React from 'react';
 import "./style.css";
+import axios from 'axios';
+import React, { useState } from "react";
 
 export default function Login(props) {
-  const login = () => {
-    alert(props)
+  const [state, setState] = useState({
+    userName: "",
+    password: ""
+  })
+  
+  
+    const Change = (event) => { 
+    const { name, value } = event.target
+      setState(prev => ({
+        ...prev,
+        [name]: value
+      }))
+    }
+
+  const login = (event) => {event.preventDefault() 
+    axios.post('/users/login', { username: "user1", password:"password1"})
+    .then(response => console.log(response.data))
   }
+
   return (
     <header>
       <main class="container flex flex-column items-center justify-center login">
@@ -22,6 +39,7 @@ export default function Login(props) {
                 type="text"
                 placeholder="enter your username"
                 name="username"
+                onChange={Change}
               />
             </div>
 
@@ -29,6 +47,7 @@ export default function Login(props) {
               <input
                 name="password"
                 placeholder="**************"
+                onChange={Change}
               />
               <span
                 className="full float-right"
