@@ -1,13 +1,21 @@
 import React from 'react';
+<<<<<<< HEAD
 
+=======
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81
 export default function Guidelines(props) {
   return (
 <header>
       <main class="container flex flex-column items-center justify-center signup">
         <form style={{ border: "60px solid #fff", justifyContent: "space-between" }}>
         <h1>How To Write An Impressive Resume</h1>
+<<<<<<< HEAD
         <p>Having a perfectly honed and well-written resume is like having a superpower during your job search. 
           While most people walk up the hiring ladder, you put on your crimson cape and soar upwards at supersonic speed. 
+=======
+        <p>Having a perfectly honed and well-written resume is like having a superpower during your job search.
+          While most people walk up the hiring ladder, you put on your crimson cape and soar upwards at supersonic speed.
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81
           This how to write a resume guide outlines the most important building blocks for creating exactly this type of amazing resume.
         </p>
       <h2>Top 10 Resume Facts You Need to Know</h2>
@@ -26,4 +34,8 @@ export default function Guidelines(props) {
         </main>
     </header>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81

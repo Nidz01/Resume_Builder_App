@@ -5,10 +5,15 @@ import Template2 from '../img/Template2.jpg';
 import Template3 from '../img/Template3.jpg';
 import Template4 from '../img/Template4.jpg';
 import Template5 from '../img/Template5.jpg';
+<<<<<<< HEAD
 
 export default function Templates(props) {
   const [index, setIndex] = useState(0);
 
+=======
+export default function Templates(props) {
+  const [index, setIndex] = useState(0);
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81
   const pictures = [{
     photo: Template1,
     text:"Entry Level Resume Template"
@@ -30,7 +35,10 @@ export default function Templates(props) {
   text:"Senior and Executive Level Resume Template"
 }
 ]
+<<<<<<< HEAD
 
+=======
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81
   return (
     <header>
       <main class="container flex flex-column items-center justify-center signup">

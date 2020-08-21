@@ -1,0 +1,10 @@
+.register {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(223, 217, 217);
+    padding: 2rem;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    box-shadow: 10px 10px 10px grey;
+}

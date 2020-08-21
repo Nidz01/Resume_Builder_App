@@ -22,7 +22,11 @@ function App() {
   return (
     <div className="App">
       <Router>
+<<<<<<< HEAD
         <ul class="nav">
+=======
+        <ul class = "nav">
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81
           <li><Link to="/">Home</Link></li>
           <li><Link to="/guidelines">Resume Guidelines</Link></li>
           <li><Link to="templates">Templates</Link></li>
@@ -45,6 +49,10 @@ function App() {
             <Route path="/register">
               <Register/>
             </Route>
+<<<<<<< HEAD
+=======
+            
+>>>>>>> f37cb2f39d1953b4bd38dbd4553ca68468b2ca81
         </Switch>
       </Router>
     </div>
