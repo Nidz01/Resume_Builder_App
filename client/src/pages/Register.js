@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
-import { Overlay, Popover } from "react-bootstrap";
+var bcrypt = require('bcryptjs');
 
 export default function Register(props) {
+ 
   const [state, setState] = useState({
     userName: "",
     email: "",
@@ -64,10 +65,25 @@ export default function Register(props) {
      );
       
      }
-   
-   // setError('');
+     if (state.password != state.confirmPassword){
+      setError(prev => ({
+        ...prev,
+        confirmError:"Passwords do not match" 
+      }) 
+     );
+     }
+
+     if (state.password.length < 6) {
+      setError(prev => ({
+        ...prev,
+        passwordError:"Passwords must consist of at least 6 characters." 
+      }) 
+     );
+     }
+     
     if (!error) {
-      axios.post('/users', { email: state.email, password: state.password, name: state.userName,withCredentials: true  })
+      axios.post('/users', { email: state.email, password: bcrypt.hashSync(state.password,10), name: state.userName,withCredentials: true  })
+      .then(user => setState(user))
       .catch(error => setError(error));
     }
   }

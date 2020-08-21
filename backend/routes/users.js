@@ -57,8 +57,23 @@ module.exports = (db) => {
       .catch(err => console.log(err));
 
     // return the newly created user back
+  });
 
+  router.post('/login', (req, res) => {
+    const {name, email, password} = req.body;
+    const query = {
+      text: `SELECT * FROM users WHERE username=$1 AND password=$2;`,
+      values: [username, password]
+    };
 
+    db
+      .query(query)
+      .then(result => {
+        console.log(result);
+        res.cookie('userId', result[0].id)
+        res.json(result[0])
+  }) 
+      .catch(err => console.log(err));
   });
 
   return router;
