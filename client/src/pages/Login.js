@@ -1,12 +1,14 @@
 import "./style.css";
 import axios from 'axios';
 import React, { useState } from "react";
+const bcrypt = require('bcryptjs');
 
 export default function Login(props) {
   const [state, setState] = useState({
     userName: "",
     password: ""
   })
+  const [error, setError] = useState();
   
   
     const Change = (event) => { 
@@ -17,36 +19,46 @@ export default function Login(props) {
       }))
     }
 
+  
   const login = (event) => {event.preventDefault() 
-    axios.post('/users/login', { username: "user1", password:"password1"})
-    .then(response => console.log(response.data))
+    axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
+    .then(response => {
+      console.log(response.data)
+      if(response.data === ""){
+        setError("ERROR: Wrong username or password")
+      }
+    })
+    .catch(error => console.log(error))
   }
 
+  
   return (
     <header>
-      <main class="container flex flex-column items-center justify-center login">
+      <main className="container flex flex-column items-center justify-center login">
         <form
          onSubmit={login}
-          class="flex justify-between login-form"
+          className="flex justify-between login-form"
           style={{ paddingRight: "0px" }}
         >
-          <div class="content flex flex-column justify-center items-center">
-            <div class="text flex flex-column justify-center items-center">
+          <div className="content flex flex-column justify-center items-center">
+            <div className="text flex flex-column justify-center items-center">
               <h1>user login</h1>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input
                 type="text"
                 placeholder="enter your username"
-                name="username"
+                name="userName"
                 onChange={Change}
+                
               />
             </div>
 
-            <div class="form-group">
+            <div className="form-group">
               <input
+                type="password"
                 name="password"
-                placeholder="**************"
+                
                 onChange={Change}
               />
               <span
@@ -54,12 +66,13 @@ export default function Login(props) {
                 aria-label="toggle password visibility"
               >
               </span>
+              <section className="userValidation">{error}</section>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input type="submit" value="LOGIN" />
             </div>
           </div>
-          <aside class="flex flex-column justify-center items-center">
+          <aside className="flex flex-column justify-center items-center">
             <h1>welcome, back!</h1>
             <h2>
               by creating your account your agree to our privacy and policy.

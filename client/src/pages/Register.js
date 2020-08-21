@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
-var bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 export default function Register(props) {
  
@@ -12,11 +12,11 @@ export default function Register(props) {
     confirmPassword: ""
   })
  // const [error, setError] = useState("");
- const [error, setError] = useState({
-  userError: "",
-  emailError: "",
-  passwordError: "",
-  confirmError: ""
+  const [error, setError] = useState({
+    userError: "",
+    emailError: "",
+    passwordError: "",
+    confirmError: ""
 })
 
   const Change = (event) => { 
@@ -30,6 +30,24 @@ export default function Register(props) {
   const save = (event) => {
     event.preventDefault();
     setError('')
+
+    axios.post('/users/register', { userName: state.userName, email: state.email})
+    .then(response => {
+      console.log(response.data)
+      if(response.data !== ""){
+        setError(prev => ({
+          ...prev,
+        confirmError: "ERROR: Username or email already exist !" 
+        }) 
+      );
+        return
+      }
+    })
+    .catch(error => console.log(error))
+
+
+
+
     if (state.userName === '') {
      setError(prev => ({
        ...prev,
@@ -80,11 +98,16 @@ export default function Register(props) {
       }) 
      );
      }
-     
+
     if (!error) {
-      axios.post('/users', { email: state.email, password: bcrypt.hashSync(state.password,10), name: state.userName,withCredentials: true  })
-      .then(user => setState(user))
-      .catch(error => setError(error));
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(state.password, salt, function(err, hash) {
+          // Store hash in your password DB.
+          axios.post('/users', { email: state.email, password: hash, name: state.userName,withCredentials: true  })
+          .then(user => setState(user))
+          .catch(error => setError(error));
+        });
+      });
     }
   }
   

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 module.exports = (db) => {
   /* GET users listing. */
@@ -38,8 +39,7 @@ module.exports = (db) => {
     // extract the data from req.body
    
     const {name, email, password} = req.body;
-
-   // console.log({name}, {email},{password});
+   
 
     // create an insert query in the db
 
@@ -59,20 +59,46 @@ module.exports = (db) => {
     // return the newly created user back
   });
 
-  router.post('/login', (req, res) => {
-    const {name, email, password} = req.body;
+  // Verify if user exists
+  router.post('/register', (req, res) => {
+    const {userName, email} = req.body;
     const query = {
-      text: `SELECT * FROM users WHERE username=$1 AND password=$2;`,
-      values: [username, password]
+      text: `SELECT * FROM users WHERE username=$1 or email=$2;`,
+      values: [userName, email]
     };
-
+    
     db
       .query(query)
       .then(result => {
-        console.log(result);
-        res.cookie('userId', result[0].id)
+        console.log(result)
         res.json(result[0])
-  }) 
+      }) 
+      .catch(err => console.log(err));
+  });
+
+  
+  router.post('/login', (req, res) => {
+    const {userName, password} = req.body;
+    const query = {
+      text: `SELECT * FROM users WHERE username=$1;`,
+      values: [userName]
+    };
+    
+    db
+      .query(query)
+      .then(result => {
+        if(result[0] !== undefined){
+          bcrypt.compare(password, result[0].password, function(err, res) {
+            //if passwords match then res is true
+            if(!res) {
+              console.log(res)
+            }
+          });
+          res.cookie('userId', result[0].id)
+        } 
+        res.json(result[0])
+        
+      }) 
       .catch(err => console.log(err));
   });
 
