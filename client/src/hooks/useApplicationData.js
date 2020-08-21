@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const useApplicationData = () => {
 
-  const [state, setState] = useState({users: []});
+  const [state, setState] = useState({users: [], selected: 'item1'});
+
 
   useEffect(() => {
 

@@ -15,6 +15,19 @@ a:hover {
   text-decoration: none;
 }
 
+.nav {
+  position: sticky;
+  display: flex;
+  top: 0;
+  background-color: white;
+  height: 80px;
+  width: 100%;
+  color: #ffffff;
+  padding: 1.5em;
+  justify-content: space-between;
+  font-size: large;
+}
+
 button {
   width: 200px;
   height: 55px;
@@ -35,6 +48,10 @@ button {
 
 .flex-column {
   flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .items-center {
@@ -73,6 +90,7 @@ header .signup form {
   overflow: hidden;
   position: relative;
 }
+
 header .login form aside,
 header .signup form aside {
   width: 40%;
@@ -176,7 +194,6 @@ header .signup form .content .form-group input {
   font-family: "Raleway", sans-serif;
   font-size: 1.1rem;
   padding-left: 1rem;
-  /* text-transform: capitalize; */
   margin-bottom: 1rem;
   background-color: #f0f0f0;
   border-radius: 4px;
@@ -189,6 +206,39 @@ header .signup form .content .form-group input[type="submit"] {
   cursor: pointer;
   background-image: linear-gradient(to right, #bc4e9c, #f80759);
   color: #fff;
+}
+
+/*Guidelines Styling*/
+
+ol{
+  padding: 50px 30px 30px 50px;
+  list-style: none;
+  width: 1000px;
+  counter-reset: section;
+}
+ol li{
+  background: rgb(228, 231, 235);
+  padding: 20px 30px 20px 50px;
+  margin-bottom: 20px;
+  position: relative;
+}
+ol li:last-child{
+  margin-bottom:0;
+}
+ol li.loaded::before{
+  counter-increment: section;
+  content: counters(section,".") " ";
+  background: url('../img/index-back.png') no-repeat center center;
+  width: 46px;
+  height: 40px;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  padding-right: 8px;
+  position: absolute;
+  left: -7px;
 }
 
 @media screen and (max-width: 967px) {
