@@ -4,31 +4,59 @@ import React, { useState } from "react";
 const bcrypt = require('bcryptjs');
 
 export default function Login(props) {
+  
   const [state, setState] = useState({
     userName: "",
     password: ""
   })
-  const [error, setError] = useState();
   
+  const [error, setError] = useState({
+    userError:"",
+    passwordError:"",
+    userpassError:""
+  })
   
-    const Change = (event) => { 
+  const Change = (event) => {
     const { name, value } = event.target
       setState(prev => ({
         ...prev,
         [name]: value
       }))
+  }
+
+  const login = (event) => {
+    event.preventDefault()
+    setError('');
+    let anyError = false;
+    if (state.userName === '') {
+      setError(prev => ({
+        ...prev,
+        userError:"Username is required" 
+        }) 
+      );
+      anyError = true;
     }
 
-  
-  const login = (event) => {event.preventDefault() 
-    axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
-    .then(response => {
-      console.log(response.data)
-      if(response.data === ""){
-        setError("ERROR: Wrong username or password")
-      }
-    })
-    .catch(error => console.log(error))
+    if (state.password === '') {
+      setError(prev => ({
+        ...prev,
+        passwordError:"Password is required" 
+        }) 
+      );
+      anyError = true;
+    } 
+    console.log(error)
+    if(anyError === false) {
+      event.preventDefault()
+      axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
+      .then(response => {
+        //it doesn't work since Login.js component doesn't receive anything from the backend to identify if the password is correct
+        if(response.data === false){
+          setError(prev => ({...prev, userpassError: "Wrong username or password"}))
+        }
+      })
+      .catch(error => console.log(error))
+    }
   }
 
   
@@ -52,6 +80,7 @@ export default function Login(props) {
                 onChange={Change}
                 
               />
+              <section className="userValidation">{error.userError}</section>
             </div>
 
             <div className="form-group">
@@ -61,12 +90,14 @@ export default function Login(props) {
                 
                 onChange={Change}
               />
+              <section className="userValidation">{error.passwordError}</section>
+              <section className="userValidation">{error.userpassError}</section>
               <span
                 className="full float-right"
                 aria-label="toggle password visibility"
               >
               </span>
-              <section className="userValidation">{error}</section>
+
             </div>
             <div className="form-group">
               <input type="submit" value="LOGIN" />

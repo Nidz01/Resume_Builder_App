@@ -88,15 +88,19 @@ module.exports = (db) => {
       .query(query)
       .then(result => {
         if(result[0] !== undefined){
-          bcrypt.compare(password, result[0].password, function(err, res) {
+          bcrypt.compare(password, result[0].password, function(err, rest) {
             //if passwords match then res is true
-            if(!res) {
-              console.log(res)
+            if(!rest) {
+              res.json(false)
+              return
             }
+            res.cookie('userId', result[0].id)
+            res.json(true)
+            return
           });
-          res.cookie('userId', result[0].id)
-        } 
-        res.json(result[0])
+        } else {
+           res.json(false)
+        }
         
       }) 
       .catch(err => console.log(err));

@@ -4,20 +4,19 @@ import axios from 'axios';
 const bcrypt = require('bcryptjs');
 
 export default function Register(props) {
- 
   const [state, setState] = useState({
     userName: "",
     email: "",
     password: "",
     confirmPassword: ""
   })
- // const [error, setError] = useState("");
+ 
   const [error, setError] = useState({
     userError: "",
     emailError: "",
     passwordError: "",
     confirmError: ""
-})
+  })
 
   const Change = (event) => { 
   const { name, value } = event.target
@@ -30,31 +29,15 @@ export default function Register(props) {
   const save = (event) => {
     event.preventDefault();
     setError('')
-
-    axios.post('/users/register', { userName: state.userName, email: state.email})
-    .then(response => {
-      console.log(response.data)
-      if(response.data !== ""){
-        setError(prev => ({
-          ...prev,
-        confirmError: "ERROR: Username or email already exist !" 
-        }) 
-      );
-        return
-      }
-    })
-    .catch(error => console.log(error))
-
-
-
+    let anyError = false;
 
     if (state.userName === '') {
      setError(prev => ({
        ...prev,
        userError:"Required field" 
-     }) 
-    );
-    
+     })
+    )
+    anyError = true;
     }
 
     if (state.email=== '') {
@@ -62,47 +45,62 @@ export default function Register(props) {
         ...prev,
         emailError:"Required field" 
       }) 
-     );
-      
-     }
+    )
+    anyError = true;
+    }
 
-     if (state.password=== '') {
+    if (state.password=== '') {
       setError(prev => ({
         ...prev,
         passwordError:"Required field" 
       }) 
-     );
-      
-     }
+    )
+    anyError = true;
+    }
 
-     if (state.confirmPassword=== '') {
+    if (state.confirmPassword=== '') {
       setError(prev => ({
         ...prev,
         confirmError:"Required field" 
       }) 
-     );
-      
-     }
-     if (state.password != state.confirmPassword){
+    )
+    anyError = true;
+    }
+
+    if (state.password != state.confirmPassword){
       setError(prev => ({
         ...prev,
         confirmError:"Passwords do not match" 
       }) 
-     );
-     }
+    )
+    anyError = true;
+    }
 
-     if (state.password.length < 6) {
+    if (state.password.length < 6) {
       setError(prev => ({
         ...prev,
         passwordError:"Passwords must consist of at least 6 characters." 
       }) 
-     );
-     }
+    )
+    anyError = true;
+    }
 
-    if (!error) {
+    if (anyError === false) {
+      axios.post('/users/register', { userName: state.userName, email: state.email})
+      .then(response => {
+        if(response.data !== ""){
+          setError(prev => ({
+            ...prev,
+          confirmError: "Username or email already exists !" 
+          }) 
+        );
+          return
+        }
+      })
+      .catch(error => console.log(error))
+      //use bcrypt for password  to save it in DB
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(state.password, salt, function(err, hash) {
-          // Store hash in your password DB.
           axios.post('/users', { email: state.email, password: hash, name: state.userName,withCredentials: true  })
           .then(user => setState(user))
           .catch(error => setError(error));
