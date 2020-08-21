@@ -35,9 +35,7 @@ module.exports = (db) => {
 
 
   router.post('/', (req, res) => {
-
     // extract the data from req.body
-   
     const {name, email, password} = req.body;
     
     const query = {
@@ -70,6 +68,7 @@ module.exports = (db) => {
       .catch(err => console.log(err));
     });
   
+
   router.post('/login', (req, res) => {
     const {userName, password} = req.body;
     const query = {

@@ -1,7 +1,55 @@
-import React, { useContext } from 'react';
-
+import  React, { useState, Component } from 'react';
+import "./style.css";
+import Template1 from '../img/Template1.jpg';
+import Template2 from '../img/Template2.jpg';
+import Template3 from '../img/Template3.jpg';
+import Template4 from '../img/Template4.jpg';
+import Template5 from '../img/Template5.jpg';
 export default function Templates(props) {
+  const [index, setIndex] = useState(0);
+  const pictures = [{
+    photo: Template1,
+    text:"Entry Level Resume Template"
+},
+{
+    photo: Template2,
+    text:"Middle Level Resume Template"
+},
+{
+  photo: Template3,
+  text:"Middle Level Resume Template"
+},
+{
+  photo: Template4,
+  text:"Senior and Executive Level Resume Template"
+},
+{
+  photo: Template5,
+  text:"Senior and Executive Level Resume Template"
+}
+]
   return (
-    <h1>images</h1>
-  )
+    <header>
+      <main class="container flex flex-column items-center justify-center signup">
+        <form style={{ border: "60px solid #fff", justifyContent: "space-between" }}>
+          <div class="">
+            <h1>Here are your templates</h1><br/>
+            <h2>Pick one that suits your work experience.</h2><br/>
+          </div>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>
+          <div style={{ fontSize: "50px" }}onClick={()=>{if(index > 0) setIndex(index - 1)}}>{" < "}</div>
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
+          <img
+                style={{maxWidth: '50vw', maxHeight: '50vh'}}
+                alt="test"
+                src={pictures[index].photo}
+              />
+          <span>{pictures[index].text}</span>
+          </div>
+          <div style={{ fontSize: "50px" }}onClick={()=>{if(index < pictures.length - 1) setIndex(index + 1)}}>{" > "}</div>
+          </div>
+        </form>
+      </main>
+    </header>
+  );
 }
