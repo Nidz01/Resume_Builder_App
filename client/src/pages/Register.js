@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 export default function Register(props) {
+  const history = useHistory();
   const [state, setState] = useState({
     userName: "",
     email: "",
@@ -94,6 +96,9 @@ export default function Register(props) {
           }) 
         );
           return
+        } else {  
+            console.log("test");  
+            history.push('/templates')
         }
       })
       .catch(error => setError(error));

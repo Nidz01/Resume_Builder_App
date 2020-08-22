@@ -15,16 +15,12 @@ import Register from "./pages/Register";
 import Templates from "./pages/Templates";
 
 function App() {
-  
-  //const {state, setState}  = useApplicationData();
- 
-  
+//const {state, setState}  = useApplicationData();
 //const userList = state.users.map(user => <li>{user.name} {user.email}</li>)
-
   return (
     <div className="App">
       <Router>
-        <ul class = "nav">
+        <ul className = "nav">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/guidelines">Resume Guidelines</Link></li>
           <li><Link to="/templates">Templates</Link></li>
@@ -47,7 +43,6 @@ function App() {
             <Route path="/register">
               <Register/>
             </Route>
-            
         </Switch>
       </Router>
     </div>

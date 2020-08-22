@@ -5,43 +5,23 @@ const bcrypt = require('bcryptjs');
 module.exports = (db) => {
   /* GET users listing. */
   router.get('/', (req, res) => {
-    
     const query = {
       text: 'SELECT * FROM users;'
     };
-
     db.query(query)
       .then(result => res.json(result))
       .catch(err => console.log(err));
   });
-
-  // ASYNC AWAIT INSTEAD OF .THEN
-  // router.get('/', async (req, res) => {
-    
-  //   const query = {
-  //     text: 'SELECT * FROM users;'
-  //   };
-
-  //   try {
-  //     const users = await db.query(query);
-  //     res.json(users);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-
-
-  // });
-
-
+  
+  //Validate if the user exists. If it does then we return false otherwise true.
+  //We use it in Registration form
   router.post('/', (req, res) => {
     // extract the data from req.body
     const {name, email, password} = req.body;
-    
     const query = {
       text: `SELECT * FROM users WHERE username=$1 or email=$2;`,
       values: [name, email]
     };
-    
     db
       .query(query)
       .then(result => {
@@ -56,6 +36,7 @@ module.exports = (db) => {
                 .query(query)
                 .then(result => {
                  res.cookie('userId', result[0].id)
+                 res.json(true)
                 }) 
                 .catch(err => console.log(err));
             });
@@ -67,6 +48,16 @@ module.exports = (db) => {
       .catch(err => console.log(err));
     });
   
+  //If cookies exist then return true otherwise false. This route is used on the front end
+  //for App.js to prevent unautorized user to navigate to Templates 
+  router.post('/redirect', (req,res) => {
+    if (req.cookies.userId) {
+      res.json(true);
+     }
+     else {
+       res.json({error: 'not logged in'})
+     }
+  });
 
   router.post('/login', (req, res) => {
     const {userName, password} = req.body;

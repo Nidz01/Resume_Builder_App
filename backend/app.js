@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const router = express.Router();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -7,6 +8,7 @@ const db = require('./db');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const { Router } = require('express');
 
 const app = express();
 
@@ -24,16 +26,19 @@ app.use('/', indexRouter(db));
 app.use('/users', usersRouter(db));
 
 //////
-app.use('/templates', (req, res, next) => {
+
+/*app.use('/templates', (req, res, next) => {
   
   if (req.cookies.userId) {
     console.log('test');
+    
+    //res.redirect(301,'/templates');
     next()
    }
    else {
      res.json({error: 'not logged in'})
    }
- })
+ })*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

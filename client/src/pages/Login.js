@@ -1,9 +1,11 @@
 import "./style.css";
 import axios from 'axios';
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 
 export default function Login(props) {
+  const history = useHistory();
   
   const [state, setState] = useState({
     userName: "",
@@ -23,9 +25,10 @@ export default function Login(props) {
         [name]: value
       }))
   }
-
+  
   const login = (event) => {
     event.preventDefault()
+    
     setError('');
     let anyError = false;
     if (state.userName === '') {
@@ -45,7 +48,7 @@ export default function Login(props) {
       );
       anyError = true;
     } 
-    console.log(error)
+    //console.log(error)
     if(anyError === false) {
       event.preventDefault()
       axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
@@ -54,10 +57,14 @@ export default function Login(props) {
         if(response.data === false){
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
         } else {
-          axios.get('/templates')
-         // .then(data => {
-        //    console.log(data)
-        //  })
+          axios.post('/users/redirect')
+          .then(response => {
+            //console.log(response.data)
+            //history.push('/templates')
+            if(response.data){
+              history.push('/templates')
+            }
+          })
         }
       })
       .catch(error => console.log(error))
