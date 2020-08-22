@@ -55,7 +55,7 @@ module.exports = (db) => {
       res.json(true);
      }
      else {
-       res.json({error: 'not logged in'})
+       res.json(false)
      }
   });
 
