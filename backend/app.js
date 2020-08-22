@@ -7,7 +7,6 @@ const db = require('./db');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const templatesRouter = require('./routes/index');
 
 const app = express();
 
