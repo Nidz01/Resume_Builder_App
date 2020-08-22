@@ -13,7 +13,6 @@ module.exports = (db) => {
     db.query(query)
       .then(result => res.json(result))
       .catch(err => console.log(err));
-
   });
 
   // ASYNC AWAIT INSTEAD OF .THEN

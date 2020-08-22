@@ -7,6 +7,7 @@ const db = require('./db');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const templatesRouter = require('./routes/index');
 
 const app = express();
 
@@ -24,13 +25,11 @@ app.use('/', indexRouter(db));
 app.use('/users', usersRouter(db));
 
 //////
-app.use('/templates', (req,res,next) => {
-  console.log('test')
-  //next();
+app.use('/templates', (req, res, next) => {
   
-  if (req.cookie.user_id) {
-    
-     // next();
+  if (req.cookies.userId) {
+    console.log('test');
+    next()
    }
    else {
      res.json({error: 'not logged in'})

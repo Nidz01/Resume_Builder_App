@@ -56,7 +56,7 @@ export default function Login(props) {
         } else {
           axios.get('/templates')
          // .then(data => {
-         //   console.log(data)
+        //    console.log(data)
         //  })
         }
       })

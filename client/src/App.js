@@ -27,7 +27,7 @@ function App() {
         <ul class = "nav">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/guidelines">Resume Guidelines</Link></li>
-          <li><Link to="templates">Templates</Link></li>
+          <li><Link to="/templates">Templates</Link></li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/register">Register</Link></li>
         </ul> 
