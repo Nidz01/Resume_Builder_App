@@ -23,6 +23,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter(db));
 app.use('/users', usersRouter(db));
 
+//////
+app.use('/templates', (req,res,next) => {
+  console.log('test')
+  //next();
+  
+  if (req.cookie.user_id) {
+    
+     // next();
+   }
+   else {
+     res.json({error: 'not logged in'})
+   }
+ })
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -53,6 +53,11 @@ export default function Login(props) {
         //it doesn't work since Login.js component doesn't receive anything from the backend to identify if the password is correct
         if(response.data === false){
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
+        } else {
+          axios.get('/templates')
+         // .then(data => {
+         //   console.log(data)
+        //  })
         }
       })
       .catch(error => console.log(error))
@@ -63,7 +68,7 @@ export default function Login(props) {
   return (
     <header>
       <main className="container flex flex-column items-center justify-center login">
-        <form
+        <form  
          onSubmit={login}
           className="flex justify-between login-form"
           style={{ paddingRight: "0px" }}
