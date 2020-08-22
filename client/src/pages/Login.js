@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function Login(props) {
   const history = useHistory();
-  
+
   const [state, setState] = useState({
     userName: "",
     password: ""
@@ -57,14 +57,15 @@ export default function Login(props) {
         if(response.data === false){
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
         } else {
-          axios.post('/users/redirect')
-          .then(response => {
+          //I left those comment so far since I may need to use this construction in another component. Most likely in App.js
+          //axios.post('/users/redirect')
+          //.then(response => {
             //console.log(response.data)
             //history.push('/templates')
-            if(response.data){
+            //if(response.data){
               history.push('/templates')
-            }
-          })
+            //}
+          //})
         }
       })
       .catch(error => console.log(error))
