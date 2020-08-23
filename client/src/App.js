@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,29 +15,30 @@ import Guidelines from "./pages/Guidelines";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Templates from "./pages/Templates";
+//import { checkout } from '../../backend/app';
 
-function App() {
+const cookies = new Cookies();
+
+function App(props) {
 const [state, setState]  = useState();
 //const userList = state.users.map(user => <li>{user.name} {user.email}</li>)
-  let test;
   //setState("test");
     
   useEffect (() => {
     axios.post('/users/redirect')
       .then(response => {
-        //console.log("responseData",response.data)
-        if(response.data){
-          console.log(response.data)
+        console.log()
+        if(response.data.loggedUser){
+          console.log(response.data.loggedUser)
           setState(true)
-          console.log("true",state)
+          
         } else {
-          setState(false)
-          console.log("false",state)
+          setState(false)          
         }
       })
-  },[])
+  })
   
-console.log("outOfUseEffect",state)
+console.log(cookies.get('userName'))
   return (
     <div className="App">
       <Router>
@@ -44,7 +46,7 @@ console.log("outOfUseEffect",state)
           <li><Link to="/">Home</Link></li>
           <li><Link to="/guidelines">Resume Guidelines</Link></li>
           <li><Link to={"/templates"}>Templates</Link></li>
-          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/login">{state ? `Logged as: ${cookies.get('userName')}` : "Login"}</Link></li>
           <li><Link to="/register">Register</Link></li>
         </ul> 
         <Switch>
