@@ -7,7 +7,9 @@ import {
   useHistory
 } from "react-router-dom";
 import "./style.css";
+import Autorization from '../hooks/authorization';
 import Resume from './Resume';
+import Login from './Login';
 import Template1 from '../img/Template1.jpg';
 import Template2 from '../img/Template2.jpg';
 import Template3 from '../img/Template3.jpg';
@@ -15,8 +17,11 @@ import Template4 from '../img/Template4.jpg';
 import Template5 from '../img/Template5.jpg';
 
 export default function Templates(props) {
+
+  const { state, setUsername } = Autorization();
   const [index, setIndex] = useState(0);
   const history = useHistory();
+
   const pictures = [{
     photo: Template1,
     text:"Entry Level Resume Template"

@@ -8,7 +8,8 @@ import {
 } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
-import useApplicationData from './hooks/useApplicationData';
+
+//import useApplicationData from './hooks/useApplicationData';
 import Autorization from './hooks/authorization';
 import './App.css';
 import Home from "./pages/Home";
@@ -31,7 +32,7 @@ function App(props) {
           <li><Link to="/templates">Templates</Link></li>
           <li><Link to="/register">Register</Link></li>
           <li><Link to="/login">{state.userName ? `Logged as: ${state.userName}` : "Login"}</Link></li>
-         <li onClick={remove}>{state.userName ? 'Logout' : null}</li>
+         <li style={{color: "rgba(88, 27, 152, 0.67)"}}onClick={remove}>{state.userName ? 'Logout' : null}</li>
          </ul> 
         <Switch>
             <Route exact path="/">
@@ -50,7 +51,7 @@ function App(props) {
               <Register setUsername={setUsername}/>
             </Route>
             <Route path="/resume">
-              <Resume/>
+              {state.userName ? <Resume /> : <Login/>}
             </Route>
         </Switch>
       </Router>

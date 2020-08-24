@@ -8,7 +8,10 @@ import Achievements from './Resume/Achievements';
 import Experience from './Resume/Experience';
 import Qualification from './Resume/Qualification';
 
-export default function Resume() {
+export default function Resume(props) {
+  const { setUsername } = props;
+  console.log('setUsername', props)
+  //setUsername(state.userName)
   const routes = [
     {
       path: "/profile",
