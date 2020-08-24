@@ -9,6 +9,7 @@ import {
 import Cookies from 'universal-cookie';
 
 import useApplicationData from './hooks/useApplicationData';
+import Autorization from './hooks/authorization';
 import './App.css';
 import Home from "./pages/Home";
 import Guidelines from "./pages/Guidelines";
@@ -18,20 +19,20 @@ import Templates from "./pages/Templates";
 import Resume from './pages/Resume';
 
 
-function App() {
+function App(props) {
   
-  const cookies = new Cookies();
-
+  const { state, remove, setState, setUsername } = Autorization();
   return (
     <div className="App">
       <Router>
         <ul className = "nav">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/guidelines">Resume Guidelines</Link></li>
-          <li><Link to="templates">Templates</Link></li>
-          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/templates">Templates</Link></li>
           <li><Link to="/register">Register</Link></li>
-        </ul> 
+          <li><Link to="/login">{state.userName ? `Logged as: ${state.userName}` : "Login"}</Link></li>
+         <li onClick={remove}>{state.userName ? 'Logout' : null}</li>
+         </ul> 
         <Switch>
             <Route exact path="/">
               <Home/>
@@ -43,10 +44,10 @@ function App() {
               <Templates/>
             </Route>
             <Route path="/login">
-              <Login/>
+              <Login setUsername={setUsername}/>
             </Route>
             <Route path="/register">
-              <Register/>
+              <Register setUsername={setUsername}/>
             </Route>
             <Route path="/resume">
               <Resume/>
@@ -54,7 +55,7 @@ function App() {
         </Switch>
       </Router>
     </div>
-    );
+  );
 }
 
 export default App;

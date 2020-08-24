@@ -1,10 +1,14 @@
 import "./style.css";
 import axios from 'axios';
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+//import Autorization from '../hooks/authorization'
 
 
 export default function Login(props) {
-  
+  const history = useHistory();
+  //const { state, setState } = Autorization();
+  const { setUsername } = props;
   const [state, setState] = useState({
     userName: "",
     password: ""
@@ -23,9 +27,10 @@ export default function Login(props) {
         [name]: value
       }))
   }
-
+  
   const login = (event) => {
     event.preventDefault()
+    
     setError('');
     let anyError = false;
     if (state.userName === '') {
@@ -45,7 +50,7 @@ export default function Login(props) {
       );
       anyError = true;
     } 
-    console.log(error)
+   
     if(anyError === false) {
       event.preventDefault()
       axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
@@ -53,6 +58,10 @@ export default function Login(props) {
         //it doesn't work since Login.js component doesn't receive anything from the backend to identify if the password is correct
         if(response.data === false){
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
+        } else {
+          //I left those comment so far since I may need to use this construction in another component. Most likely in App.js
+              setUsername(state.userName) 
+              history.push('/templates')
         }
       })
       .catch(error => console.log(error))
@@ -63,7 +72,7 @@ export default function Login(props) {
   return (
     <header>
       <main className="container flex flex-column items-center justify-center login">
-        <form
+        <form  
          onSubmit={login}
           className="flex justify-between login-form"
           style={{ paddingRight: "0px" }}
