@@ -35,7 +35,7 @@ module.exports = (db) => {
               db
                 .query(query)
                 .then(result => {
-                 res.cookie('userId', result[0].id)
+                // res.cookie('userId', result[0].id)
                  res.cookie('userName', result[0].username)
                  res.json(true)
                 }) 
@@ -53,10 +53,10 @@ module.exports = (db) => {
   //for App.js to prevent unautorized user to navigate to Templates 
   router.post('/redirect', (req,res) => {
     if (req.cookies.userId) {
-      res.json({"loggedUser":true});
+      res.json(true);
      }
      else {
-       res.json({"loggedUser":false})
+       res.json(false)
      }
   });
 
@@ -77,7 +77,7 @@ module.exports = (db) => {
               res.json(false)
               return
             }
-            res.cookie('userId', result[0].id)
+          //  res.cookie('userId', result[0].id)
             res.cookie('userName', result[0].username)
             res.json(true)
             return

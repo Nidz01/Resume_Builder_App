@@ -13,7 +13,6 @@ const useApplicationData = () => {
     })
     .then(result => setState(prev => ({...prev, users: result.data})))
     .catch(err => console.log(err));
-
   }, [])
 
   return {

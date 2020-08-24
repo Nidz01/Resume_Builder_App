@@ -2,11 +2,13 @@ import "./style.css";
 import axios from 'axios';
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
+//import Autorization from '../hooks/authorization'
 
 
 export default function Login(props) {
   const history = useHistory();
-
+  //const { state, setState } = Autorization();
+  const { setUsername } = props;
   const [state, setState] = useState({
     userName: "",
     password: ""
@@ -48,7 +50,7 @@ export default function Login(props) {
       );
       anyError = true;
     } 
-    //console.log(error)
+   
     if(anyError === false) {
       event.preventDefault()
       axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
@@ -58,14 +60,8 @@ export default function Login(props) {
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
         } else {
           //I left those comment so far since I may need to use this construction in another component. Most likely in App.js
-          //axios.post('/users/redirect')
-          //.then(response => {
-            //console.log(response.data)
-            //history.push('/templates')
-            //if(response.data){
+              setUsername(state.userName) 
               history.push('/templates')
-            //}
-          //})
         }
       })
       .catch(error => console.log(error))

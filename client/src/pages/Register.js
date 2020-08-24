@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+//import Autorization from '../hooks/authorization'
+
 
 export default function Register(props) {
   const history = useHistory();
+ 
+  const { setUsername } = props;
   const [state, setState] = useState({
     userName: "",
     email: "",
@@ -18,12 +22,12 @@ export default function Register(props) {
     passwordError: "",
     confirmError: ""
   })
-
+ 
   const Change = (event) => { 
   const { name, value } = event.target
-    setState(prev => ({
-      ...prev,
-      [name]: value
+  setState(prev => ({
+    ...prev,
+   [name]: value
     }))
   }
   
@@ -31,7 +35,7 @@ export default function Register(props) {
     event.preventDefault();
     setError('')
     let anyError = false;
-
+    
     if (state.userName === '') {
      setError(prev => ({
        ...prev,
@@ -96,8 +100,8 @@ export default function Register(props) {
           }) 
         );
           return
-        } else {  
-            console.log("test");  
+        } else { 
+            setUsername(state.userName)  
             history.push('/templates')
         }
       })
@@ -133,7 +137,7 @@ export default function Register(props) {
                 type="text"
                 placeholder="Enter your username"
                 name="userName"
-                onChange={Change}
+                onChange= {Change}
               />
            <section className="userValidation">{error.userError}</section>
             </div>
