@@ -9,6 +9,3 @@ export default function Home(props) {
         </div> 
   )
 }
-
-
-//<a class=""> <Link to="/templates">"Create Your Resume Now"</Link></a>

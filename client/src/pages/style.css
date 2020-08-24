@@ -214,6 +214,17 @@ header .signup form .content .form-group input[type="submit"] {
   height: 10px;
 }
 
+/* Create Resume Button Styling */
+
+.create_resume button {
+  width: 500px;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #bc4e9c, #f80759);
+  color: #fff;
+  font-size: 1.5rem;
+}
 /* Guidlines Styling */
 
 ol{

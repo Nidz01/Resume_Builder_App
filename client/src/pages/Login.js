@@ -100,7 +100,7 @@ export default function Login(props) {
 
             </div>
             <div className="form-group">
-              <input type="submit" value="LOGIN" />
+              <input type="submit" value="LOGIN"/>
             </div>
           </div>
           <aside className="flex flex-column justify-center items-center">
