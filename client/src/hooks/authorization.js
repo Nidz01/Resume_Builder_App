@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import Cookies from 'universal-cookie';
 
@@ -32,20 +31,5 @@ export default function Autorization (props) {
     cookies.remove('userName')
   }
 
-
-  //work eith back_end
- /* const [state, setState]  = useState();
-  useEffect (() => {
-    axios.post('/users/redirect')
-      .then(response => {
-        if(response.data.loggedUser){
-          console.log(response.data.loggedUser)
-          setState(true)
-          
-        } else {
-          setState(false)          
-        }
-      })
-  })*/
   return {state, remove, setState, setUsername}
 }
