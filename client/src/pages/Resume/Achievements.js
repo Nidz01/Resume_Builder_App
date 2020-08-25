@@ -1,6 +1,16 @@
 import React, { useContext } from 'react';
 import "./forms.css"
 export default function Achievements(props) {
+
+  /*
+  const [state, setState] = useState({
+    achievements: ""
+  })
+
+  const handleChange(event) {
+    this.setState({ achievements: event.target.value });
+  }
+  */
   return (
         <form
           className="flex signup-form"
@@ -11,39 +21,16 @@ export default function Achievements(props) {
               <h1>Create Achievements</h1>
             </div>
             <div className="form-group">
-              <input
-                type="text"
-                placeholder="Enter your username"
-                name="userName"
+              <textarea style={{padding: "10px", border: "1px solid #888", width: "100%", resize: "none"}}
+                /*value={this.state.achievements}*/
+                placeholder="Enter your achievements"
+                rows={20}
+                cols={5}
+                /*onChange={handleChange}*/
               />
-           <section className="userValidation">error</section>
             </div>
             <div className="form-group">
-              <input
-                type="email"
-                placeholder="someone@email.com"
-                name="email"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input  type="submit" value="SIGNUP" />
+              <input  type="submit" value="Save and Next" />
             </div>
           </div>
         </form>
