@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (db) => {
   /* GET users listing. */
+  
   router.get('/', (req, res) => {
     const query = {
       text: 'SELECT * FROM users;'
@@ -35,7 +36,6 @@ module.exports = (db) => {
               db
                 .query(query)
                 .then(result => {
-                // res.cookie('userId', result[0].id)
                  res.cookie('userName', result[0].username)
                  res.json(true)
                 }) 
@@ -48,17 +48,6 @@ module.exports = (db) => {
       }) 
       .catch(err => console.log(err));
     });
-  
-  //If cookies exist then return true otherwise false. This route is used on the front end
-  //for App.js to prevent unautorized user to navigate to Templates 
-  router.post('/redirect', (req,res) => {
-    if (req.cookies.userId) {
-      res.json(true);
-     }
-     else {
-       res.json(false)
-     }
-  });
 
   router.post('/login', (req, res) => {
     const {userName, password} = req.body;
@@ -77,7 +66,6 @@ module.exports = (db) => {
               res.json(false)
               return
             }
-          //  res.cookie('userId', result[0].id)
             res.cookie('userName', result[0].username)
             res.json(true)
             return

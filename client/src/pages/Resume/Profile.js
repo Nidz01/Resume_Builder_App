@@ -8,15 +8,31 @@ export default function Profile(props) {
         >
           <div className="content flex flex-column justify-center items-center">
             <div className="text">
-              <h1>Create Achievements</h1>
+              <h1>Create Profile</h1>
             </div>
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter your username"
-                name="userName"
+                placeholder="Enter Job Title"
+                name="firstName"
               />
-           <section className="userValidation">error</section>
+             <section className="userValidation">error</section>
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter your First Name"
+                name="firstName"
+              />
+             <section className="userValidation">error</section>
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter your Last Name"
+                name="lastName"
+              />
+             <section className="userValidation">error</section>
             </div>
             <div className="form-group">
               <input
@@ -28,9 +44,9 @@ export default function Profile(props) {
             </div>
             <div className="form-group">
               <input
-                type="password"
-                placeholder="Password"
-                name="password"
+                type="phone"
+                placeholder="(416) 285-3455"
+                name="phone_number"
               />
               <section className="userValidation">error</section>
             </div>
