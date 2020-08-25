@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 
 export default function Login(props) {
   const history = useHistory();
-  //const { state, setState } = Autorization();
   const { setUsername } = props;
   const [state, setState] = useState({
     userName: "",

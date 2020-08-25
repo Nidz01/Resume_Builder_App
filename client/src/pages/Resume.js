@@ -9,9 +9,7 @@ import Experience from './Resume/Experience';
 import Qualification from './Resume/Qualification';
 
 export default function Resume(props) {
-  const { setUsername } = props;
-  console.log('setUsername', props)
-  //setUsername(state.userName)
+
   const routes = [
     {
       path: "/profile",
@@ -48,21 +46,13 @@ export default function Resume(props) {
 
   return(
     <header>
-      <main class="container flex flex-column items-start justify-center signup">
+      <main class="container flex items-start signup">
     <Router>
-        <form
-          style={{
-            padding: "10px",
-            paddingLeft: "0px",
-            width: "15%",
-            height: "100%",
-            background: "pink"
-          }}
-        >
-          <aside class="flex flex-column justify-center items-center">
-            <ul style={{ listStyleType: "none", padding: 0 }}>
+          <aside className= "resume_nav">
+            <ul style={{}}>
+              <br/><br/>
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">PROFILE</Link>
               </li>
               <li>
                 <Link to="/summary">SUMMARY OF QUALIFICATIONS</Link>
@@ -79,9 +69,6 @@ export default function Resume(props) {
               </li>
             </ul>
           </aside>
-        </form>
-        <div class="content flex flex-column justify-center items-center"
-        style={{ flex: 1, padding: "10px" }}>
           <Switch>
             {routes.map((route, index) => (
               <Route
@@ -92,7 +79,6 @@ export default function Resume(props) {
               />
             ))}
           </Switch>
-        </div>
     </Router>
     </main>
     </header>

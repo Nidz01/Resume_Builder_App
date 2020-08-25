@@ -18,7 +18,7 @@ import Template5 from '../img/Template5.jpg';
 
 export default function Templates(props) {
 
-  const { state, setUsername } = Autorization();
+  const { state, setUsername } = props;
   const [index, setIndex] = useState(0);
   const history = useHistory();
 
@@ -64,7 +64,7 @@ export default function Templates(props) {
           <div style={{ fontSize: "50px" }}onClick={()=>{if(index < pictures.length - 1) setIndex(index + 1); else setIndex(0)}}>{" > "}</div>
           </div>
           <div className="create_resume">
-            <Link to="/resume"><button  type="button">Create Your Resume</button></Link>
+          <Link to="/resume"><button  type="button">Create Your Resume</button></Link>
           </div>
         </form>
       </main>

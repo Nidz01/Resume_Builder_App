@@ -14,65 +14,31 @@
 a:hover {
   text-decoration: none;
 }
-.nav {
-  position: sticky;
-  display: flex;
-  top: 0;
-  background-color: white;
-  height: 80px;
-  width: 100%;
-  color: #FFFFFF;
-  padding: 1.5em;
-  justify-content: space-between;
-  font-size: large;
-}
-
-button {
-  width: 200px;
-  height: 55px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
-  text-transform: capitalize;
-  cursor: pointer;
-}
-
 .container {
   max-width: 90%;
   margin: 0 auto;
 }
-
 .flex {
   display: flex;
 }
-
 .flex-column {
   flex-direction: column;
 }
-
-
 .flex-row {
   flex-direction: row;
 }
-
 .items-center {
   align-items: center;
 }
-
 .justify-center {
   justify-content: center;
 }
-
 .justify-between {
   justify-content: space-between;
 }
-
-body {
-  background-color: rgba(244, 255, 246, 0.83);
-}
-
 header {
   height: 100vh;
-  background-image: url("../img/bg.svg");
+  background-image: url("/Users/Rita/lighthouse/w10/Resume_Builder_App/client/src/img/bg.svg");
   background-size: cover;
   background-position: center;
 }
@@ -88,35 +54,6 @@ header .signup form {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.16);
   border-radius: 30px;
   overflow: hidden;
-  position: relative;
-}
-header .login form aside,
-header .signup form aside {
-  width: 40%;
-  background-image: linear-gradient(to right, #bc4e9cd1, #f80759b3);
-  position: relative;
-}
-header .login form aside:after,
-header .signup form aside:after {
-  width: 100%;
-  height: 100%;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(228, 171, 220, 0.42);
-  clip-path: circle(30% at 30% 0%);
-}
-header .login form aside:before,
-header .signup form aside:before {
-  width: 100%;
-  height: 100%;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(228, 171, 220, 0.42);
-  clip-path: circle(40% at 0% 0%);
 }
 header .login form aside h1,
 header .signup form aside h1 {
@@ -126,27 +63,6 @@ header .signup form aside h1 {
   color: #fff;
   text-transform: capitalize;
   line-height: 2;
-}
-header .login form aside h2,
-header .signup form aside h2 {
-  font-family: "Raleway", sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  letter-spacing: 0.5px;
-  text-align: center;
-  padding: 1rem 2rem;
-  color: #fef;
-  margin-top: -1rem;
-  font-weight: 200;
-  text-transform: capitalize;
-}
-header .login form aside button,
-header .signup form aside button {
-  border-radius: 30px;
-  color: #fff;
-  border: 1px solid #fff;
-  background-color: transparent;
-  margin-top: 1rem;
 }
 header .login form .content,
 header .signup form .content {
@@ -165,7 +81,7 @@ header .signup form .content .text h1 {
   line-height: 2;
   letter-spacing: 1px;
   text-transform: capitalize;
-  color: #bb41aa;
+  color: #BB41AA;
 }
 header .login form .content .text .icon,
 header .signup form .content .text .icon {
@@ -193,9 +109,8 @@ header .signup form .content .form-group input {
   font-family: "Raleway", sans-serif;
   font-size: 1.1rem;
   padding-left: 1rem;
-  /* text-transform: capitalize; */
   margin-top: 1rem;
-  background-color: #f0f0f0;
+  background-color: #F0F0F0;
   border-radius: 4px;
 }
 header .login form .content .form-group input[type="submit"],
@@ -204,69 +119,14 @@ header .signup form .content .form-group input[type="submit"] {
   border-radius: 30px;
   text-align: center;
   cursor: pointer;
-  background-image: linear-gradient(to right, #bc4e9c, #f80759);
+  background-image: linear-gradient(to right, #BC4E9C, #F80759);
   color: #fff;
 }
-
 .userValidation {
   color: red;
   font-size: 12px;
   height: 10px;
 }
-
-/* Create Resume Button Styling */
-
-.create_resume button {
-  width: 500px;
-  border-radius: 30px;
-  text-align: center;
-  cursor: pointer;
-  background-image: linear-gradient(to right, #bc4e9c, #f80759);
-  color: #fff;
-  font-size: 1.5rem;
-}
-/* Guidlines Styling */
-
-ol{
-  padding: 50px 30px 30px 50px;
-  list-style: none;
-  width: 1000px;
-  counter-reset: section;
-}
-ol li{
-  background: rgb(228, 231, 235);
-  padding: 20px 30px 20px 50px;
-  margin-bottom: 20px;
-  position: relative;
-}
-ol li:last-child{
-  margin-bottom:0;
-}
-ol li.loaded::before{
-  counter-increment: section;
-  content: counters(section,".") " ";
-  background: url('../img/index-back.png') no-repeat center center;
-  width: 46px;
-  height: 40px;
-  color: #fff;
-  text-align: center;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 700;
-  padding-right: 8px;
-  position: absolute;
-  left: -7px;
-}
-
-/*Resume Styling*/
-.resume_nav{
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  width: 15%;
-  background-image: linear-gradient(to right, #bc4e9cd1, #f80759b3);
-}
-
 @media screen and (max-width: 967px) {
   header {
     min-height: 120vh !important;
@@ -334,5 +194,4 @@ ol li.loaded::before{
     margin-top: 3rem;
     margin-bottom: 2rem;
   }
-
 }

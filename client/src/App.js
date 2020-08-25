@@ -42,7 +42,7 @@ function App(props) {
               <Guidelines/>
             </Route>
             <Route path="/templates">
-              <Templates/>
+              <Templates setUsername={setUsername}/>
             </Route>
             <Route path="/login">
               <Login setUsername={setUsername}/>
@@ -51,7 +51,7 @@ function App(props) {
               <Register setUsername={setUsername}/>
             </Route>
             <Route path="/resume">
-              {state.userName ? <Resume /> : <Login/>}
+              {state.userName ? <Resume /> : <Login setUsername={setUsername}/>}
             </Route>
         </Switch>
       </Router>
