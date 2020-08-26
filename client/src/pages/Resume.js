@@ -7,9 +7,10 @@ import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import Experience from './Resume/Experience';
 import Qualification from './Resume/Qualification';
+import useResumeContext from '../hooks/useResumeContext';
 
 export default function Resume(props) {
-
+  const { state, setSummary } = useResumeContext();
   const routes = [
     {
       path: "/profile",
@@ -46,7 +47,7 @@ export default function Resume(props) {
 
   return(
     <header>
-      <main class="container flex items-start signup">
+      <main className="container flex items-start signup">
     <Router>
           <aside className= "resume_nav">
             <ul style={{}}>
@@ -55,7 +56,7 @@ export default function Resume(props) {
                 <Link to="/profile">PROFILE</Link>
               </li>
               <li>
-                <Link to="/summary">SUMMARY OF QUALIFICATIONS</Link>
+                <Link to="/summary">SUMMARY OF QUALIFICATIONS setSummary</Link>
               </li>
               <li>
                 <Link to="/competencies">CORE COMPETENCIES</Link>

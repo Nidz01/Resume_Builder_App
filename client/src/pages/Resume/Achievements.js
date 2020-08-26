@@ -1,16 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from "react";
 import "./forms.css"
-export default function Achievements(props) {
+const localStorage = require('local-storage');
 
-  /*
-  const [state, setState] = useState({
-    achievements: ""
-  })
+export default function Achievements(props) { 
+  const [state, setState] = useState(localStorage.get('AchievementsStorage') || null);
 
-  const handleChange(event) {
-    this.setState({ achievements: event.target.value });
+  useEffect(() => {
+    //save value to LocalStorage from state
+    localStorage.set('AchievementsStorage', state);
+  }, [state]);
+
+  const Change = (event) => {
+    //if Competencies field change then save object to state {body:value} 
+    setState({ ...state, [event.target.name]: event.target.value });
   }
-  */
+
+  const Next = () => {
+   
+  }  
+
   return (
         <form
           className="flex signup-form"
@@ -22,11 +30,12 @@ export default function Achievements(props) {
             </div>
             <div className="form-group">
               <textarea style={{padding: "10px", border: "1px solid #888", width: "100%", resize: "none"}}
-                /*value={this.state.achievements}*/
                 placeholder="Enter your achievements"
                 rows={20}
                 cols={5}
-                /*onChange={handleChange}*/
+                name="body"
+                value ={(state==null) ? "" : state.body} onChange={Change}
+                onChange={Change}
               />
             </div>
             <div className="form-group">

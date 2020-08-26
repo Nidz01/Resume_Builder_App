@@ -93,7 +93,7 @@ export default function Register(props) {
     if (anyError === false) {
       axios.post('/users', { email: state.email, password: state.password, name: state.userName,withCredentials: true  })
       .then(response => {
-        if(response.data === false){
+        if(response.data === false) {
           setError(prev => ({
             ...prev,
           confirmError: "Username or email already exists !" 

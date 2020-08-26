@@ -22,7 +22,7 @@ import Resume from './pages/Resume';
 
 function App(props) {
   
-  const { state, remove, setState, setUsername } = Autorization();
+  const { state, remove, setUsername } = Autorization();
   return (
     <div className="App">
       <Router>
