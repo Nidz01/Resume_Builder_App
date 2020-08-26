@@ -1,16 +1,20 @@
 import React, {useState, useEffect} from 'react';
 
 export default function useResumeContext(props) {
-  const [state, setState] = useState({summary: {}});
 
+  const [resumeState, setResumeState] = useState({
+    summary: {},
+    competencies: {},
+    achievements: {}
+  });
 
-  const setSummary = body => {
+  // const setSummary = body => {
  
-   setState(prev => ({...prev, summary: body}))
-  }
+  //  setState(prev => ({...prev, summary: body}))
+  // }
 
   return {
-    state, 
-    setSummary
+    resumeState, 
+    setResumeState
   }
 }

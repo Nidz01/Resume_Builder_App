@@ -10,7 +10,7 @@ import Qualification from './Resume/Qualification';
 import useResumeContext from '../hooks/useResumeContext';
 
 export default function Resume(props) {
-  const { state, setSummary } = useResumeContext();
+  const { resumeState, setResumeState } = props;
   const routes = [
     {
       path: "/profile",
@@ -21,27 +21,27 @@ export default function Resume(props) {
     {
       path: "/summary",
       sidebar: () => <div>SUMMARY OF QUALIFICATIONS</div>,
-      main: () => <Summary/>
+      main: () => <Summary resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
       path: "/competencies",
       sidebar: () => <div>CORE COMPETENCIES</div>,
-      main: () => <Competencies/>
+      main: () => <Competencies resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
       path: "/achievement",
       sidebar: () => <div>ACHIEVEMENTS</div>,
-      main: () => <Achievements/>
+      main: () => <Achievements resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
       path: "/experience",
       sidebar: () => <div>PROFIESSIONAL EXPERIENCE</div>,
-      main: () => <Experience/>
+      main: () => <Experience resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
-      main: () => <Qualification/>
+      main: () => <Qualification resumeState={resumeState} setResumeState={setResumeState}/>
     }
   ];
 

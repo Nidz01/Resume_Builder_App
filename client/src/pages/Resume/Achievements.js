@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./forms.css"
-const localStorage = require('local-storage');
+
 
 export default function Achievements(props) { 
-  const [state, setState] = useState(localStorage.get('AchievementsStorage') || null);
+
+  const { resumeState, setResumeState } = props;
+  const [state, setState] = useState(resumeState.achievements || null);
+
+  console.log(resumeState)
 
   useEffect(() => {
-    //save value to LocalStorage from state
-    localStorage.set('AchievementsStorage', state);
+    setResumeState((prev => ({...prev, achievements: state})));
   }, [state]);
 
   const Change = (event) => {
-    //if Competencies field change then save object to state {body:value} 
-    setState({ ...state, [event.target.name]: event.target.value });
+    setState(prev => ({...prev, [event.target.name]: event.target.value }))
   }
 
   const Next = () => {

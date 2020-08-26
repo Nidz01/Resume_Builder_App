@@ -11,6 +11,7 @@ import Cookies from 'universal-cookie';
 
 //import useApplicationData from './hooks/useApplicationData';
 import Autorization from './hooks/authorization';
+import useResumeContext from './hooks/useResumeContext';
 import './App.css';
 import Home from "./pages/Home";
 import Guidelines from "./pages/Guidelines";
@@ -23,6 +24,8 @@ import Resume from './pages/Resume';
 function App(props) {
   
   const { state, remove, setUsername } = Autorization();
+  const {resumeState, setResumeState} = useResumeContext();
+
   return (
     <div className="App">
       <Router>
@@ -51,7 +54,7 @@ function App(props) {
               <Register setUsername={setUsername}/>
             </Route>
             <Route path="/resume">
-              {state.userName ? <Resume /> : <Login setUsername={setUsername}/>}
+              {state.userName ? <Resume resumeState={resumeState} setResumeState={setResumeState}/> : <Login setUsername={setUsername}/>}
             </Route>
         </Switch>
       </Router>

@@ -4,16 +4,18 @@ import "./forms.css"
 const localStorage = require('local-storage');
 
 export default function Competencies(props) {
-  const [state, setState] = useState(localStorage.get('competenciesStorage') || null);
+
+  const { resumeState, setResumeState } = props;
+  const [state, setState] = useState(resumeState.competencies || null);
+
+  console.log(resumeState)
 
   useEffect(() => {
-    //save value to LocalStorage from state
-    localStorage.set('competenciesStorage', state);
+    setResumeState((prev => ({...prev, competencies: state})));
   }, [state]);
 
   const Change = (event) => {
-    //if Competencies field change then save object to state {body:value} 
-    setState({ ...state, [event.target.name]: event.target.value });
+    setState(prev => ({...prev, [event.target.name]: event.target.value }))
   }
 
   const Next = () => {

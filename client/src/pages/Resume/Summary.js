@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./forms.css"
 
 
-const localStorage = require('local-storage');
-
 export default function Summary(props) {
-  const [state, setState] = useState(localStorage.get('summaryStorage') || null);
+
+  const { resumeState, setResumeState } = props;
+  const [state, setState] = useState(resumeState.summary || null);
+
+  console.log(resumeState)
 
   useEffect(() => {
-    localStorage.set('summaryStorage', state);
+    setResumeState((prev => ({...prev, summary: state})));
   }, [state]);
 
   const Change = (event) => {
-    setState({ ...state, [event.target.name]: event.target.value });
+    setState(prev => ({...prev, [event.target.name]: event.target.value }))
   }
 
   const Next = () => {
-  
+  console.log('from next function')
   }  
 
 //// function save resume to the db
@@ -35,7 +37,6 @@ export default function Summary(props) {
  
   return (
     <form
-    onClick={Next}
     className="flex signup-form"
     style={{ paddingLeft: "0px" }}
   >
@@ -54,7 +55,7 @@ export default function Summary(props) {
         />
       </div>
       <div className="form-group">
-        <input  type="submit" value="Save and Next" />
+        <button type="submit" onClick={Next} value="Save and Next" />
       </div>
     </div>
   </form>
