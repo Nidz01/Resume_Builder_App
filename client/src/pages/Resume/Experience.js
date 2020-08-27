@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import { useHistory } from 'react-router-dom';
 
 export default function Experience(props) {
-    //get data from useResumeContext function
-    const { resumeState, setResumeState } = props;
+  const history = useHistory();
 
-    //if experience object exist then fill up fields with information 
-    const [state, setState] = useState(resumeState.experiences || null);
+  //get data from useResumeContext function
+  const { resumeState, setResumeState } = props;
+
+  //if experience object exist then fill up fields with information 
+  const [state, setState] = useState(resumeState.experiences || null);
     
-    //Update setResumeState if state changes
-    useEffect(() => {
-      setResumeState((prev => ({...prev, experiences: state})));
-    }, [state]);
+  //Update setResumeState if state changes
+  useEffect(() => {
+    setResumeState((prev => ({...prev, experiences: state})));
+  }, [state]);
     
-    //Update state when any field changes. The 'name' variable is the key of the item of experiences object
-    const Change = (event) => { 
-      const { id, value } = event.target
-      setState(prev => ({
-        ...prev,
-       [id]: value
-      }))
-    }
+  //Update state when any field changes. The 'id' variable is the key of the item of experiences object
+  const Change = (event) => { 
+  const { id, value } = event.target
+    setState(prev => ({
+       ...prev,
+      [id]: value
+    }))
+  }
+  const Next = () => {
+    history.push("/qualification")
+  }  
+
   return (
     <Form 
     style={{padding:  "50px"}}
@@ -113,8 +119,8 @@ export default function Experience(props) {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Save
+      <Button onClick={Next} variant="primary" type="submit">
+        Next
       </Button>
     </Form>
   )

@@ -1,4 +1,4 @@
-import  React, { useState, Component } from 'react';
+import  React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./style.css";
 import Profile from './Resume/Profile';
@@ -7,7 +7,7 @@ import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import Experience from './Resume/Experience';
 import Qualification from './Resume/Qualification';
-import useResumeContext from '../hooks/useResumeContext';
+
 
 export default function Resume(props) {
   const { resumeState, setResumeState } = props;

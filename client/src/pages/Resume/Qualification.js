@@ -1,15 +1,52 @@
 import React, { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
 export default function Qualification(props) {
+  const history = useHistory();
+
+  //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
+
+  //if experience object exist then fill up fields with information 
   const [state, setState] = useState(resumeState.educations || null);
   
+  //Update setResumeState if state changes
   useEffect(() => {
     setResumeState((prev => ({...prev, educations: state})));
   }, [state]);
+
+
+  //test
+  const [test, setTest] = useState({
+    educations: {},
+  });
+  const [education, setEd] = useState();
+
+  useEffect(() => {
+  setTest((prev => ({...prev, educations: education})));
+  console.log(test)
+}, [education]);
+
+  useEffect(() => {
+    setEd((prev => ({...prev, education: [state]})));
+  }, [state]);
+
+/*
+ "educations": {
+		"education": [
+			{
+				"institution": "GOETHE-INSTITUT",
+				"type_degree": "Bachelor of Science in Software Development",
+				"graduat_date": "2006",
+				"country": "Canada"
+			}
+		]
+	}
+*/
   
+  //Update state when any field changes. The 'id' variable is the key of the item of educations object
   const Change = (event) => { 
     const { id, value } = event.target
     setState(prev => ({
@@ -17,7 +54,10 @@ export default function Qualification(props) {
      [id]: value
     }))
   }
-
+  
+  const Save = (event) => { 
+  }
+    
   return (
     <Form 
       style={{padding:  "50px"}}
@@ -65,7 +105,7 @@ export default function Qualification(props) {
     </Form.Group>
     </Form.Row>
 
-  <Button variant="primary" type="submit">
+  <Button  onClick={Save} variant="primary" type="submit">
     Save
   </Button>
 </Form>

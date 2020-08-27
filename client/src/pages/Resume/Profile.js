@@ -1,16 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
 export default function Profile(props) {
-
+  const history = useHistory();
+  
+  //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
+
+  //if experience object exist then fill up fields with information 
   const [state, setState] = useState(resumeState.profile || null);
 
+  //Update setResumeState if state changes
   useEffect(() => {
     setResumeState((prev => ({...prev, profile: state})));
   }, [state]);
 
+  //Update state when any field changes. The 'id' variable is the key of the item of profile object
   const Change = (event) => { 
     console.log(event.target)
     const { id, value } = event.target
@@ -18,6 +25,10 @@ export default function Profile(props) {
       ...prev,
      [id]: value
     }))
+  }
+
+  const Next = (event) => { 
+    history.push("/summary")
   }
 
   return (
@@ -79,8 +90,8 @@ export default function Profile(props) {
     </Form.Group>
   </Form.Row>
 
-  <Button variant="primary" type="submit">
-    Save
+  <Button onClick={Next} variant="primary" type="submit">
+    Next
   </Button>
 </Form>
   )
