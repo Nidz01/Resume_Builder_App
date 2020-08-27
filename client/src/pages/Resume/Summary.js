@@ -15,7 +15,8 @@ export default function Summary(props) {
   }, [state]);
 
   const Change = (event) => {
-    setState(prev => ({...prev, [event.target.name]: event.target.value }))
+    console.log('event.target', event.target)
+    setState(prev => ({...prev, [event.target.id]: event.target.value }))
   }
 
   const Next = () => {

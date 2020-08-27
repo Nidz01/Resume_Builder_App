@@ -5,16 +5,16 @@ import Button from 'react-bootstrap/Button';
 export default function Competencies(props) {
 
   const { resumeState, setResumeState } = props;
-  const [state, setState] = useState(resumeState.competencies || null);
+  const [state, setState] = useState(resumeState.core_competencies || null);
 
   console.log(resumeState)
 
   useEffect(() => {
-    setResumeState((prev => ({...prev, competencies: state})));
+    setResumeState((prev => ({...prev, core_competencies: state})));
   }, [state]);
 
   const Change = (event) => {
-    setState(prev => ({...prev, [event.target.name]: event.target.value }))
+    setState(prev => ({...prev, [event.target.id]: event.target.value }))
   }
 
   const Next = () => {

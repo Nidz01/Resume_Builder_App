@@ -4,8 +4,11 @@ export default function useResumeContext(props) {
 
   const [resumeState, setResumeState] = useState({
     summary: {},
-    competencies: {},
-    achievements: {}
+    core_competencies: {},
+    achievements: {},
+    educations: {},
+    profile: {},
+    experiences: {}
   });
 
   // const setSummary = body => {

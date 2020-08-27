@@ -15,7 +15,7 @@ export default function Achievements(props) {
   }, [state]);
 
   const Change = (event) => {
-    setState(prev => ({...prev, [event.target.name]: event.target.value }))
+    setState(prev => ({...prev, [event.target.id]: event.target.value }))
   }
 
   const Next = () => {

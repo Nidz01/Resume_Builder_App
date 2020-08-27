@@ -16,7 +16,7 @@ export default function Resume(props) {
       path: "/profile",
       exact: true,
       sidebar: () => <div>Profile</div>,
-      main: () => <Profile/>
+      main: () => <Profile resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
       path: "/summary",
