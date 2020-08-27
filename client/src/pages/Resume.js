@@ -7,6 +7,7 @@ import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import Experience from './Resume/Experience';
 import Qualification from './Resume/Qualification';
+import QualificationList from './Resume/QualificationList';
 import useResumeContext from '../hooks/useResumeContext';
 
 export default function Resume(props) {
@@ -41,7 +42,9 @@ export default function Resume(props) {
     {
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
-      main: () => <Qualification resumeState={resumeState} setResumeState={setResumeState}/>
+      main: () => (
+        <><QualificationList resumeState={resumeState} setResumeState={setResumeState}/></>
+      )
     }
   ];
 

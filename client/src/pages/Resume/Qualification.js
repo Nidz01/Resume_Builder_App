@@ -65,6 +65,10 @@ export default function Qualification(props) {
     </Form.Group>
     </Form.Row>
 
+    <Button variant="primary" type="submit" onClick={<Qualification resumeState={resumeState} setResumeState={setResumeState}/>}>
+      Add more Qualification
+    </Button>
+
   <Button variant="primary" type="submit">
     Save
   </Button>
