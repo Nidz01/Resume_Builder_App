@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./forms.css"
 
 export default function Qualification(props) {
-
+  //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
+
+  //if educations object exist then fill up fields with information 
   const [state, setState] = useState(resumeState.educations || null);
   
+  //Update setResumeState if state changes
   useEffect(() => {
     setResumeState((prev => ({...prev, educations: state})));
   }, [state]);
   
+  //Update state when any field changes. The 'name' variable is the key of the item of experiences object
   const Change = (event) => { 
     const { name, value } = event.target
     setState(prev => ({

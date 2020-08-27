@@ -3,7 +3,7 @@ import "./forms.css"
 
 
 export default function Achievements(props) { 
-
+  //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
   const [state, setState] = useState(resumeState.achievements || null);
 
