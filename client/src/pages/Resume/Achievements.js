@@ -7,8 +7,6 @@ export default function Achievements(props) {
   const { resumeState, setResumeState } = props;
   const [state, setState] = useState(resumeState.achievements || null);
 
-  console.log(resumeState)
-
   useEffect(() => {
     setResumeState((prev => ({...prev, achievements: state})));
   }, [state]);

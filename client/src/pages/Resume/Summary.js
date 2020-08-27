@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./forms.css"
 
-
 export default function Summary(props) {
 
   const { resumeState, setResumeState } = props;
   const [state, setState] = useState(resumeState.summary || null);
-
-  console.log(resumeState)
 
   useEffect(() => {
     setResumeState((prev => ({...prev, summary: state})));
@@ -50,7 +47,7 @@ export default function Summary(props) {
           rows={20}
           cols={5}
           name="body"
-          value ={(state==null) ? "" : state.body} onChange={Change}
+          value ={(state==null) ? "" : state.body} 
           onChange={Change}
         />
       </div>

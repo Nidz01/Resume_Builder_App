@@ -1,6 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from "react";
 import "./forms.css"
+
 export default function Qualification(props) {
+
+  const { resumeState, setResumeState } = props;
+  const [state, setState] = useState(resumeState.educations || null);
+  
+  useEffect(() => {
+    setResumeState((prev => ({...prev, educations: state})));
+  }, [state]);
+  
+  const Change = (event) => { 
+    const { name, value } = event.target
+    setState(prev => ({
+      ...prev,
+     [name]: value
+    }))
+  }
+
   return (
         <form
           className="flex signup-form"
@@ -14,7 +31,9 @@ export default function Qualification(props) {
               <input
                 type="text"
                 placeholder="Enter credential title. e.g Master in Business Administration"
-                name="degree_title"
+                name="type_degree"
+                value ={(state==null) ? "" : state.type_degree} 
+                onChange= {Change}
               />
            <section className="userValidation">error</section>
             </div>
@@ -22,7 +41,9 @@ export default function Qualification(props) {
               <input
                 type="text"
                 placeholder="Enter name of the credential awarding institute."
-                name="institute"
+                name="institution"
+                value ={(state==null) ? "" : state.institution} 
+                onChange= {Change}
               />
               <section className="userValidation">error</section>
             </div>
@@ -31,6 +52,8 @@ export default function Qualification(props) {
                 type="text"
                 placeholder="Enter the name of the country for the above mentioned institute"
                 name="country"
+                value ={(state==null) ? "" : state.country} 
+                onChange= {Change}
               />
               <section className="userValidation">error</section>
             </div>
@@ -39,7 +62,9 @@ export default function Qualification(props) {
                 type="number"
                 min="1900" max="9999"
                 placeholder="YYYY - Enter the year in which you completed the above mentioned credential"
-                name="completion_year"
+                name="graduat_date"
+                value ={(state==null) ? "" : state.graduat_date} 
+                onChange= {Change}
               />
               <section className="userValidation">error</section>
             </div>

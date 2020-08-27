@@ -6,12 +6,10 @@ const localStorage = require('local-storage');
 export default function Competencies(props) {
 
   const { resumeState, setResumeState } = props;
-  const [state, setState] = useState(resumeState.competencies || null);
-
-  console.log(resumeState)
+  const [state, setState] = useState(resumeState.core_competencies|| null);
 
   useEffect(() => {
-    setResumeState((prev => ({...prev, competencies: state})));
+    setResumeState((prev => ({...prev, core_competencies: state})));
   }, [state]);
 
   const Change = (event) => {
