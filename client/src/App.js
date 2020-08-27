@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import Cookies from 'universal-cookie';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 //import useApplicationData from './hooks/useApplicationData';

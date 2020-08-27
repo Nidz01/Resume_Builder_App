@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./forms.css"
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
 export default function Achievements(props) { 
@@ -20,30 +21,19 @@ export default function Achievements(props) {
   const Next = () => {
    
   }  
-
   return (
-        <form
-          className="flex signup-form"
-          style={{ paddingLeft: "0px" }}
-        >
-          <div className="content flex flex-column justify-center items-center">
-            <div className="text">
-              <h1>Create Achievements</h1>
-            </div>
-            <div className="form-group">
-              <textarea style={{padding: "10px", border: "1px solid #888", width: "100%", resize: "none"}}
-                placeholder="Enter your achievements"
-                rows={20}
-                cols={5}
-                name="body"
-                value ={(state==null) ? "" : state.body} onChange={Change}
-                onChange={Change}
-              />
-            </div>
-            <div className="form-group">
-              <input  type="submit" value="Save and Next" />
-            </div>
-          </div>
-        </form>
+    <Form 
+    style={{padding:  "50px"}}
+    onSubmit={event => event.preventDefault()} 
+    autoComplete="off"
+    onClick={Next}>
+      <Form.Group controlId="body">
+        <Form.Label>List your major achievements</Form.Label>
+        <Form.Control as="textarea" rows="20" value ={(state==null) ? "" : state.body} onChange={Change}/>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Save
+      </Button>
+    </Form>
   )
 }

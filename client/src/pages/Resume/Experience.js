@@ -1,64 +1,58 @@
-import React, { useContext } from 'react';
-import "./forms.css"
+import React from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 export default function Experience(props) {
   return (
-        <form
-          className="flex signup-form"
-          style={{ paddingLeft: "0px" }}
-        >
-          <div className="content flex flex-column justify-center items-center">
-            <div className="text">
-              <h1>Your histrory of professional experience</h1>
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Enter your job title"
-                name="job_Title"
-              />
-           <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Enter the institute or organization that you worked for under the above job title"
-                name="organization"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Enter the address of above mentioned organization"
-                name="job_location"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input
-                type="month"
-                placeholder="Enter the start date"
-                name="job_start"
-              />
-              <input
-                type="month"
-                placeholder="Enter the end date"
-                name="job_end"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Enter one or two sentences to describe the nature of company"
-                name="company_Profile"
-              />
-              <section className="userValidation">error</section>
-            </div>
-            <div className="form-group">
-              <input  type="submit" value="SIGNUP" />
-            </div>
-          </div>
-        </form>
+    <Form 
+    style={{padding:  "50px"}}
+    onSubmit={event => event.preventDefault()} 
+    autoComplete="off">
+      <Form.Group controlId="job_title">
+        <Form.Label>Job Title/Designation: </Form.Label>
+        <Form.Control type="text" placeholder="Enter Your job title or role" /*value={} onChange={}*//>
+      </Form.Group>
+
+      <Form.Group  controlId="employer_name">
+        <Form.Label>Employer Name: </Form.Label>
+        <Form.Control type="text" placeholder="Enter name of employer for the above mentioned job" /*value={} onChange={}*/ />
+      </Form.Group>
+
+      <Form.Group controlId="employer_description">
+        <Form.Label>Company/Employer Description: </Form.Label>
+        <Form.Control type="text" placeholder="Describe employer/company profile" /*value={} onChange={}*//>
+      </Form.Group>
+
+      <Form.Group controlId="city">
+        <Form.Label>City of Company/Employer:</Form.Label>
+        <Form.Control type="text" placeholder="e.g Montreal" /*value={} onChange={}*/ />
+      </Form.Group>
+
+      <Form.Group controlId="country">
+        <Form.Label>Country of Company/Employer:</Form.Label>
+        <Form.Control type="text" placeholder="e.g Canada" /*value={} onChange={}*/ />
+      </Form.Group>
+  
+  
+      <Form.Group controlId="start_date">
+        <Form.Label>Job Start Date:</Form.Label>
+        <Form.Control type="month" placeholder="YYYY-MM" /*value={} onChange={}*/ />
+      </Form.Group>
+
+      <Form.Group controlId="end_date">
+        <Form.Label>Job End Date: </Form.Label>
+        <Form.Control type="month" placeholder="YYYY-MM" /*value={} onChange={}*/ />
+      </Form.Group>
+
+      <Form.Group className="align-self-end" id="checkbox" controlId="present">
+        <Form.Check type="checkbox"
+          label="Present"
+        />
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Save
+      </Button>
+    </Form>
   )
-}
+  }
