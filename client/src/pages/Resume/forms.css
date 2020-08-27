@@ -38,7 +38,7 @@ a:hover {
 }
 header {
   height: 100vh;
-  background-image: url("/Users/Rita/lighthouse/w10/Resume_Builder_App/client/src/img/bg.svg");
+  background-image: url("/img/bg.svg");
   background-size: cover;
   background-position: center;
 }
