@@ -6,7 +6,7 @@ export default function useResumeContext(props) {
     summary: {},
     core_competencies: {},
     achievements: {},
-    educations: {},
+    educations: [{id:'1', institution:'', type_degree:'', graduat_date:'', country:''}],
     profile: {},
     experiences: {}
   });

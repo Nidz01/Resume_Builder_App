@@ -5,33 +5,45 @@ import { useHistory } from 'react-router-dom';
 
 export default function Qualification(props) {
   const history = useHistory();
-
-  //get data from useResumeContext function
-  const { resumeState, setResumeState } = props;
-
-  //if experience object exist then fill up fields with information 
-  const [state, setState] = useState(resumeState.educations || null);
+  console.log(props.resumeState.id)
+  // const { resumeState, setResumeState } = props;
+  // const [state, setState] = useState(resumeState);
   
   //Update setResumeState if state changes
-  useEffect(() => {
-    setResumeState((prev => ({...prev, educations: state})));
-  }, [state]);
+  // useEffect(() => {
+  //   setResumeState((prev => ({...prev, educations: [state]})));
+  // }, [state]);
+  
+  const Change = (event) => { 
+     const { id, value } = event.target;
 
+    //  const array1 = [5, 12, 8, 130, 44];
+    //   const isLargeNumber = (element) => element > 13;
+    //   console.log(array1.findIndex(isLargeNumber));
+// expected output: 3
+
+    // props.setResumeState(prev => ({
+    //   ...prev,
+    //  [id]: value
+    // }))
+    props.setResumeState(prev => ({...prev, 
+      educations:[...prev.educations,{[id]:value}]}))
+  }
 
   //test
-  const [test, setTest] = useState({
+  /*const [test, setTest] = useState({
     educations: {},
   });
   const [education, setEd] = useState();
 
   useEffect(() => {
   setTest((prev => ({...prev, educations: education})));
-  console.log(test)
+ // console.log(test)
 }, [education]);
 
   useEffect(() => {
     setEd((prev => ({...prev, education: [state]})));
-  }, [state]);
+  }, [state]);*/
 
 /*
  "educations": {
@@ -47,16 +59,19 @@ export default function Qualification(props) {
 */
   
   //Update state when any field changes. The 'id' variable is the key of the item of educations object
-  const Change = (event) => { 
-    const { id, value } = event.target
-    setState(prev => ({
-      ...prev,
-     [id]: value
-    }))
-  }
+
   
-  const Save = (event) => { 
-  }
+  //// function save resume to the db
+   /* if (state === undefined) {
+      setError("Required field")
+      anyError = true;
+    }
+    if (anyError === false) {
+      axios.post('/resume', {resume_data: state})
+      .then(response => {console.log(response)
+      }) 
+      .catch(error => setError(error));
+    }*/
     
   return (
     <Form 
@@ -69,7 +84,7 @@ export default function Qualification(props) {
       <Form.Control 
         type="text" 
         placeholder="Enter Name of Institute" 
-        value ={(state==null) ? "" : state.institution} 
+        defaultValue = {props.resumeState.institution} 
         onChange= {Change}
       />
     </Form.Group>
@@ -79,7 +94,7 @@ export default function Qualification(props) {
       <Form.Control 
         type="text" 
         placeholder="Enter Your title of teh degree earned" 
-        value ={(state==null) ? "" : state.type_degree} 
+        defaultValue ={props.resumeState.type_degree} 
         onChange= {Change}
       />
     </Form.Group>
@@ -89,7 +104,7 @@ export default function Qualification(props) {
       <Form.Control 
         type="number" 
         placeholder="Enter year in which completed" 
-        value ={(state==null) ? "" : state.graduat_date} 
+        defaultValue ={props.resumeState.graduat_date} 
         onChange= {Change}
       />
     </Form.Group>
@@ -99,14 +114,12 @@ export default function Qualification(props) {
       <Form.Control 
         type="text" 
         placeholder="e.g Canada" 
-        value ={(state==null) ? "" : state.country} 
+        defaultValue ={props.resumeState.country} 
         onChange= {Change}
       />
     </Form.Group>
     </Form.Row>
-    <Button variant="primary" type="submit" onClick={<Qualification resumeState={resumeState} setResumeState={setResumeState}/>}>
-      Add more Qualification
-    </Button>
+
 
   <Button variant="primary" type="submit">
     Save

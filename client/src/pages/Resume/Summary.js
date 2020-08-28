@@ -27,21 +27,7 @@ export default function Summary(props) {
     history.push("/competencies")
   }  
 
-//// function save resume to the db
-   /* if (state === undefined) {
-      setError("Required field")
-      anyError = true;
-    }
-    if (anyError === false) {
-      axios.post('/resume', {resume_data: state})
-      .then(response => {console.log(response)
-      }) 
-      .catch(error => setError(error));
-    }*/
-
-
- 
-    return (
+   return (
       <Form 
         style={{padding:  "50px"}}
         onSubmit={event => event.preventDefault()} 

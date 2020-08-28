@@ -2,8 +2,6 @@ import "./style.css";
 import axios from 'axios';
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
-//import Autorization from '../hooks/authorization'
-
 
 export default function Login(props) {
   const history = useHistory();

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function Experience(props) {
   const history = useHistory();
-
+  
   //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
 

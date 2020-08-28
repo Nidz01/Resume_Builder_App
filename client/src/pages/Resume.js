@@ -41,10 +41,11 @@ export default function Resume(props) {
       main: () => <Experience resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
+      
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
       main: () => (
-        <><QualificationList resumeState={resumeState} setResumeState={setResumeState}/></>
+        <QualificationList resumeState={resumeState} setResumeState={setResumeState}/>
       )
     }
   ];

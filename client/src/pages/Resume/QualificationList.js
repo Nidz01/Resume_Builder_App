@@ -1,27 +1,47 @@
 import React from 'react';
 import Qualification from "./Qualification";
 import Button from 'react-bootstrap/Button';
-import { useHistory } from 'react-router-dom';
 
 export default function QualificationList(props) {
   const { resumeState, setResumeState } = props;
-  const history = useHistory();
 
+  const addQualification = () => {
+    setResumeState(prev => ({...prev, educations:[...prev.educations,{id:resumeState.educations.length + 1, institution:'', type_degree:'', graduat_date:'', country:''}]}))
 
-
-  const addQualification = (event) => {
-    return (
-      <Qualification resumeState={resumeState} setResumeState={setResumeState}/>
-    )
   }
 
+  const data =() => {
+    
+    const educationData = resumeState.educations.map((education) => {
+    if (!education) {
+      return (
+      <Qualification
+        key={education.id}
+        resumeState={{}}
+        setResumeState={setResumeState}/> 
+      )
+
+    } else {
+    return ( 
+     <Qualification
+        key={education.id}
+        resumeState={education}
+        setResumeState={setResumeState}/> 
+    )
+    }
+    })
+    
+    return educationData
+  }
+ 
   return (
     <div>
-          <Qualification resumeState={resumeState} setResumeState={setResumeState}/>
-          
-      <Button variant="primary" type="submit" onClick={addQualification} >
+      <div>
+          {data()} 
+      </div> 
+       <Button variant="primary" type="submit" onClick= {addQualification} >
         Add more Qualification
-      </Button>
+      </Button> 
     </div>
     )
 }
