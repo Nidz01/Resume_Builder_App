@@ -6,10 +6,8 @@ import Summary from './Resume/Summary';
 import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import Experience from './Resume/Experience';
-import Qualification from './Resume/Qualification';
-
 import QualificationList from './Resume/QualificationList';
-import useResumeContext from '../hooks/useResumeContext';
+import ExperienceList from './Resume/ExperienceList';
 
 export default function Resume(props) {
   const { resumeState, setResumeState } = props;
@@ -33,12 +31,12 @@ export default function Resume(props) {
     {
       path: "/achievement",
       sidebar: () => <div>ACHIEVEMENTS</div>,
-      main: () => <Achievements resumeState={resumeState} setResumeState={setResumeState}/>
+      main: () => <Achievements achievementsState={resumeState.achievements} setResumeState={setResumeState}/>
     },
     {
       path: "/experience",
       sidebar: () => <div>PROFIESSIONAL EXPERIENCE</div>,
-      main: () => <Experience resumeState={resumeState} setResumeState={setResumeState}/>
+      main: () => <ExperienceList resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
       
@@ -69,7 +67,7 @@ export default function Resume(props) {
               <li>
                 <Link to="/achievement">ACHIEVEMENTS</Link>
               </li><li>
-                <Link to="/experience">PROFIESSIONAL EXPERIENCE</Link>
+                <Link to="/experience">PROFESSIONAL EXPERIENCE</Link>
               </li><li>
                 <Link to="/qualification">EDUCATION AND QUALIFICATIONS</Link>
               </li>
@@ -78,7 +76,7 @@ export default function Resume(props) {
           <Switch>
             {routes.map((route, index) => (
               <Route
-                key={index}
+                key={route.path}
                 path={route.path}
                 exact={route.exact}
                 children={route.main}

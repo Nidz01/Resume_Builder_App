@@ -5,29 +5,21 @@ import { useHistory } from 'react-router-dom';
 
 export default function Qualification(props) {
   const history = useHistory();
-  console.log(props.resumeState.id)
-  // const { resumeState, setResumeState } = props;
-  // const [state, setState] = useState(resumeState);
-  
-  //Update setResumeState if state changes
-  // useEffect(() => {
-  //   setResumeState((prev => ({...prev, educations: [state]})));
-  // }, [state]);
   
   const Change = (event) => { 
      const { id, value } = event.target;
 
-    //  const array1 = [5, 12, 8, 130, 44];
-    //   const isLargeNumber = (element) => element > 13;
-    //   console.log(array1.findIndex(isLargeNumber));
-// expected output: 3
+    props.setResumeState(prev => {
 
-    // props.setResumeState(prev => ({
-    //   ...prev,
-    //  [id]: value
-    // }))
-    props.setResumeState(prev => ({...prev, 
-      educations:[...prev.educations,{[id]:value}]}))
+      let newEducations = prev.educations.map((educ, index) => {
+        if (index === props.index) {
+          return {...educ, [id]: value};
+        } else {
+          return educ;
+        }
+      })
+      return({...prev, educations: newEducations});
+    });
   }
 
   //test

@@ -9,18 +9,22 @@ export default function Summary(props) {
   //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
 
+  let state = resumeState.summary || null;
   //if experience object exist then fill up fields with information 
-  const [state, setState] = useState(resumeState.summary || null);
+  //const [state, setState] = useState(resumeState.summary || null);
 
   //Update setResumeState if state changes
-  useEffect(() => {
-    setResumeState((prev => ({...prev, summary: state})));
-  }, [state]);
+  // useEffect(() => {
+  //   setResumeState((prev => ({...prev, summary: state})));
+  // }, [state]);
 
   //Update state when any field changes. The 'id' variable is the key of the item of summary object
   const Change = (event) => {
-    console.log('event.target', event.target)
-    setState(prev => ({...prev, [event.target.id]: event.target.value }))
+    //setState(prev => ({...prev, [event.target.id]: event.target.value }))
+
+    setResumeState(prev => ({...prev, 
+      summary: {...prev.summary, 
+        [event.target.id]: event.target.value }}));
   }
 
   const Next = () => {

@@ -9,22 +9,26 @@ export default function Profile(props) {
   //get data from useResumeContext function
   const { resumeState, setResumeState } = props;
 
+  let state = resumeState.profile || null;
   //if experience object exist then fill up fields with information 
-  const [state, setState] = useState(resumeState.profile || null);
+  //const [state, setState] = useState(resumeState.profile || null);
 
   //Update setResumeState if state changes
-  useEffect(() => {
-    setResumeState((prev => ({...prev, profile: state})));
-  }, [state]);
+  // useEffect(() => {
+  //   setResumeState((prev => ({...prev, profile: state})));
+  // }, [state]);
 
   //Update state when any field changes. The 'id' variable is the key of the item of profile object
   const Change = (event) => { 
-    console.log(event.target)
-    const { id, value } = event.target
-    setState(prev => ({
-      ...prev,
-     [id]: value
-    }))
+  
+    // const { id, value } = event.target
+    // setState(prev => ({
+    //   ...prev,
+    //  [id]: value
+    // }))
+
+    setResumeState(prev => ({...prev, 
+        [event.target.id]: event.target.value }));
   }
 
   const Next = (event) => { 

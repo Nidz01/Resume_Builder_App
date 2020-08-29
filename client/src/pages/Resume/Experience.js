@@ -5,26 +5,24 @@ import { useHistory } from 'react-router-dom';
 
 export default function Experience(props) {
   const history = useHistory();
-  
-  //get data from useResumeContext function
-  const { resumeState, setResumeState } = props;
-
-  //if experience object exist then fill up fields with information 
-  const [state, setState] = useState(resumeState.experiences || null);
-    
-  //Update setResumeState if state changes
-  useEffect(() => {
-    setResumeState((prev => ({...prev, experiences: state})));
-  }, [state]);
     
   //Update state when any field changes. The 'id' variable is the key of the item of experiences object
   const Change = (event) => { 
   const { id, value } = event.target
-    setState(prev => ({
-       ...prev,
-      [id]: value
-    }))
+
+  props.setResumeState(prev => {
+
+    let newExperiences = prev.experiences.map((exp, index) => {
+      if (index === props.index) {
+        return {...exp, [id]: value};
+      } else {
+        return exp;
+      }
+    })
+    return({...prev, experiences: newExperiences});
+  });
   }
+
   const Next = () => {
     history.push("/qualification")
   }  
@@ -39,7 +37,7 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="Enter Your job title or role" 
-          value ={(state==null) ? "" : state.job_title} 
+          defaultValue = {props.resumeState.job_title} 
           onChange= {Change}/>
       </Form.Group>
 
@@ -48,7 +46,7 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="Enter name of employer for the above mentioned job" 
-          value ={(state==null) ? "" : state.employer_name} 
+          defaultValue = {props.resumeState.employer_name} 
           onChange= {Change}/>
       </Form.Group>
 
@@ -57,7 +55,7 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="Describe employer/company profile" 
-          value ={(state==null) ? "" : state.employer_description} 
+          defaultValue = {props.resumeState.employer_description} 
           onChange= {Change}
         />
       </Form.Group>
@@ -67,7 +65,7 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="e.g Montreal" 
-          value ={(state==null) ? "" : state.city} 
+          defaultValue = {props.resumeState.city} 
           onChange= {Change}
         />
       </Form.Group>
@@ -77,7 +75,7 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="e.g Canada" 
-          value ={(state==null) ? "" : state.country} 
+          defaultValue = {props.resumeState.country} 
           onChange= {Change}
         />
       </Form.Group>
@@ -88,7 +86,7 @@ export default function Experience(props) {
         <Form.Control 
           type="month" 
           placeholder="YYYY-MM" 
-          value ={(state==null) ? "" : state.start_date} 
+          defaultValue = {props.resumeState.start_date} 
           onChange= {Change}
         />
       </Form.Group>
@@ -98,7 +96,7 @@ export default function Experience(props) {
         <Form.Control 
           type="month" 
           placeholder="YYYY-MM" 
-          value ={(state==null) ? "" : state.end_date} 
+          defaultValue = {props.resumeState.end_date} 
           onChange= {Change}
         />
       </Form.Group>
@@ -114,7 +112,7 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="List the variety of tasks yuo performed on job"
-          value ={(state==null) ? "" : state.responsibilities} 
+          defaultValue = {props.resumeState.responsibilities} 
           onChange= {Change}
         />
       </Form.Group>

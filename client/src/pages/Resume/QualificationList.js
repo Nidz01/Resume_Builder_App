@@ -6,17 +6,27 @@ export default function QualificationList(props) {
   const { resumeState, setResumeState } = props;
 
   const addQualification = () => {
-    setResumeState(prev => ({...prev, educations:[...prev.educations,{id:resumeState.educations.length + 1, institution:'', type_degree:'', graduat_date:'', country:''}]}))
-
+    setResumeState(prev => ({...prev, 
+      educations:[...prev.educations,
+        {id:resumeState.educations.length + 1, 
+          institution:'', 
+          type_degree:'', 
+          graduat_date:'', 
+          country:''
+        }
+      ]
+    }))
   }
 
-  const data =() => {
+  const renderEducation =() => {
     
-    const educationData = resumeState.educations.map((education) => {
+    const educationData = resumeState.educations.map((education, educationIndex) => {
+      
     if (!education) {
       return (
       <Qualification
         key={education.id}
+        index = {educationIndex}
         resumeState={{}}
         setResumeState={setResumeState}/> 
       )
@@ -25,6 +35,7 @@ export default function QualificationList(props) {
     return ( 
      <Qualification
         key={education.id}
+        index = {educationIndex}
         resumeState={education}
         setResumeState={setResumeState}/> 
     )
@@ -37,7 +48,7 @@ export default function QualificationList(props) {
   return (
     <div>
       <div>
-          {data()} 
+          {renderEducation()} 
       </div> 
        <Button variant="primary" type="submit" onClick= {addQualification} >
         Add more Qualification
