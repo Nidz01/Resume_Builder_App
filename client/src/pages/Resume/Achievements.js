@@ -52,9 +52,8 @@ export default function Achievements(props) {
   //const { resumeState, setResumeState } = props;
 
   //let state = resumeState.achievements;
-  console.log('prop achievement', props.achievementsState)
+ //console.log('prop achievement', props.achievementsState)
 
-  console.log('setresumeState', props.setResumeState)
   // //if experience object exist then fill up fields with information 
   // const [state, setState] = useState(resumeState.achievements || null);
 
@@ -66,10 +65,10 @@ export default function Achievements(props) {
   //Update state when any field changes. The 'id' variable is the key of the item of achievements object
   const Change = (event) => {
     const { id, value } = event.target;
-    console.log('event.target.id = ', event.target.id)
-    console.log('event.target.value = ', event.target.value)
+    // console.log('event.target.id = ', event.target.id)
+    // console.log('event.target.value = ', event.target.value)
     // setState(prev => ({...prev, [event.target.id]: event.target.value }))
-    props.setResumeState(prev => ({...prev, [event.target.id]: event.target.value }));
+    props.setResumeState(prev => ({...prev, achievements: {[id]: value } }))
   }
 
   const Next = () => {
@@ -83,7 +82,7 @@ export default function Achievements(props) {
     >
       <Form.Group controlId="body">
         <Form.Label>List your major achievements</Form.Label>
-        <Form.Control as="textarea" rows="20" value ={(props.achievementsState === null) ? "" : props.achievementsState.body} onChange={Change}/>
+        <Form.Control as="textarea" rows="20" defaultValue ={(props.achievementsState.body === null) ? "" : props.achievementsState.body} onChange={Change}/>
       </Form.Group>
       <Button onClick={Next} variant="primary" type="submit">
         Next

@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 export default function useResumeContext(props) {
 
   const [resumeState, setResumeState] = useState({
-    summary: {},
-    core_competencies: {},
-    achievements: {},
+    summary: {body: ''},
+    core_competencies: {body: ''},
+    achievements: {body: ''},
     educations: [
       {id:1, 
         institution:'', 
@@ -14,7 +14,17 @@ export default function useResumeContext(props) {
         country:''
       }
     ],
-    profile: {},
+    profile: {
+        prof_title: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone_number: '',
+        address: '',
+        city: '',
+        province: '',
+        postal_code: ''
+    },
     experiences: [
       {
       id: 1,

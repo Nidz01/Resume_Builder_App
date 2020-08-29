@@ -16,17 +16,17 @@ export default function Resume(props) {
       path: "/profile",
       exact: true,
       sidebar: () => <div>Profile</div>,
-      main: () => <Profile resumeState={resumeState} setResumeState={setResumeState}/>
+      main: () => <Profile profileState={resumeState.profile} setResumeState={setResumeState}/>
     },
     {
       path: "/summary",
       sidebar: () => <div>SUMMARY OF QUALIFICATIONS</div>,
-      main: () => <Summary resumeState={resumeState} setResumeState={setResumeState}/>
+      main: () => <Summary summaryState={resumeState.summary} setResumeState={setResumeState}/>
     },
     {
       path: "/competencies",
       sidebar: () => <div>CORE COMPETENCIES</div>,
-      main: () => <Competencies resumeState={resumeState} setResumeState={setResumeState}/>
+      main: () => <Competencies competenciesState={resumeState.core_competencies} setResumeState={setResumeState}/>
     },
     {
       path: "/achievement",
@@ -59,7 +59,7 @@ export default function Resume(props) {
                 <Link to="/profile">PROFILE</Link>
               </li>
               <li>
-                <Link to="/summary">SUMMARY OF QUALIFICATIONS setSummary</Link>
+                <Link to="/summary">SUMMARY OF QUALIFICATIONS</Link>
               </li>
               <li>
                 <Link to="/competencies">CORE COMPETENCIES</Link>
