@@ -23,22 +23,41 @@ export default function Experience(props) {
   });
   }
 
-  const Next = () => {
-    history.push("/qualification")
-  }  
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    //console.log(form.prof_title.value);
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    else {
+      history.push("/summary");
+    }
+    setValidated(true);
+  };
+
+  // const Next = () => {
+  //   history.push("/qualification")
+  // }  
 
   return (
-    <Form 
-    style={{padding:  "50px"}}
-    onSubmit={event => event.preventDefault()} 
-    autoComplete="off">
+    <Form noValidate validated={validated}
+      style={{padding:  "50px"}}
+      onSubmit={handleSubmit}
+    >
       <Form.Group controlId="job_title">
         <Form.Label>Job Title/Designation: </Form.Label>
         <Form.Control 
           type="text" 
           placeholder="Enter Your job title or role" 
+          required
           defaultValue = {props.resumeState.job_title} 
           onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a job title.
+          </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group  controlId="employer_name">
@@ -46,8 +65,12 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="Enter name of employer for the above mentioned job" 
+          required
           defaultValue = {props.resumeState.employer_name} 
           onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide an employer name.
+          </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="employer_description">
@@ -55,9 +78,12 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="Describe employer/company profile" 
+          required
           defaultValue = {props.resumeState.employer_description} 
-          onChange= {Change}
-        />
+          onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a description.
+          </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="city">
@@ -65,9 +91,12 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="e.g Montreal" 
+          required
           defaultValue = {props.resumeState.city} 
-          onChange= {Change}
-        />
+          onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a city of Company.
+          </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="country">
@@ -75,20 +104,25 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="e.g Canada" 
+          required
           defaultValue = {props.resumeState.country} 
-          onChange= {Change}
-        />
+          onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a country of Company.
+          </Form.Control.Feedback>
       </Form.Group>
-  
   
       <Form.Group controlId="start_date">
         <Form.Label>Job Start Date:</Form.Label>
         <Form.Control 
           type="month" 
           placeholder="YYYY-MM" 
+          required
           defaultValue = {props.resumeState.start_date} 
-          onChange= {Change}
-        />
+          onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a job start date.
+          </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="end_date">
@@ -96,9 +130,12 @@ export default function Experience(props) {
         <Form.Control 
           type="month" 
           placeholder="YYYY-MM" 
+          required
           defaultValue = {props.resumeState.end_date} 
-          onChange= {Change}
-        />
+          onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a job end date.
+          </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="align-self-end" id="checkbox" controlId="present">
@@ -112,12 +149,15 @@ export default function Experience(props) {
         <Form.Control 
           type="text" 
           placeholder="List the variety of tasks yuo performed on job"
+          required
           defaultValue = {props.resumeState.responsibilities} 
-          onChange= {Change}
-        />
+          onChange= {Change}/>
+          <Form.Control.Feedback type="invalid">
+            Please provide a job dueties.
+          </Form.Control.Feedback>
       </Form.Group>
 
-      <Button onClick={Next} variant="primary" type="submit">
+      <Button variant="primary" type="submit">
       Save and Next
       </Button>
     </Form>
