@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function QualificationList(props) {
   const { resumeState, setResumeState, userId } = props;
   
-  //the function save new resume to DB 
+  //the function saves the new resume to DB 
   const saveResume=() => {
     const resumeData = {
       profile: resumeState.profile,
@@ -22,7 +22,7 @@ export default function QualificationList(props) {
       .catch(error => console.log('Error:', error));
   }
 
-  //the function adds new empty education object to the resumeState and shows new education form
+  //the function adds new empty education object to the resumeState and shows a new education form
   const addQualification = () => {
     setResumeState(prev => ({...prev, 
       educations:[...prev.educations,
