@@ -1,10 +1,28 @@
 import React from 'react';
 import Qualification from "./Qualification";
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 export default function QualificationList(props) {
-  const { resumeState, setResumeState } = props;
+  const { resumeState, setResumeState, userId } = props;
+  
+  //the function save new resume to DB 
+  const saveResume=() => {
+    const resumeData = {
+      profile: resumeState.profile,
+      summary: resumeState.summary,
+      educations: resumeState.educations,
+      achievement: resumeState.achievement,
+      experiences: resumeState.experiences,
+      core_competencies: resumeState.core_competencies
+    } 
+    axios.post('/resume', {resume_data: resumeData, user_id: userId })
+      .then(response => {console.log(response)
+      }) 
+      .catch(error => console.log('Error:', error));
+  }
 
+  //the function adds new empty education object to the resumeState and shows new education form
   const addQualification = () => {
     setResumeState(prev => ({...prev, 
       educations:[...prev.educations,
@@ -17,21 +35,12 @@ export default function QualificationList(props) {
       ]
     }))
   }
-
+  
+  //the function goes through educations array and pusses one education object and index of current object to the Qualification.js 
   const renderEducation =() => {
     
     const educationData = resumeState.educations.map((education, educationIndex) => {
-      
-    if (!education) {
-      return (
-      <Qualification
-        key={education.id}
-        index = {educationIndex}
-        resumeState={{}}
-        setResumeState={setResumeState}/> 
-      )
 
-    } else {
     return ( 
      <Qualification
         key={education.id}
@@ -39,9 +48,7 @@ export default function QualificationList(props) {
         resumeState={education}
         setResumeState={setResumeState}/> 
     )
-    }
     })
-    
     return educationData
   }
  
@@ -52,7 +59,13 @@ export default function QualificationList(props) {
       </div> 
        <Button variant="primary" type="submit" onClick= {addQualification} >
         Add more Qualification
-      </Button> 
+      </Button>
+      <Button variant="primary" type="submit" onClick= {saveResume} >
+        Save
+      </Button>  
     </div>
+
+
+
     )
 }

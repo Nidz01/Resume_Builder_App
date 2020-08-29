@@ -22,7 +22,6 @@ import Resume from './pages/Resume';
 
 
 function App(props) {
-  
   const { state, remove, setUsername } = Autorization();
   const {resumeState, setResumeState} = useResumeContext();
 
@@ -54,7 +53,7 @@ function App(props) {
               <Register setUsername={setUsername}/>
             </Route>
             <Route path="/resume">
-              {state.userName ? <Resume resumeState={resumeState} setResumeState={setResumeState}/> : <Login setUsername={setUsername}/>}
+              {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState}/> : <Login setUsername={setUsername}/>}
             </Route>
         </Switch>
       </Router>

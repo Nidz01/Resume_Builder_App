@@ -118,7 +118,7 @@ export default function Experience(props) {
       </Form.Group>
 
       <Button onClick={Next} variant="primary" type="submit">
-        Next
+      Save and Next
       </Button>
     </Form>
   )

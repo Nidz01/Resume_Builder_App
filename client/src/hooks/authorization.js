@@ -6,6 +6,7 @@ const cookies = new Cookies();
 export default function Autorization (props) {
 
   const [state, setState] = useState({
+   userId: '',
    userName: '',
    email: '',
    password: '',
@@ -16,7 +17,8 @@ export default function Autorization (props) {
     if (cookies.get('userName')) {
       setState(prev => ({
         ...prev,
-        userName: cookies.get('userName')
+        userName: cookies.get('userName'),
+        userId: cookies.get('userId')   
       }))
     } 
   },[])
@@ -30,6 +32,6 @@ export default function Autorization (props) {
     setState(prev => ({...prev, userName: null}))
     cookies.remove('userName')
   }
-
+  
   return {state, remove, setState, setUsername}
 }

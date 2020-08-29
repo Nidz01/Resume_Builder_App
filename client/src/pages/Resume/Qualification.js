@@ -22,36 +22,20 @@ export default function Qualification(props) {
     });
   }
 
-  //test
-  /*const [test, setTest] = useState({
-    educations: {},
-  });
-  const [education, setEd] = useState();
+  const [validated, setValidated] = useState(false);
 
-  useEffect(() => {
-  setTest((prev => ({...prev, educations: education})));
- // console.log(test)
-}, [education]);
-
-  useEffect(() => {
-    setEd((prev => ({...prev, education: [state]})));
-  }, [state]);*/
-
-/*
- "educations": {
-		"education": [
-			{
-				"institution": "GOETHE-INSTITUT",
-				"type_degree": "Bachelor of Science in Software Development",
-				"graduat_date": "2006",
-				"country": "Canada"
-			}
-		]
-	}
-*/
-  
-  //Update state when any field changes. The 'id' variable is the key of the item of educations object
-
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    console.log(form.prof_title.value);
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    else {
+      history.push("/summary");
+    }
+    setValidated(true);
+  };
   
   //// function save resume to the db
    /* if (state === undefined) {
@@ -66,19 +50,23 @@ export default function Qualification(props) {
     }*/
     
   return (
-    <Form 
+    <Form noValidate validated={validated}
       style={{padding:  "50px"}}
-      onSubmit={event => event.preventDefault()} 
-      autoComplete="off">
+      onSubmit={handleSubmit}
+    >
 
   <Form.Group controlId="institution">
       <Form.Label>Institution Name: </Form.Label>
       <Form.Control 
         type="text" 
         placeholder="Enter Name of Institute" 
+        required
         defaultValue = {props.resumeState.institution} 
         onChange= {Change}
       />
+      <Form.Control.Feedback type="invalid">
+            Please provide a Institution Name.
+          </Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group  controlId="type_degree">
@@ -114,7 +102,7 @@ export default function Qualification(props) {
 
 
   <Button variant="primary" type="submit">
-    Save
+  Save
   </Button>
 </Form>
   )

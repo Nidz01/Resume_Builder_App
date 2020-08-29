@@ -37,6 +37,7 @@ module.exports = (db) => {
                 .query(query)
                 .then(result => {
                  res.cookie('userName', result[0].username)
+                 res.cookie('userId', result[0].id)
                  res.json(true)
                 }) 
                 .catch(err => console.log(err));
@@ -67,6 +68,7 @@ module.exports = (db) => {
               return
             }
             res.cookie('userName', result[0].username)
+            res.cookie('userId', result[0].id)
             res.json(true)
             return
           });

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
@@ -15,7 +15,7 @@ export default function Profile(props) {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    console.log(form.prof_title.value);
+    //console.log(form.prof_title.value);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -28,9 +28,9 @@ export default function Profile(props) {
 
   return (
     <Form noValidate validated={validated}
-    style={{padding:  "50px"}}
-    onSubmit={handleSubmit}>
-
+      style={{padding:  "50px"}}
+      onSubmit={handleSubmit}
+    >
 <Form.Row>
     <Form.Group controlId="prof_title">
       <Form.Label>Profile Title</Form.Label>

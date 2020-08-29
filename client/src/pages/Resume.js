@@ -11,6 +11,7 @@ import ExperienceList from './Resume/ExperienceList';
 
 export default function Resume(props) {
   const { resumeState, setResumeState } = props;
+  
   const routes = [
     {
       path: "/profile",
@@ -43,7 +44,7 @@ export default function Resume(props) {
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
       main: () => (
-        <QualificationList resumeState={resumeState} setResumeState={setResumeState}/>
+        <QualificationList userId = {props.userId} resumeState={resumeState} setResumeState={setResumeState}/>
       )
     }
   ];
