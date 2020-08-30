@@ -34,7 +34,7 @@ function App(props) {
           <li><Link to="/templates">Templates</Link></li>
           <li><Link to="/register">Register</Link></li>
           <li><Link to="/login">{state.userName ? `Logged as: ${state.userName}` : "Login"}</Link></li>
-         <li style={{color: "rgba(88, 27, 152, 0.67)"}}onClick={remove}>{state.userName ? 'Logout' : null}</li>
+          <li> <Link onClick={remove}>{state.userName ? 'Logout' : null} </Link></li>
          </ul> 
         <Switch>
             <Route exact path="/">

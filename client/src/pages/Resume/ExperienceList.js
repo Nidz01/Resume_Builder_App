@@ -25,17 +25,7 @@ export default function ExperienceList(props) {
   const renderExperience =() => {
     
     const experienceData = resumeState.experiences.map((experience, experienceIndex) => {
-      
-    if (!experience) {
-      return (
-      <Qualification
-        key={experience.id}
-        index = {experienceIndex}
-        resumeState={{}}
-        setResumeState={setResumeState}/> 
-      )
 
-    } else {
     return ( 
      <Qualification
         key={experience.id}
@@ -43,7 +33,6 @@ export default function ExperienceList(props) {
         resumeState={experience}
         setResumeState={setResumeState}/> 
     )
-    }
     })
     
     return experienceData

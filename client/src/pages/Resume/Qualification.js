@@ -99,11 +99,15 @@ export default function Qualification(props) {
       />
     </Form.Group>
     </Form.Row>
+    
+    <Button variant="primary" type="submit" >
+        Save Qualification
+      </Button>
 
+      <Button variant="primary" type="submit" >
+        Delete Qualification
+      </Button>
 
-  <Button variant="primary" type="submit">
-  Save
-  </Button>
 </Form>
   )
 }

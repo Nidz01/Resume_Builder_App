@@ -5,13 +5,14 @@ import { useHistory } from 'react-router-dom';
 
 export default function Experience(props) {
   const history = useHistory();
+  let newExperiences = [];
     
   //Update state when any field changes. The 'id' variable is the key of the item of experiences object
   const Change = (event) => { 
   const { id, value } = event.target
 
   props.setResumeState(prev => {
-
+  console.log('prev',prev)
     let newExperiences = prev.experiences.map((exp, index) => {
       if (index === props.index) {
         return {...exp, [id]: value};
@@ -21,6 +22,33 @@ export default function Experience(props) {
     })
     return({...prev, experiences: newExperiences});
   });
+  }
+
+  const deleteExperience = () => {
+
+    props.setResumeState(prev => {
+      console.log('prev',prev)
+      let newExperiences = prev.experiences.map((exp, index) => {
+        if (index !== props.index) {
+          console.log('map', exp)
+          return exp;
+        } 
+      })
+
+      console.log('new',newExperiences)
+      return { experiences: newExperiences};
+    });
+
+    // if (props.resumeState.lenght !== 1) {
+    //   props.experiences.forEach(element => {
+    //     if (props.resumeState.id !== element.id) {
+    //       console.log( 'ee',element.id) 
+    //       newExperiences.push(element)
+    //       console.log('cere',props.resumeState.id)  
+    //     }
+    //   })
+    // }
+   
   }
 
   const [validated, setValidated] = useState(false);
@@ -33,7 +61,7 @@ export default function Experience(props) {
       event.stopPropagation();
     }
     else {
-      history.push("/summary");
+      history.push("/qualification");
     }
     setValidated(true);
   };
@@ -158,7 +186,10 @@ export default function Experience(props) {
       </Form.Group>
 
       <Button variant="primary" type="submit">
-      Save and Next
+      Save Experience
+      </Button>
+      <Button variant="primary" onClick={deleteExperience} type="button">
+        Delete Experience
       </Button>
     </Form>
   )

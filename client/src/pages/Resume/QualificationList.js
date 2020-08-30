@@ -60,8 +60,9 @@ export default function QualificationList(props) {
        <Button variant="primary" type="submit" onClick= {addQualification} >
         Add more Qualification
       </Button>
+      <br/>
       <Button variant="primary" type="submit" onClick= {saveResume} >
-        Save
+        Save All
       </Button>  
     </div>
 
