@@ -10,7 +10,6 @@ export default function Qualification(props) {
      const { id, value } = event.target;
 
     props.setResumeState(prev => {
-
       let newEducations = prev.educations.map((educ, index) => {
         if (index === props.index) {
           return {...educ, [id]: value};
@@ -22,11 +21,25 @@ export default function Qualification(props) {
     });
   }
 
-  const [validated, setValidated] = useState(false);
+ //Deleting a specific element from educations array by clicking Delete button.
+ const deleteQualification = () => {
+  let newEducations = [];
+  if (props.educations.length !== 1) {
+     for (let index = 0; index < props.educations.length; index++  ){
+      if (index !== props.index) {
+        newEducations.push(props.educations[index]);
+      } 
+    }
+    props.setResumeState(prev => ({...prev, 
+      educations: newEducations
+    }))
+  }
+}
 
+
+  const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    console.log(form.prof_title.value);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -37,18 +50,6 @@ export default function Qualification(props) {
     setValidated(true);
   };
   
-  //// function save resume to the db
-   /* if (state === undefined) {
-      setError("Required field")
-      anyError = true;
-    }
-    if (anyError === false) {
-      axios.post('/resume', {resume_data: state})
-      .then(response => {console.log(response)
-      }) 
-      .catch(error => setError(error));
-    }*/
-    
   return (
     <Form noValidate validated={validated}
       style={{padding:  "50px"}}
@@ -74,29 +75,41 @@ export default function Qualification(props) {
       <Form.Control 
         type="text" 
         placeholder="Enter Your title of teh degree earned" 
+        required
         defaultValue ={props.resumeState.type_degree} 
         onChange= {Change}
       />
+       <Form.Control.Feedback type="invalid">
+            Please provide a Degree Title.
+          </Form.Control.Feedback>
     </Form.Group>
   <Form.Row>
   <Form.Group controlId="graduat_date">
       <Form.Label>Completion Year: </Form.Label>
       <Form.Control 
         type="number" 
+        required
         placeholder="Enter year in which completed" 
         defaultValue ={props.resumeState.graduat_date} 
         onChange= {Change}
       />
-    </Form.Group>
+       <Form.Control.Feedback type="invalid">
+            Please provide a Completion Year.
+          </Form.Control.Feedback>
+      </Form.Group>
 
     <Form.Group controlId="country">
       <Form.Label>Country of Institute</Form.Label>
       <Form.Control 
         type="text" 
+        required
         placeholder="e.g Canada" 
         defaultValue ={props.resumeState.country} 
         onChange= {Change}
       />
+       <Form.Control.Feedback type="invalid">
+            Please provide a Country of Institute.
+          </Form.Control.Feedback>
     </Form.Group>
     </Form.Row>
     
@@ -104,7 +117,7 @@ export default function Qualification(props) {
         Save Qualification
       </Button>
 
-      <Button variant="primary" type="submit" >
+      <Button variant="primary" onClick={deleteQualification}  type="button" >
         Delete Qualification
       </Button>
 

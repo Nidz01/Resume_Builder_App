@@ -38,14 +38,13 @@ export default function QualificationList(props) {
   
   //the function goes through educations array and pusses one education object and index of current object to the Qualification.js 
   const renderEducation =() => {
-    
     const educationData = resumeState.educations.map((education, educationIndex) => {
-
     return ( 
      <Qualification
         key={education.id}
         index = {educationIndex}
         resumeState={education}
+        educations={resumeState.educations}
         setResumeState={setResumeState}/> 
     )
     })

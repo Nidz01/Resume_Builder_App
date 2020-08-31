@@ -5,14 +5,12 @@ import { useHistory } from 'react-router-dom';
 
 export default function Experience(props) {
   const history = useHistory();
-  let newExperiences = [];
-    
+  
   //Update state when any field changes. The 'id' variable is the key of the item of experiences object
   const Change = (event) => { 
   const { id, value } = event.target
 
   props.setResumeState(prev => {
-  console.log('prev',prev)
     let newExperiences = prev.experiences.map((exp, index) => {
       if (index === props.index) {
         return {...exp, [id]: value};
@@ -24,38 +22,25 @@ export default function Experience(props) {
   });
   }
 
+  //Deleting a specific element from expereinces array by clicking Delete button.
   const deleteExperience = () => {
-
-    props.setResumeState(prev => {
-      console.log('prev',prev)
-      let newExperiences = prev.experiences.map((exp, index) => {
+    let newExperiences = [];
+    if (props.experiences.length !== 1) {
+       for (let index = 0; index < props.experiences.length; index++  ){
         if (index !== props.index) {
-          console.log('map', exp)
-          return exp;
+          newExperiences.push(props.experiences[index]);
         } 
-      })
-
-      console.log('new',newExperiences)
-      return { experiences: newExperiences};
-    });
-
-    // if (props.resumeState.lenght !== 1) {
-    //   props.experiences.forEach(element => {
-    //     if (props.resumeState.id !== element.id) {
-    //       console.log( 'ee',element.id) 
-    //       newExperiences.push(element)
-    //       console.log('cere',props.resumeState.id)  
-    //     }
-    //   })
-    // }
-   
+      }
+      props.setResumeState(prev => ({...prev, 
+        experiences: newExperiences
+      }))
+    }
   }
 
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    //console.log(form.prof_title.value);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -65,10 +50,6 @@ export default function Experience(props) {
     }
     setValidated(true);
   };
-
-  // const Next = () => {
-  //   history.push("/qualification")
-  // }  
 
   return (
     <Form noValidate validated={validated}

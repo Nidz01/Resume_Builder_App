@@ -2,10 +2,8 @@ import React from 'react';
 import Qualification from "./Experience";
 import Button from 'react-bootstrap/Button';
 
-
 export default function ExperienceList(props) {
   const { resumeState, setResumeState } = props;
-
   const addExperience = () => {
     setResumeState(prev => ({...prev, 
       experiences:[...prev.experiences,
@@ -23,18 +21,16 @@ export default function ExperienceList(props) {
     }))
   }
   const renderExperience =() => {
-    
     const experienceData = resumeState.experiences.map((experience, experienceIndex) => {
-
     return ( 
      <Qualification
         key={experience.id}
         index = {experienceIndex}
         resumeState={experience}
+        experiences={resumeState.experiences}
         setResumeState={setResumeState}/> 
     )
     })
-    
     return experienceData
   }
  
