@@ -72,7 +72,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.password != state.confirmPassword){
+    if (state.password !== state.confirmPassword){
       setError(prev => ({
         ...prev,
         confirmError:"Passwords do not match" 
