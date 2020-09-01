@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-//import Autorization from '../hooks/authorization'
 
 
 export default function Register(props) {

@@ -1,8 +1,5 @@
 import  React, { useState } from 'react';
-import {
-  
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 import Template1 from '../img/Template1.jpg';
@@ -13,7 +10,7 @@ import Template5 from '../img/Template5.jpg';
 
 export default function Templates(props) {
 
- 
+
   const [index, setIndex] = useState(0);
   
 
