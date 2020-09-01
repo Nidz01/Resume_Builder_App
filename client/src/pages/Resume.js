@@ -5,7 +5,6 @@ import Profile from './Resume/Profile';
 import Summary from './Resume/Summary';
 import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
-import Experience from './Resume/Experience';
 import QualificationList from './Resume/QualificationList';
 import ExperienceList from './Resume/ExperienceList';
 

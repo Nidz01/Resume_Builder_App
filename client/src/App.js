@@ -7,9 +7,6 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-//import useApplicationData from './hooks/useApplicationData';
 import Autorization from './hooks/authorization';
 import useResumeContext from './hooks/useResumeContext';
 import './App.css';
@@ -34,7 +31,7 @@ function App(props) {
           <li><Link to="/templates">Templates</Link></li>
           <li><Link to="/register">Register</Link></li>
           <li><Link to="/login">{state.userName ? `Logged as: ${state.userName}` : "Login"}</Link></li>
-          <li> <Link onClick={remove}>{state.userName ? 'Logout' : null} </Link></li>
+          <li> <Link onClick={remove} to="/">{state.userName ? 'Logout' : null} </Link></li>
          </ul> 
         <Switch>
             <Route exact path="/">

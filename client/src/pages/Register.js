@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-//import Autorization from '../hooks/authorization'
 
 
 export default function Register(props) {
@@ -72,7 +71,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.password != state.confirmPassword){
+    if (state.password !== state.confirmPassword){
       setError(prev => ({
         ...prev,
         confirmError:"Passwords do not match" 

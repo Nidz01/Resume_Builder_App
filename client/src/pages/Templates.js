@@ -1,8 +1,5 @@
 import  React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 import Template1 from '../img/Template1.jpg';
