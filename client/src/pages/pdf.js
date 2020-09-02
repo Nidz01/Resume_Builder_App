@@ -1,89 +1,142 @@
-// import React from "react";
-// import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, PDFViewer } from "@react-pdf/renderer";
-
-// export default function PDF (props) {
-
-
-//     const styles = StyleSheet.create({
-//             page: {
-//                 flexDirection: "row"
-//             },
-//             section: {
-//                 flexGrow: 1
-//             }
-//     });
-
-//     const MyDocument = () => (
-//         <Document>
-//                 <Page size="A4" style={styles.page}>
-//                 <View style={styles.section}>
-//                     <Text>Hello World!</Text>
-//                 </View>
-//                 <View style={styles.section}>
-//                     <Text>We're inside a PDF!</Text>
-//                 </View>
-//                 </Page>
-//             </Document>
-//         )
-       
-        
-//         return(
-//           <div style={styles.container}>
-//             <PDFViewer>
-//                 <MyDocument/>
-//             </PDFViewer> 
-//             {/* {
-// //             isResumeCompleted(props.ResumeState) && 
-// //             <PDFDownloadLink document={<MyDocument />} fileName="somename.pdf">
-// //               {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-// //             </PDFDownloadLink>
-// // } */}
-//           </div>
-    
-//         );
-// }
-
 import React from "react";
 import ReactDOM, { render } from 'react-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, PDFViewer } from "@react-pdf/renderer";
 import Button from 'react-bootstrap/Button';
+import "./style.css";
 
 export default function PDF (props) {
-
     const { userId, resumeState, setResumeState, isResumeCompleted } = props;
+
+    
   
     const styles = StyleSheet.create({
         page: {
-            flexDirection: "row",
-            section: { color: 'white', textAlign: 'left', margin: 30 }
+            display: "flex",
+            background: 'white', 
+            textAlign: 'left',
+            flexDirection: 'column'
         },
         section: {
             flexGrow: 1
         },
-        pdfbody: {
-            width: 800,
-            height: 720
-        }
+          container: {
+            display: "flex",
+            width: '100%',
+            flexDirection: 'row',
+            borderWidth: 2,
+            borderColor: '#FFCCB3',
+            borderStyle: 'solid',
+            //alignItems: 'stretch',
+          },
+          container_address: {
+            flexDirection: 'row',
+            borderBottomWidth: 0.5,
+            borderBottomColor: '#FFCCB3',
+            borderBottomStyle: 'solid',
+            alignItems: 'stretch',
+          },
+          title_row: {
+            flexDirection: 'row',
+            borderBottomWidth: 1,
+            borderBottomColor: '#FFCCB3',
+            borderBottomStyle: 'solid',
+            //width: '15',
+           // alignItems: 'center',
+            textAlign: 'center',
+          },
+          detailColumn: {
+            flexDirection: 'column',
+            flexGrow: 9,
+            textTransform: 'uppercase',
+          },
+          detailRow: {
+            flexDirection: 'row',
+            flexGrow: 9,
+          },
+          linkColumn: {
+            display: "flex",
+            flexDirection: 'column',
+            flexGrow: 2,
+            alignSelf: 'flex-end',
+            justifySelf: 'flex-end',
+          },
+          firstname: {
+            fontSize: 24,
+            //fontFamily: 'Lato Bold',
+          },
+          title: {
+            fontSize: 14,
+            textAlign: 'center',
+            color: "red",
+            //fontFamily: 'Lato Bold',
+          },
+          title_black: {
+            fontSize: 14,
+            textAlign: 'center',
+            color: "black",
+            //fontFamily: 'Lato Bold',
+          },
+          lastname: {
+            fontSize: 24,
+            color: "red"
+            //fontFamily: 'Lato Bold',
+          },
+          subtitle: {
+            fontSize: 10,
+            justifySelf: 'flex-end',
+            //fontFamily: 'Lato',
+          },
+          link: {
+            //fontFamily: 'Lato',
+            fontSize: 8,
+            color: 'black',
+            textDecoration: 'none',
+            alignSelf: 'flex-end',
+            justifySelf: 'flex-end',
+          },
+          address: {
+            //fontFamily: 'Lato',
+            fontSize: 8,
+            color: 'red',
+            textDecoration: 'none',
+            alignSelf: 'flex-end',
+            justifySelf: 'flex-end',
+          }
     });
-    const MyDocument = () => (
+
+    const MyDocument = (resumeState) => (
         <Document>
             <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-                <Text>Hello World!</Text>
-            </View>
-            <View style={styles.section}>
-                <Text>We're inside a PDF!</Text>
-            </View>
+                <View style={styles.container}>
+                    <View style={styles.detailRow}>
+                        <Text style={styles.firstname}>Adam </Text>
+                        <Text style={styles.lastname}>Rowell</Text>
+                    </View>
+                    <View style={styles.linkColumn}>
+                        <View style={styles.detailRow}>
+                            <Text style={styles.address}>123 Main Str, </Text>
+                            <Text style={styles.link}>Toronto, </Text>
+                            <Text style={styles.link}>Ontario, </Text>
+                            <Text style={styles.link}>M9R F0C</Text>
+                        </View>
+                        <View style={styles.detailRow}>
+                            <Text style={styles.link}>(204) - 345-5678, </Text>
+                            <Text style={styles.address}>luke@theforce.com</Text>
+                        </View>
+                    </View>
+                </View>
+                    <View style={styles.title_row}>
+                    <Text style={styles.title}>Technical</Text>
+                    <Text style={styles.title_black}>Buyer</Text>
+                    </View>
             </Page>
         </Document>
     )
     return(
-    <header>
-    <main className="container flex flex-column items-center justify-center signup">
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>
-        <PDFViewer style={styles.pdfbody}><MyDocument/></PDFViewer>
-      </div>
-    </main>
-    </header>
+        <form>
+            <div>
+            {isResumeCompleted(resumeState) ? <PDFViewer><MyDocument/></PDFViewer> : <MyDocument/>}
+            </div>
+        </form>
     );
 }

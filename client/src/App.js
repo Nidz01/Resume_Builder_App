@@ -53,7 +53,7 @@ function App(props) {
               {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted}/> : <Login setUsername={setUsername}/>}
             </Route>
             <Route path="/pdf">
-              <PDF/>
+              <PDF userId={state.userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted}/>
             </Route>
         </Switch>
       </Router>

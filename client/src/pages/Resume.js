@@ -50,6 +50,7 @@ export default function Resume(props) {
   ];
 
   return(
+    
     <header>
       <main className="container flex items-start signup">
     <Router>
