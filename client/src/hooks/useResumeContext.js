@@ -40,8 +40,13 @@ export default function useResumeContext(props) {
     ]
   });
 
+  const isResumeCompleted = function (props) {
+    
+  }
+
   return {
     resumeState, 
-    setResumeState
+    setResumeState,
+    isResumeCompleted
   }
 }

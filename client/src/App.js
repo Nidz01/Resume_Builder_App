@@ -16,7 +16,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Templates from "./pages/Templates";
 import Resume from './pages/Resume';
-import PDF from './pdf/index';
+import PDF from './pages/pdf';
 
 function App(props) {
   const { state, remove, setUsername } = Autorization();
@@ -31,7 +31,6 @@ function App(props) {
           <li><Link to="/templates">Templates</Link></li>
           <li><Link to="/register">Register</Link></li>
           <li><Link to="/login">{state.userName ? `Logged as: ${state.userName}` : "Login"}</Link></li>
-          <li><Link to="/pdf">PDF</Link></li>
           <li> <Link onClick={remove} to="/">{state.userName ? 'Logout' : null} </Link></li>
          </ul> 
         <Switch>
@@ -54,7 +53,7 @@ function App(props) {
               {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState}/> : <Login setUsername={setUsername}/>}
             </Route>
             <Route path="/pdf">
-              <PDF />
+              <PDF userId={state.userId} resumeState={resumeState} />
             </Route>
         </Switch>
       </Router>

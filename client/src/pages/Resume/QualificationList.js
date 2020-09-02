@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Qualification from "./Qualification";
+import Link from "react-router-dom/Link";
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 export default function QualificationList(props) {
   const { resumeState, setResumeState, userId } = props;
+  const history = useHistory();
+  //const [show, setShow] = useState(true);
   
+  // console.log('successful',Object.values(resumeState.profile))
+  //   //if (resumeState.profile !== '' || resumeState.summary !== '' || resumeState.educations !== '' || resumeState.achievement !== '' || resumeState.experiences !== '' || resumeState.core_competencies !== '') {
+  //     if (Object.keys(resumeState.profile).length > 9) {
+  //     setShow(false);
   //the function saves the new resume to DB 
   const saveResume=() => {
-    const resumeData = {
-      profile: resumeState.profile,
-      summary: resumeState.summary,
-      educations: resumeState.educations,
-      achievement: resumeState.achievement,
-      experiences: resumeState.experiences,
-      core_competencies: resumeState.core_competencies
-    } 
-    axios.post('/resume', {resume_data: resumeData, user_id: userId })
-      .then(response => {console.log(response)
-      }) 
-      .catch(error => console.log('Error:', error));
+    
+      const resumeData = {
+        profile: resumeState.profile,
+        summary: resumeState.summary,
+        educations: resumeState.educations,
+        achievement: resumeState.achievement,
+        experiences: resumeState.experiences,
+        core_competencies: resumeState.core_competencies
+      } 
+      axios.post('/resume', {resume_data: resumeData, user_id: userId })
+        .then(response => {console.log(response)
+          //history.push("/pdf");
+        }) 
+        .catch(error => console.log('Error:', error));
+    // else {
+    //   setShow(true);
+    // }
   }
 
   //the function adds new empty education object to the resumeState and shows a new education form
@@ -60,9 +74,10 @@ export default function QualificationList(props) {
         Add more Qualification
       </Button>
       <br/>
-      <Button variant="primary" type="submit" onClick= {saveResume} >
-        Save All
-      </Button>  
+  {/* <Alert show={show} variant="success">
+    <Alert.Heading>Please enter data in all fields first!</Alert.Heading>
+      </Alert> */}
+      <Link to="/pdf"><Button type="submit" onClick= {saveResume} >Save All</Button></Link>
     </div>
 
 

@@ -7,9 +7,10 @@ import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import QualificationList from './Resume/QualificationList';
 import ExperienceList from './Resume/ExperienceList';
+import PDF from './pdf';
 
 export default function Resume(props) {
-  const { resumeState, setResumeState } = props;
+  const { userId, resumeState, setResumeState } = props;
   
   const routes = [
     {
@@ -84,6 +85,7 @@ export default function Resume(props) {
             ))}
           </Switch>
     </Router>
+    <PDF userId={userId} resumeState={resumeState}/>
     </main>
     </header>
   );
