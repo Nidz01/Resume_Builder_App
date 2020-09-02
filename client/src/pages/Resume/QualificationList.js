@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 export default function QualificationList(props) {
-  const { resumeState, setResumeState, userId } = props;
+  const { resumeState, setResumeState, userId, isResumeCompleted} = props;
   const history = useHistory();
   //const [show, setShow] = useState(true);
   
@@ -17,7 +17,7 @@ export default function QualificationList(props) {
   //     setShow(false);
   //the function saves the new resume to DB 
   const saveResume=() => {
-    
+    if (!isResumeCompleted(resumeState)) {
       const resumeData = {
         profile: resumeState.profile,
         summary: resumeState.summary,
@@ -27,13 +27,12 @@ export default function QualificationList(props) {
         core_competencies: resumeState.core_competencies
       } 
       axios.post('/resume', {resume_data: resumeData, user_id: userId })
-        .then(response => {console.log(response)
-          //history.push("/pdf");
-        }) 
+        .then(
+          history.push("/pdf")) 
         .catch(error => console.log('Error:', error));
-    // else {
-    //   setShow(true);
-    // }
+      } else {
+      console.log('please enter data');
+    }
   }
 
   //the function adds new empty education object to the resumeState and shows a new education form
@@ -77,7 +76,7 @@ export default function QualificationList(props) {
   {/* <Alert show={show} variant="success">
     <Alert.Heading>Please enter data in all fields first!</Alert.Heading>
       </Alert> */}
-      <Link to="/pdf"><Button type="submit" onClick= {saveResume} >Save All</Button></Link>
+      <Button type="submit" onClick= {saveResume} >Save All</Button>
     </div>
 
 

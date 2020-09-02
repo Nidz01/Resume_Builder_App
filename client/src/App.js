@@ -20,7 +20,7 @@ import PDF from './pages/pdf';
 
 function App(props) {
   const { state, remove, setUsername } = Autorization();
-  const {resumeState, setResumeState} = useResumeContext();
+  const {resumeState, setResumeState, isResumeCompleted} = useResumeContext();
 
   return (
     <div className="App">
@@ -50,10 +50,10 @@ function App(props) {
               <Register setUsername={setUsername}/>
             </Route>
             <Route path="/resume">
-              {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState}/> : <Login setUsername={setUsername}/>}
+              {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted}/> : <Login setUsername={setUsername}/>}
             </Route>
             <Route path="/pdf">
-              <PDF userId={state.userId} resumeState={resumeState} />
+              <PDF/>
             </Route>
         </Switch>
       </Router>

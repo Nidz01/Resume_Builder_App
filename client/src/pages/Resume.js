@@ -10,7 +10,7 @@ import ExperienceList from './Resume/ExperienceList';
 import PDF from './pdf';
 
 export default function Resume(props) {
-  const { userId, resumeState, setResumeState } = props;
+  const { userId, resumeState, setResumeState, isResumeCompleted } = props;
   
   const routes = [
     {
@@ -44,7 +44,7 @@ export default function Resume(props) {
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
       main: () => (
-        <QualificationList userId = {props.userId} resumeState={resumeState} setResumeState={setResumeState}/>
+        <QualificationList userId = {props.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted} />
       )
     }
   ];
@@ -85,7 +85,7 @@ export default function Resume(props) {
             ))}
           </Switch>
     </Router>
-    <PDF userId={userId} resumeState={resumeState}/>
+    <PDF userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />
     </main>
     </header>
   );

@@ -48,7 +48,10 @@ import ReactDOM, { render } from 'react-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, PDFViewer } from "@react-pdf/renderer";
 import Button from 'react-bootstrap/Button';
 
-export default function pdfMaker () {
+export default function PDF (props) {
+
+    const { userId, resumeState, setResumeState, isResumeCompleted } = props;
+  
     const styles = StyleSheet.create({
         page: {
             flexDirection: "row",
