@@ -1,20 +1,20 @@
 import React from "react";
 import ReactDOM, { render } from 'react-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, PDFViewer } from "@react-pdf/renderer";
-import Button from 'react-bootstrap/Button';
 import "./style.css";
 
-export default function PDF (props) {
+export default function PdfDownload (props) {
     const { userId, resumeState, setResumeState, isResumeCompleted } = props;
 
-    
+    console.log('showing download pdf')
   
     const styles = StyleSheet.create({
         page: {
             display: "flex",
             background: 'white', 
             textAlign: 'left',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            padding: "20px"
         },
         section: {
             flexGrow: 1
@@ -23,9 +23,10 @@ export default function PDF (props) {
             display: "flex",
             width: '100%',
             flexDirection: 'row',
-            borderWidth: 2,
+            borderWidth: 4,
             borderColor: '#FFCCB3',
             borderStyle: 'solid',
+            padding: "10px"
             //alignItems: 'stretch',
           },
           container_address: {
@@ -36,6 +37,7 @@ export default function PDF (props) {
             alignItems: 'stretch',
           },
           title_row: {
+            display: "flex",
             flexDirection: 'row',
             borderBottomWidth: 1,
             borderBottomColor: '#FFCCB3',
@@ -124,18 +126,18 @@ export default function PDF (props) {
                             <Text style={styles.address}>luke@theforce.com</Text>
                         </View>
                     </View>
-                </View>
                     <View style={styles.title_row}>
-                    <Text style={styles.title}>Technical</Text>
-                    <Text style={styles.title_black}>Buyer</Text>
+                        <Text style={styles.title}>Technical</Text>
+                        <Text style={styles.title_black}>Buyer</Text>
                     </View>
+                </View>
             </Page>
         </Document>
     )
     return(
         <form>
             <div>
-            {isResumeCompleted(resumeState) ? <PDFViewer><MyDocument/></PDFViewer> : <MyDocument/>}
+           <MyDocument/>
             </div>
         </form>
     );

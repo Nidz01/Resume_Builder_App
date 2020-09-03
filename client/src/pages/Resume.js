@@ -7,7 +7,7 @@ import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import QualificationList from './Resume/QualificationList';
 import ExperienceList from './Resume/ExperienceList';
-import PDF from './pdf';
+import Preview from './Preview';
 
 export default function Resume(props) {
   const { userId, resumeState, setResumeState, isResumeCompleted } = props;
@@ -54,7 +54,7 @@ export default function Resume(props) {
     <header>
       <main className="container flex items-start signup">
     <Router>
-          <aside className= "resume_nav">
+          <aside className= "resume_nav" >
             <ul style={{}}>
               <br/><br/>
               <li>
@@ -86,7 +86,7 @@ export default function Resume(props) {
             ))}
           </Switch>
     </Router>
-    <PDF userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />
+    <Preview userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />
     </main>
     </header>
   );

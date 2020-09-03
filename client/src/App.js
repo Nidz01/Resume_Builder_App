@@ -16,7 +16,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Templates from "./pages/Templates";
 import Resume from './pages/Resume';
-import PDF from './pages/pdf';
 
 function App(props) {
   const { state, remove, setUsername } = Autorization();
@@ -52,9 +51,9 @@ function App(props) {
             <Route path="/resume">
               {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted}/> : <Login setUsername={setUsername}/>}
             </Route>
-            <Route path="/pdf">
-              <PDF userId={state.userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted}/>
-            </Route>
+            {/* <Route path="/pdf">
+              <PDF/>
+            </Route> */}
         </Switch>
       </Router>
     </div>

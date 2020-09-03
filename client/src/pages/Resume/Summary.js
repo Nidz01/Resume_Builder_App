@@ -20,6 +20,7 @@ export default function Summary(props) {
       event.stopPropagation();
     }
     else {
+      
       history.push("/competencies");
     }
     setValidated(true);

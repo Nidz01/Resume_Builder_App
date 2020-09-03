@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Qualification from "./Qualification";
-import Link from "react-router-dom/Link";
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -17,7 +15,7 @@ export default function QualificationList(props) {
   //     setShow(false);
   //the function saves the new resume to DB 
   const saveResume=() => {
-    if (!isResumeCompleted(resumeState)) {
+    if (isResumeCompleted(resumeState)) {
       const resumeData = {
         profile: resumeState.profile,
         summary: resumeState.summary,
@@ -28,7 +26,8 @@ export default function QualificationList(props) {
       } 
       axios.post('/resume', {resume_data: resumeData, user_id: userId })
         .then(
-          history.push("/pdf")) 
+          history.push("/download"),
+          console.log('posting')) 
         .catch(error => console.log('Error:', error));
       } else {
       console.log('please enter data');
@@ -78,8 +77,5 @@ export default function QualificationList(props) {
       </Alert> */}
       <Button type="submit" onClick= {saveResume} >Save All</Button>
     </div>
-
-
-
     )
 }

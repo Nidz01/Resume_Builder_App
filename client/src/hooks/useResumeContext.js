@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
-import Autorization from './authorization';
 
 export default function useResumeContext(props) {
 
@@ -66,6 +64,7 @@ export default function useResumeContext(props) {
                 educationCount++ 
             }
         }
+        return education;
     });
 
     let experienceCount = 0;
@@ -75,13 +74,14 @@ export default function useResumeContext(props) {
                 experienceCount++ 
             }
         }
+        return experienceCount;
     });
 
     if (props.summary.body === "" || 
     props.core_competencies.body === "" ||
-    props.achievements.body === "" ||
+    props.achievements.body === "" || profileCount === 0 ||
     educationCount === 0 || experienceCount === 0) {
-        return true;
+        return false;
     }
     else {
         return true;
