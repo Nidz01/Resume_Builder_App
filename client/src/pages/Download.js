@@ -1,5 +1,13 @@
 import React from "react";
 import { Document, Page, Text, View, StyleSheet, PDFViewer, Font } from "@react-pdf/renderer";
+import LatoBold from "./fonts/Lato/Lato-Bold.ttf"
+import LatoItalic from "./fonts/Lato/Lato-Italic.ttf"
+import LatoRegular from "./fonts/Lato/Lato-Regular.ttf"
+import LatoLight from "./fonts/Lato/Lato-Light.ttf"
+import LatoBoldItalic from "./fonts/Lato/Lato-BoldItalic.ttf"
+
+import OpenSansRegular from "./fonts/Open_Sans/OpenSans-Regular.ttf"
+import RobotoRegular from "./fonts/Roboto/Roboto-Regular.ttf"
 
 export default function PdfMaker (props) {
 const resumeObj =props.resumeState
@@ -16,7 +24,7 @@ const resumeObj =props.resumeState
       itemContent: {
         flex: 1,
         fontSize: 10,
-        //fontFamily: 'Lato',
+        fontFamily: 'Lato',
       },
       //End of List
       //Profile
@@ -35,6 +43,7 @@ const resumeObj =props.resumeState
       headertitle_row: {
         flexDirection: 'row',
         textAlign: 'center',
+        padding: 5
       },
     
       headerdetailColumn: {
@@ -42,48 +51,46 @@ const resumeObj =props.resumeState
         flexGrow: 9,
         textTransform: 'uppercase',
       },
-    
-      headerdetailRow: {
-        flexDirection: 'row',
-        flexGrow: 9,
-      },
       headerlinkColumn: {
         flexDirection: 'column',
         flexGrow: 2,
         alignSelf: 'flex-end',
         justifySelf: 'flex-end',
+        fontFamily: 'Lato Italic'
+      },
+      headerdetailRow: {
+        flexDirection: 'row',
+        flexGrow: 9,
       },
       headerfirstname: {
         fontSize: 24,
-        //fontFamily: 'Lato Bold',
+        fontFamily: 'Roboto Regular',
       },
-    
+      headerlastname: {
+        fontSize: 24,
+        color: "red",
+        fontFamily: 'Roboto Regular',
+      },
       headertitle: {
         fontSize: 14,
         textAlign: 'center',
         color: "red",
-        //fontFamily: 'Lato Bold',
       },
     
       headertitle_black: {
         fontSize: 14,
         textAlign: 'center',
         color: "black",
-        //fontFamily: 'Lato Bold',
+        fontFamily: 'Lato Bold',
       },
     
-      headerlastname: {
-        fontSize: 24,
-        color: "red"
-        //fontFamily: 'Lato Bold',
-      },
+      
       headersubtitle: {
         fontSize: 10,
         justifySelf: 'flex-end',
-        //fontFamily: 'Lato',
+        fontFamily: 'Lato',
       },
       headerlink: {
-        //fontFamily: 'Lato',
         fontSize: 8,
         color: 'black',
         textDecoration: 'none',
@@ -92,7 +99,6 @@ const resumeObj =props.resumeState
     
       },
       headeraddress: {
-        //fontFamily: 'Lato',
         fontSize: 8,
         color: 'red',
         textDecoration: 'none',
@@ -103,10 +109,9 @@ const resumeObj =props.resumeState
       //exp
       exptitle: {
         fontSize: 11,
-        fontStyle: 'bold',
       },
       expRow: {
-        //fontFamily: 'Lato Bold',
+        fontFamily: 'Lato',
         flexDirection: 'row',
         fontSize: 11,
       },
@@ -134,16 +139,17 @@ const resumeObj =props.resumeState
         width: 300
       },
       skillstext: {
-        //fontFamily: 'Lato Bold',
-        fontSize: 11,
+        fontFamily: 'Roboto Regular',
+        fontSize: 10,
         marginBottom: 10,
       },
       
       skillstitleRow: {
-        //fontFamily: 'Lato Bold',
+        fontFamily: 'Lato Bold',
         flexDirection: 'row',
         fontSize: 12,
         marginBottom: 10,
+        textTransform: "uppercase"
       },
       skillstitleRed: {
         color:"red"
@@ -205,37 +211,38 @@ const resumeObj =props.resumeState
             width: 200,
           },
         },
-        footer: {
-          fontSize: 12,
-          //fontFamily: 'Lato Bold',
-          textAlign: 'center',
-          marginTop: 25,
-          paddingTop: 10,
-          borderWidth: 3,
-          borderColor: 'gray',
-          borderStyle: 'dashed',
-          '@media orientation: landscape': {
-            marginTop: 10,
-          },
-        },
       });
       
       Font.register( {
         family: 'Open Sans',
-        src: `${__dirname}/fonts/fonts/Open_Sans/OpenSans-Regular.ttf`,
+        src: OpenSansRegular
       });
       Font.register( {
         family: 'Lato',
-        src: `${__dirname}/fonts/fonts/Lato/Lato-Regular.ttf`,
+        src: LatoRegular,
+      });
+      Font.register( {
+        family: 'Lato Light',
+        src: LatoLight,
       });
       Font.register( {
         family: 'Lato Italic',
-        src: `${__dirname}/fonts/fonts/Lato/Lato-Italic.ttf`,
+        src: LatoItalic,
       });
       Font.register( {
         family: 'Lato Bold',
-        src: `${__dirname}/fonts/fonts/Lato/Lato-Bold.ttf`,
+        src: LatoBold,
       });
+      Font.register( {
+        family: 'Lato BoldItalic',
+        src: LatoBoldItalic,
+      });
+      
+      Font.register( {
+        family: 'Roboto Regular',
+        src: RobotoRegular,
+      });
+
       const List = ({ children }) => children;
       const Item = ({ children }) => (
         <View style={styles.item}>
@@ -336,14 +343,14 @@ const resumeObj =props.resumeState
         <Text style={styles.skillstitleRed}>Experience</Text>
       </View>
       <View style={styles.expRow}>
-        <Text style={styles.exptitle}>Job Title •</Text>
+        <Text style={{fontFamily: "Lato Bold"}}>Job Title •</Text>
         <Text>name company •</Text>
         <Text>city •</Text>
         <Text>start date -</Text>
         <Text>end date</Text>
       </View>
       <Text style={styles.exptitle}>Description of company</Text>
-      <Text style={styles.exptitle}>Responsibilities:</Text>
+      <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
       <Text style={styles.skillstext}>
           Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
           Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
