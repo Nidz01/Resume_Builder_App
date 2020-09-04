@@ -1,16 +1,19 @@
 import React from "react";
 import { Document, Page, Text, View, StyleSheet, PDFViewer, Font } from "@react-pdf/renderer";
-import LatoBold from "./fonts/Lato/Lato-Bold.ttf"
-import LatoItalic from "./fonts/Lato/Lato-Italic.ttf"
-import LatoRegular from "./fonts/Lato/Lato-Regular.ttf"
-import LatoLight from "./fonts/Lato/Lato-Light.ttf"
-import LatoBoldItalic from "./fonts/Lato/Lato-BoldItalic.ttf"
-
-import OpenSansRegular from "./fonts/Open_Sans/OpenSans-Regular.ttf"
-import RobotoRegular from "./fonts/Roboto/Roboto-Regular.ttf"
+import profTitle from '../helpers/pdfResume';
+import LatoBold from "./fonts/Lato/Lato-Bold.ttf";
+import LatoItalic from "./fonts/Lato/Lato-Italic.ttf";
+import LatoRegular from "./fonts/Lato/Lato-Regular.ttf";
+import LatoLight from "./fonts/Lato/Lato-Light.ttf";
+import LatoBoldItalic from "./fonts/Lato/Lato-BoldItalic.ttf";
+import OpenSansRegular from "./fonts/Open_Sans/OpenSans-Regular.ttf";
+import RobotoRegular from "./fonts/Roboto/Roboto-Regular.ttf";
 
 export default function PdfMaker (props) {
-const resumeObj =props.resumeState
+const resumeObj = props.resumeState;
+const newPhone = `(${props.resumeState.profile.phone_number.slice(0,3)})-${props.resumeState.profile.phone_number.substr(3,3)}-${props.resumeState.profile.phone_number.slice(6)}`;
+const prof_title = profTitle(props.resumeState.profile.prof_title)
+
     const styles = StyleSheet.create({
       //List
       item: {
@@ -33,19 +36,18 @@ const resumeObj =props.resumeState
         borderBottomWidth: 0.5,
         borderBottomColor: '#ffccb3',
         borderBottomStyle: 'solid',
-        alignItems: 'stretch',
+        alignItems: 'stretch'
       },
       headercontainer: {
         flexDirection: 'column',
-        alignItems: 'stretch',
+        alignItems: 'stretch'
       },
-    
       headertitle_row: {
         flexDirection: 'row',
         textAlign: 'center',
-        padding: 5
+        padding: 5,
+        
       },
-    
       headerdetailColumn: {
         flexDirection: 'column',
         flexGrow: 9,
@@ -62,29 +64,17 @@ const resumeObj =props.resumeState
         flexDirection: 'row',
         flexGrow: 9,
       },
-      headerfirstname: {
+      headername: {
         fontSize: 24,
         fontFamily: 'Roboto Regular',
       },
-      headerlastname: {
-        fontSize: 24,
-        color: "red",
-        fontFamily: 'Roboto Regular',
-      },
+   
       headertitle: {
         fontSize: 14,
         textAlign: 'center',
         color: "red",
       },
     
-      headertitle_black: {
-        fontSize: 14,
-        textAlign: 'center',
-        color: "black",
-        fontFamily: 'Lato Bold',
-      },
-    
-      
       headersubtitle: {
         fontSize: 10,
         justifySelf: 'flex-end',
@@ -98,13 +88,7 @@ const resumeObj =props.resumeState
         justifySelf: 'flex-end',
     
       },
-      headeraddress: {
-        fontSize: 8,
-        color: 'red',
-        textDecoration: 'none',
-        alignSelf: 'flex-end',
-        justifySelf: 'flex-end',
-      },
+     
       //End of Profile
       //exp
       exptitle: {
@@ -254,35 +238,34 @@ const resumeObj =props.resumeState
       const Profile = () => (
         <View style={styles.headercontainer}>
           <View style={styles.headercontainer_address}>
-          
             <View style={styles.headerdetailColumn}>
               <View style={styles.headerdetailRow}>
-                <Text style={styles.headerfirstname}>{resumeObj.profile.first_name} </Text>
-                <Text style={styles.headerlastname}>{resumeObj.profile.last_name}</Text>
+                <Text style={styles.headername}>{resumeObj.profile.first_name} </Text>
+                <Text style={[styles.headername, {color: "red"}]}>{resumeObj.profile.last_name}</Text>
               </View>
             </View>
             <View style={styles.headerlinkColumn}>
               <View style={styles.headerdetailRow}>
-                <Text style={styles.headeraddress}>{resumeObj.profile.address}, </Text>
+                <Text style={[styles.headerlink, {color: 'red'}]}>{resumeObj.profile.address}, </Text>
                 <Text style={styles.headerlink}>{resumeObj.profile.city}, </Text>
                 <Text style={styles.headerlink}>{resumeObj.profile.province}, </Text>
                 <Text style={styles.headerlink}>{resumeObj.profile.postal_code}</Text>
               </View>
               <View style={styles.headerdetailRow}>
-                <Text style={styles.headerlink}>(204) - 345-5678, </Text>
-                <Text style={styles.headeraddress}>{resumeObj.profile.email}</Text>
+                <Text style={styles.headerlink}>{newPhone}, </Text>
+                <Text style={[styles.headerlink, {color: 'red'}]}>{resumeObj.profile.email}</Text>
               </View>
             </View>
           </View>
           <View style={styles.headertitle_row}>
-            <Text style={styles.headertitle}>Technical</Text>   
-            <Text style={styles.headertitle_black}>Buyer</Text>  
+            <Text style={styles.headertitle}>{prof_title[0]}</Text>   
+            <Text style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold'}]}>{prof_title[1]}</Text>  
           </View>
         </View>
       );
            
-      ////Skills and Qalification
-      const Skills = () => (
+      ////Summary and Qalification
+      const Summary = () => (
         <View style={styles.skillsmaincontainer}>  
           <View style={styles.skillsleftcontainer}>
             <View style={styles.skillstitleRow}>
@@ -330,13 +313,17 @@ const resumeObj =props.resumeState
           <View style={styles.skillstitleRow}>
               <Text style={styles.skillstitleRed}>Achievements</Text>
           </View>
-          <Text style={styles.skillstext}>ffff</Text>
+    <Text style={styles.skillstext}>{props.resumeState.achievements.body}</Text>
         </View>
       </View>
     );
+
+    // {competents.map((skill, i) => (
+    //   <Item key={i}>{skill}</Item>))}
  ///And of Achievments
  const Experience = () => (
   <View style={styles.skillsmaincontainer}>  
+    {/* {competents.map((skill, i) => ( */}
     <View style={styles.rowcontainer}>
       <View style={styles.skillstitleRow}>
         <Text >Professional </Text>
@@ -346,32 +333,14 @@ const resumeObj =props.resumeState
         <Text style={{fontFamily: "Lato Bold"}}>Job Title •</Text>
         <Text>name company •</Text>
         <Text>city •</Text>
-        <Text>start date -</Text>
+        <Text>start date - </Text>
         <Text>end date</Text>
       </View>
       <Text style={styles.exptitle}>Description of company</Text>
       <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
-      <Text style={styles.skillstext}>
-          Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-          Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          Competent fighter pilot as well as an excelent shot with nearly any weapon.
-          Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-          Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          Competent fighter pilot as well as an excelent shot with nearly any weapon.
-          Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-          Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          Competent fighter pilot as well as an excelent shot with nearly any weapon.
-          Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-          Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          Competent fighter pilot as well as an excelent shot with nearly any weapon.
-          Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-          Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          Competent fighter pilot as well as an excelent shot with nearly any weapon.
-          Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-          Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          Competent fighter pilot as well as an excelent shot with nearly any weapon.
-      </Text>
+      <Text style={styles.skillstext}>description </Text>
     </View>
+     {/* ))} */}
   </View>
   );
 ///And of Experience
@@ -381,11 +350,12 @@ const Education = () => (
       <Text>Education & </Text>
         <Text style={styles.skillstitleRed}>Qalification</Text>
     </View>
-    <Text style={styles.skillstext}>
-      Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-      Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-      Competent fighter pilot as well as an excelent shot with nearly any weapon.
-    </Text>
+    <View style={styles.expRow}>
+      <Text style={{fontFamily: "Lato Bold"}}>Type degree</Text>
+      <Text> • institution • </Text>
+      <Text> country •</Text>
+      <Text> date</Text>
+    </View>
   </View>
 );
   const Resume = (props) => (
@@ -393,7 +363,7 @@ const Education = () => (
       <Profile/>
       <View style={styles.container}>
         <View style={styles.leftColumn}>
-          <Skills/>
+          <Summary/>
         </View>  
         <Achievments/>
         <Experience/>

@@ -1,13 +1,17 @@
-const title = "Elena Valeryas rrrr"
-let space = false
-let firstWord = '';
-let secondWord = '';
-for (let i = 0; i < title.lenght; i ++) {
-  if (title[i] !== ' ' && space !== true) {
-    if (title[i] !== ' ') {
-      firstWord += title[i]
-    } else { i++; soace = true}
-  } else {
-    secondWord += title[i]
+
+export default function  profTitle(title) {
+  let space = false
+  let firstWord = '';
+  let secondWord = '';
+  for (let i = 0; i < title.length; i ++) {
+    if (space !== true) {
+        firstWord += title[i]
+        if (title[i]=== ' ') {
+          space = true;
+        }
+    } else {
+      secondWord += title[i]
+    }
   }
+  return [firstWord.trim(), secondWord]
 }
