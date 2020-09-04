@@ -69,7 +69,7 @@ export default function Profile(props) {
 
           <Form.Group controlId="phone_number">
             <Form.Label>Phone Number</Form.Label>
-            <Form.Control type="number" placeholder="9 digits number e.g 2227771990" required defaultValue ={(props.profileState==null) ? "" : props.profileState.phone_number} onChange={Change} />
+            <Form.Control type="number" placeholder="only numbers e.g 2227771990" required defaultValue ={(props.profileState==null) ? "" : props.profileState.phone_number} onChange={Change} />
             <Form.Control.Feedback type="invalid">
                   Please provide a valid phone number.
                 </Form.Control.Feedback>

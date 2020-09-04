@@ -1,19 +1,30 @@
 import React from "react";
-import "./style.css";
+import './preview.css';
+import profTitle from '../helpers/pdfResume';
 
 export default function Preview (props) {
-    //const { userId, resumeState, setResumeState, isResumeCompleted } = props;
-  
+    const resumeObj = props.resumeState;
+    const newPhone = `(${props.resumeState.profile.phone_number.slice(0,3)})-${props.resumeState.profile.phone_number.substr(3,3)}-${props.resumeState.profile.phone_number.slice(6)}`;
+    const prof_title = profTitle(props.resumeState.profile.prof_title)
+    const educationArray = resumeObj.educations;
+    const experienceArray = resumeObj.experiences;
+    
     const styles = {
       page: {
         display: "flex", 
         textAlign: 'left',
         flexDirection: 'column',
-        padding: "20px"
+        width: "100%",
+        padding: "20px",
+        position: "absolute",
+        boxSizing: "border-box"
       },
 
     //Profile
       headercontainer: {
+        boxSizing: "border-box",
+        flexBasis: "50%",
+        flexFlow: "row wrap",
         borderWidth: "5",
         borderColor: '#ffccb3',
         borderStyle: 'solid',
@@ -84,6 +95,16 @@ export default function Preview (props) {
         textDecoration: 'none',
         alignSelf: 'flex-end',
         justifySelf: 'flex-end',
+        textTransform: 'capitalize'
+    
+      },
+      headerlinkcode: {
+        fontSize: 12,
+        color: 'black',
+        textDecoration: 'none',
+        alignSelf: 'flex-end',
+        justifySelf: 'flex-end',
+        textTransform: 'uppercase'
     
       },
       headeraddress: {
@@ -92,6 +113,15 @@ export default function Preview (props) {
         textDecoration: 'none',
         alignSelf: 'flex-end',
         justifySelf: 'flex-end',
+        textTransform: 'capitalize'
+      },
+      headeremail: {
+        fontSize: 12,
+        color: 'red',
+        textDecoration: 'none',
+        alignSelf: 'flex-end',
+        justifySelf: 'flex-end',
+        textTransform: 'lowercase'
       },
       //End of Profile
 
@@ -125,6 +155,9 @@ export default function Preview (props) {
       },
       text: {
         fontSize: 8,
+        whiteSpace: "pre-line",
+        // flexBasis: "50%",
+        // flexFlow: "row wrap"
         //marginBottom: "5px",
       },
       titleRed: {
@@ -153,41 +186,69 @@ export default function Preview (props) {
         fontSize: 9,
         textTransform: 'capitalize'
       },
-      titledetails: {
+      titledetails: { 
         textTransform: "capitalize", 
         fontWeight: "normal", 
         marginLeft: "3px",
         content: "\\2022" 
       }
     };
-    
-  const MyDocument = (resumeState) => (
+
+    const EducationEntry = ({ educationArray }) => (
+      educationArray.map((education) => (
+    <div style={styles.experiencetitleRow}>
+    <div>{education.type_degree}</div>
+    <div style={styles.titledetails}>{education.institution},</div>
+    <div style={styles.titledetails}>{education.country}</div>
+    <div style={styles.titledetails}>{education.graduat_date}</div>
+    </div>))
+    );
+
+    const ExperienceEntry = ({ experienceArray }) => (
+      experienceArray.map((experience) => (
+        <div>
+          <div style={styles.experiencetitleRow}>
+            <div style={{fontFamily: "Lato Bold"}}>{experience.job_title} • </div>
+            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.employer_name} • </div>
+            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.city}, </div>
+            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.country} • </div>
+            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.start_date} -</div>
+            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.end_date}</div>
+          </div>
+          <div style={styles.text}>{experience.employer_description}</div> 
+          <div style={{fontWeight: "bold", marginRight: "3px", fontSize: 9, fontStyle: "italic"}}>Responsibilities:</div>
+          <div style={styles.text}>{experience.responsibilities}</div> 
+        </div>
+      ))
+    );
+
+const MyDocument = () => (
   <div size="A4" style={styles.page}>
     <div style={styles.headercontainer}>
       <div style={styles.headercontainer_address}>    
         <div style={styles.headerdetailColumn}>
           <div style={styles.headerdetailRow}>
-            <div style={styles.headerfirstname}>Adam </div>
-            <div style={styles.headerlastname}>Rowell</div>
+            <div style={styles.headerfirstname}>{resumeObj.profile.first_name}</div>
+            <div style={styles.headerlastname}>{resumeObj.profile.last_name}</div>
           </div>
         </div>
   
         <div style={styles.headerlinkColumn}>
           <div style={styles.headerdetailRow}>
-            <div style={styles.headeraddress}>123 Main Str, </div>
-            <div style={styles.headerlink}>Toronto, </div>
-            <div style={styles.headerlink}>Ontario, </div>
-            <div style={styles.headerlink}>M9R F0C</div>
+            <div style={styles.headeraddress}>{resumeObj.profile.address}, </div>
+            <div style={styles.headerlink}>{resumeObj.profile.city}, </div>
+            <div style={styles.headerlink}>{resumeObj.profile.province}, </div>
+            <div style={styles.headerlinkcode}>{resumeObj.profile.postal_code}</div>
           </div>
           <div style={styles.headerdetailRow}>
-            <div style={styles.headerlink}>(204) - 345-5678, </div>
-            <div style={styles.headeraddress}>luke@theforce.com</div>
+            <div style={styles.headerlink}>{newPhone},  </div>
+            <div style={styles.headeremail}>{resumeObj.profile.email}</div>
           </div>
         </div>
       </div>
       <div style={styles.headertitle_row}>
-        <div style={styles.headertitle}>Technical</div>   
-        <div style={styles.headertitle_black}>Buyer</div>  
+        <div style={styles.headertitle}>{prof_title[0]}</div>   
+        <div style={styles.headertitle_black}>{prof_title[1]}</div>  
       </div>
     </div>
     <div style={styles.subheadercontainer}> 
@@ -196,21 +257,14 @@ export default function Preview (props) {
             <div>Summary of </div>
             <div style={styles.titleRed}>Qualification</div>
           </div>
-          <div style={styles.text}>
-                Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-                Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-                Competent fighter pilot as well as an excelent shot with nearly any weapon.
-          </div>
+          <div style={styles.text}>{resumeObj.summary.body}</div>
         </div>
         <div style={styles.competenciessubcontainer}>
           <div style={styles.titleRow}>
             <div>Core </div>
             <div style={styles.titleRed}>Competencies</div>
           </div>
-          <div style={styles.text}>
-                Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-                Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-          </div>
+          <div style={styles.text}>{props.resumeState.core_competencies.body}</div>
         </div>
     </div>
     <div style={styles.subheadercontainer}>
@@ -218,11 +272,7 @@ export default function Preview (props) {
         <div style={styles.titleRow}>
           <div style={{color:"red"}}>Achievements</div>
         </div>
-        <div style={styles.text}>
-            Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-            Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-            Competent fighter pilot as well as an excelent shot with nearly any weapon.
-        </div> 
+        <div style={styles.text}>{props.resumeState.achievements.body}</div> 
       </div>
     </div>
     <div style={styles.subheadercontainer}>
@@ -231,37 +281,16 @@ export default function Preview (props) {
         <div>Professional </div>
             <div style={styles.titleRed}>Experience</div>
         </div>
-        <div style={styles.experiencetitleRow}>
-          <div>senior technical buyer</div>
-          <div style={styles.titledetails}>YYZ inc</div>
-          <div style={styles.titledetails}>houston,texas</div>
-          <div style={styles.titledetails}>April 2018 - April 2018</div>
-        </div>
-        <div style={styles.text}>
-            Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-            Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-            Competent fighter pilot as well as an excelent shot with nearly any weapon.
-        </div> 
-        <div style={{fontWeight: "bold", marginRight: "3px", fontSize: 9, fontStyle: "italic"}}>Responsibilities:</div>
-        <div style={styles.text}>
-            Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
-            Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
-            Competent fighter pilot as well as an excelent shot with nearly any weapon.
-        </div> 
+        {/* <ExperienceEntry experienceArray={experienceArray}/> */}
       </div>
     </div>
     <div style={styles.subheadercontainer}>
       <div style={styles.sectioncontainer}>
         <div style={styles.titleRow}>
-        <div>Education And </div>
+        <div>Education & </div>
             <div style={styles.titleRed}>Qualifications</div>
         </div>
-        <ul style={styles.experiencetitleRow}>
-          <li>senior technical buyer</li>
-          <li style={styles.titledetails}>YYZ Inc.</li>
-          <li style={styles.titledetails}>Houston,texas</li>
-          <li style={styles.titledetails}>April 2018 - April 2018</li>
-        </ul>
+        <EducationEntry educationArray={educationArray}/>
       </div>
     </div>
   </div>
