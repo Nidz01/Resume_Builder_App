@@ -7,11 +7,21 @@ import Competencies from './Resume/Competencies';
 import Achievements from './Resume/Achievements';
 import QualificationList from './Resume/QualificationList';
 import ExperienceList from './Resume/ExperienceList';
-import PDF from './pdf';
+import Preview from './Preview';
+import Download from './Download';
+
 
 export default function Resume(props) {
-  const { userId, resumeState, setResumeState } = props;
+  const { userId, resumeState, setResumeState, isResumeCompleted } = props;
   
+  /////////////
+  // const [resumeState, setResumeState] = useState(null);
+  // useEffect(() => {
+  //   getResume(props.userId)
+  //   .then(data => setResumeDate(data))
+  // },[]);
+///////////
+
   const routes = [
     {
       path: "/profile",
@@ -44,16 +54,17 @@ export default function Resume(props) {
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
       main: () => (
-        <QualificationList userId = {props.userId} resumeState={resumeState} setResumeState={setResumeState}/>
+        <QualificationList userId = {props.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted} />
       )
     }
   ];
 
   return(
+    
     <header>
       <main className="container flex items-start signup">
     <Router>
-          <aside className= "resume_nav">
+          <aside className= "resume_nav" >
             <ul style={{}}>
               <br/><br/>
               <li>
@@ -84,8 +95,13 @@ export default function Resume(props) {
               />
             ))}
           </Switch>
+          <Switch>
+            <Route path="/download">
+              <Download userId={userId} resumeState={resumeState}/>
+            </Route>
+          </Switch>
     </Router>
-    <PDF userId={userId} resumeState={resumeState}/>
+    {!isResumeCompleted(resumeState) && <Preview userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />}
     </main>
     </header>
   );

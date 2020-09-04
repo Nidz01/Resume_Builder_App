@@ -25,7 +25,7 @@ VALUES
   "core_competencies": {
 		"body": "Google Compute Engine Android and iOS App Development HTML, CSS, JavaScript, PHP Bootstrap & Angular JS jQuery SQL"
 	},
-  "achievement": {
+  "achievements": {
 	  "body": "Full-Stack Web Development with React Certification Front End Web Development Certificate"
 	},
 		"educations": [
@@ -82,7 +82,7 @@ VALUES
   "core_competencies": {
 		"body": "Processed accounts payable and receivable, prepared accounting reports"
 	},
-  "achievement": {
+  "achievements": {
 	  "body": "Reduced un-invoiced total from over 50% to below 12% average during the first 90 days."
 	},
  

@@ -29,6 +29,16 @@ module.exports = (db) => {
     // return the newly created resume back
   });
 
+  router.post('/resume', (req, res) => {
+    const { userId } = req.body;
+    const query = {
+      text: 'SELECT * FROM resume where user_id = $1;',
+      values: [userId]
+    };
+    db.query(query)
+      .then(result => res.json(result))
+      .catch(err => console.log(err));
+  });
 
   return router;
 }

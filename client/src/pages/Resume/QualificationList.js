@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Qualification from "./Qualification";
-import Link from "react-router-dom/Link";
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 export default function QualificationList(props) {
-  const { resumeState, setResumeState, userId } = props;
+  const { resumeState, setResumeState, userId, isResumeCompleted} = props;
   const history = useHistory();
   //const [show, setShow] = useState(true);
   
@@ -17,23 +15,23 @@ export default function QualificationList(props) {
   //     setShow(false);
   //the function saves the new resume to DB 
   const saveResume=() => {
-    
+    if (isResumeCompleted(resumeState)) {
       const resumeData = {
         profile: resumeState.profile,
         summary: resumeState.summary,
         educations: resumeState.educations,
-        achievement: resumeState.achievement,
+        achievements: resumeState.achievements,
         experiences: resumeState.experiences,
         core_competencies: resumeState.core_competencies
       } 
       axios.post('/resume', {resume_data: resumeData, user_id: userId })
-        .then(response => {console.log(response)
-          //history.push("/pdf");
-        }) 
+          .then(response => {setResumeState(response.data.resume_data)
+          history.push("/download");
+          })
         .catch(error => console.log('Error:', error));
-    // else {
-    //   setShow(true);
-    // }
+      } else {
+      console.log('please enter data');
+    }
   }
 
   //the function adds new empty education object to the resumeState and shows a new education form
@@ -74,13 +72,7 @@ export default function QualificationList(props) {
         Add more Qualification
       </Button>
       <br/>
-  {/* <Alert show={show} variant="success">
-    <Alert.Heading>Please enter data in all fields first!</Alert.Heading>
-      </Alert> */}
-      <Link to="/pdf"><Button type="submit" onClick= {saveResume} >Save All</Button></Link>
+      <Button type="submit" onClick= {saveResume} >Save All</Button>
     </div>
-
-
-
     )
 }
