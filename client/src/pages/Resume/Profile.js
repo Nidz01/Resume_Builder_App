@@ -9,14 +9,12 @@ export default function Profile(props) {
   const Change = (event) => { 
     const { id, value } = event.target;
     props.setResumeState(prev => ({...prev, profile: ({...prev.profile, [id]: value })}))
-    console.log(props.profileState)
-  }
+  };
 
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    //console.log(form.prof_title.value);
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();

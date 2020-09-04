@@ -8,10 +8,20 @@ import Achievements from './Resume/Achievements';
 import QualificationList from './Resume/QualificationList';
 import ExperienceList from './Resume/ExperienceList';
 import Preview from './Preview';
+import Download from './Download';
+
 
 export default function Resume(props) {
   const { userId, resumeState, setResumeState, isResumeCompleted } = props;
   
+  /////////////
+  // const [resumeState, setResumeState] = useState(null);
+  // useEffect(() => {
+  //   getResume(props.userId)
+  //   .then(data => setResumeDate(data))
+  // },[]);
+///////////
+
   const routes = [
     {
       path: "/profile",
@@ -85,8 +95,13 @@ export default function Resume(props) {
               />
             ))}
           </Switch>
+          <Switch>
+            <Route path="/download">
+              <Download userId={userId} resumeState={resumeState}/>
+            </Route>
+          </Switch>
     </Router>
-    <Preview userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />
+    {!isResumeCompleted(resumeState) && <Preview userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />}
     </main>
     </header>
   );

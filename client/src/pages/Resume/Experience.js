@@ -153,8 +153,8 @@ export default function Experience(props) {
         />
       </Form.Group>
 
-      <Form.Group controlId="responsibilties">
-        <Form.Label>Job Duties/Responsibilties:</Form.Label>
+      <Form.Group controlId="responsibilities">
+        <Form.Label>Job Duties/Responsibilities:</Form.Label>
         <Form.Control 
           type="text" 
           placeholder="List the variety of tasks yuo performed on job"

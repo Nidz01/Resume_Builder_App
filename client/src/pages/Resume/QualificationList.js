@@ -20,14 +20,14 @@ export default function QualificationList(props) {
         profile: resumeState.profile,
         summary: resumeState.summary,
         educations: resumeState.educations,
-        achievement: resumeState.achievement,
+        achievements: resumeState.achievements,
         experiences: resumeState.experiences,
         core_competencies: resumeState.core_competencies
       } 
       axios.post('/resume', {resume_data: resumeData, user_id: userId })
-        .then(
-          history.push("/download"),
-          console.log('posting')) 
+          .then(response => {setResumeState(response.data.resume_data)
+          history.push("/download");
+          })
         .catch(error => console.log('Error:', error));
       } else {
       console.log('please enter data');
@@ -72,9 +72,6 @@ export default function QualificationList(props) {
         Add more Qualification
       </Button>
       <br/>
-  {/* <Alert show={show} variant="success">
-    <Alert.Heading>Please enter data in all fields first!</Alert.Heading>
-      </Alert> */}
       <Button type="submit" onClick= {saveResume} >Save All</Button>
     </div>
     )

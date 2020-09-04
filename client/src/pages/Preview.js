@@ -1,147 +1,8 @@
-// import React from "react";
-// import "./style.css";
-
-// export default function Preview (props) {
-//     const { userId, resumeState, setResumeState, isResumeCompleted } = props;
-  
-//     const styles = {
-//         page: {
-//             display: "flex",
-//             background: 'white', 
-//             textAlign: 'left',
-//             flexDirection: 'column',
-//             padding: "20px"
-//         },
-//         section: {
-//             flexGrow: 1
-//         },
-//           container: {
-//             display: "flex",
-//             width: '100%',
-//             flexDirection: 'row',
-//             borderWidth: 4,
-//             borderColor: '#FFCCB3',
-//             borderStyle: 'solid',
-//             padding: "10px"
-//             //alignItems: 'stretch',
-//           },
-//           container_address: {
-//             flexDirection: 'row',
-//             borderBottomWidth: 0.5,
-//             borderBottomColor: '#FFCCB3',
-//             borderBottomStyle: 'solid',
-//             alignItems: 'stretch',
-//           },
-//           title_row: {
-//             display: "flex",
-//             flexDirection: 'row',
-//             borderBottomWidth: 1,
-//             borderBottomColor: '#FFCCB3',
-//             borderBottomStyle: 'solid',
-//             //width: '15',
-//            // alignItems: 'center',
-//             textAlign: 'center',
-//           },
-//           detailColumn: {
-//             flexDirection: 'column',
-//             flexGrow: 9,
-//             textTransform: 'uppercase',
-//           },
-//           detailRow: {
-//             flexDirection: 'row',
-//             flexGrow: 9,
-//           },
-//           linkColumn: {
-//             display: "flex",
-//             flexDirection: 'column',
-//             flexGrow: 2,
-//             alignSelf: 'flex-end',
-//             justifySelf: 'flex-end',
-//           },
-//           firstname: {
-//             fontSize: 24,
-//             //fontFamily: 'Lato Bold',
-//           },
-//           title: {
-//             fontSize: 14,
-//             textAlign: 'center',
-//             color: "red",
-//             //fontFamily: 'Lato Bold',
-//           },
-//           title_black: {
-//             fontSize: 14,
-//             textAlign: 'center',
-//             color: "black",
-//             //fontFamily: 'Lato Bold',
-//           },
-//           lastname: {
-//             fontSize: 24,
-//             color: "red"
-//             //fontFamily: 'Lato Bold',
-//           },
-//           subtitle: {
-//             fontSize: 10,
-//             justifySelf: 'flex-end',
-//             //fontFamily: 'Lato',
-//           },
-//           link: {
-//             //fontFamily: 'Lato',
-//             fontSize: 8,
-//             color: 'black',
-//             textDecoration: 'none',
-//             alignSelf: 'flex-end',
-//             justifySelf: 'flex-end',
-//           },
-//           address: {
-//             //fontFamily: 'Lato',
-//             fontSize: 8,
-//             color: 'red',
-//             textDecoration: 'none',
-//             alignSelf: 'flex-end',
-//             justifySelf: 'flex-end',
-//           }
-//     };
-
-//     const MyDocument = (resumeState) => (
-//             <div size="A4" style={styles.page}>
-//                 <div style={styles.container}>
-//                     <div style={styles.detailRow}>
-//                         <div style={styles.firstname}>Adam </div>
-//                         <div style={styles.lastname}>Rowell</div>
-//                     </div>
-//                     <div style={styles.linkColumn}>
-//                         <div style={styles.detailRow}>
-//                             <div style={styles.address}>123 Main Str, </div>
-//                             <div style={styles.link}>Toronto, </div>
-//                             <div style={styles.link}>Ontario, </div>
-//                             <div style={styles.link}>M9R F0C</div>
-//                         </div>
-//                         <div style={styles.detailRow}>
-//                             <div style={styles.link}>(204) - 345-5678, </div>
-//                             <div style={styles.address}>luke@theforce.com</div>
-//                         </div>
-//                     </div>
-//                     <div style={styles.title_row}>
-//                         <div style={styles.title}>Technical</div>
-//                         <div style={styles.title_black}>Buyer</div>
-//                     </div>
-//                 </div>
-//             </div>
-//     )
-//     return(
-//         <form>
-//             <div>
-//             <MyDocument/>
-//             </div>
-//         </form>
-//     );
-// }
-
 import React from "react";
 import "./style.css";
 
 export default function Preview (props) {
-    const { userId, resumeState, setResumeState, isResumeCompleted } = props;
+    //const { userId, resumeState, setResumeState, isResumeCompleted } = props;
   
     const styles = {
       page: {
@@ -295,7 +156,8 @@ export default function Preview (props) {
       titledetails: {
         textTransform: "capitalize", 
         fontWeight: "normal", 
-        marginLeft: "3px"
+        marginLeft: "3px",
+        content: "\\2022" 
       }
     };
     
@@ -394,12 +256,12 @@ export default function Preview (props) {
         <div>Education And </div>
             <div style={styles.titleRed}>Qualifications</div>
         </div>
-        <div style={styles.experiencetitleRow}>
-          <div>senior technical buyer</div>
-          <div style={styles.titledetails}>YYZ Inc.</div>
-          <div style={styles.titledetails}>Houston,texas</div>
-          <div style={styles.titledetails}>April 2018 - April 2018</div>
-        </div>
+        <ul style={styles.experiencetitleRow}>
+          <li>senior technical buyer</li>
+          <li style={styles.titledetails}>YYZ Inc.</li>
+          <li style={styles.titledetails}>Houston,texas</li>
+          <li style={styles.titledetails}>April 2018 - April 2018</li>
+        </ul>
       </div>
     </div>
   </div>

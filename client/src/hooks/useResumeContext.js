@@ -33,9 +33,9 @@ export default function useResumeContext(props) {
       employer_description: '',
       city: '',
       country: '',
-      start_date: [],
-      end_date: [],
-      responsibilities: []
+      start_date: '',
+      end_date: '',
+      responsibilities: ''
       }
     ]
   });
@@ -80,7 +80,7 @@ export default function useResumeContext(props) {
     if (props.summary.body === "" || 
     props.core_competencies.body === "" ||
     props.achievements.body === "" || profileCount === 0 ||
-    educationCount === 0 || experienceCount === 0) {
+    (educationCount < 4) || (experienceCount < 8)) {
         return false;
     }
     else {
