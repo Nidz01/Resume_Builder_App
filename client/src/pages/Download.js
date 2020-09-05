@@ -55,7 +55,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     },
     headerlinkColumn: {
       flexDirection: 'column',
-      flexGrow: 2,
+      flexGrow: 3,
       alignSelf: 'flex-end',
       justifySelf: 'flex-end',
       fontFamily: 'Lato Italic'
@@ -63,6 +63,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     headerdetailRow: {
       flexDirection: 'row',
       flexGrow: 9,
+      
     },
     headername: {
       fontSize: 24,
@@ -92,12 +93,18 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     //End of Profile
     //exp
     exptitle: {
-      fontSize: 11,
+      fontSize: 11
     },
     expRow: {
       fontFamily: 'Lato',
       flexDirection: 'row',
+      fontSize: 11
+    },
+    responsRow: {
+      fontFamily: 'Lato',
+      flexDirection: 'row',
       fontSize: 11,
+      margin: 0
     },
     //exp end
     //Skills and Qualification
@@ -127,6 +134,24 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       fontSize: 10,
       marginBottom: 10,
     },
+    skillsdescrip: {
+      fontFamily: 'Roboto Regular',
+      fontSize: 10,
+      marginBottom: 5,
+
+    },
+    
+    text: {
+      fontFamily: 'Lato',
+      fontSize: 11,
+      marginBottom: 11,
+    },
+    text1: {
+      fontFamily: 'Lato',
+      fontSize: 11,
+    
+    },
+    
     
     skillstitleRow: {
       fontFamily: 'Lato Bold',
@@ -149,6 +174,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       padding: 10,
       width: 532
     },
+
     //End of Achievents
       pdfbody: {
           width: 800,
@@ -196,7 +222,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
         },
       },
     });
-    
     Font.register( {
       family: 'Open Sans',
       src: OpenSansRegular
@@ -227,13 +252,13 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       src: RobotoRegular,
     });
 
-    const List = ({ children }) => children;
-    const Item = ({ children }) => (
-      <View style={styles.item}>
-        <Text style={styles.bulletPoint}>•</Text>
-        <Text style={styles.itemContent}>{children}</Text>
-      </View>
-    );
+    // const List = ({ children }) => children;
+    // const Item = ({ children }) => (
+    //   <View style={styles.item}>
+    //     <Text style={styles.bulletPoint}>•</Text>
+    //     <Text style={styles.itemContent}>{children}</Text>
+    //   </View>
+    // );
      
     const Profile = () => (
       <View style={styles.headercontainer}>
@@ -264,7 +289,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       </View>
     );
            
-    ////Summary and Qalification
     const Summary = () => (
       <View style={styles.skillsmaincontainer}>  
         <View style={styles.skillsleftcontainer}>
@@ -274,57 +298,73 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
           </View>
             <Text style={styles.skillstext}>{resumeObj.summary.body}</Text>
           </View>
-        <CoreCompetents/>
+        <CoreCompetencies/>
       </View>
     );
         
-    const SkillEntry = ({ name, competents }) => (
-      <View>
-        <Text style={styles.skillstext}>{name}</Text>
-        <List>
-          {competents.map((skill, i) => (
-            <Item key={i}>{skill}</Item>))}
-        </List>
-      </View>
-    );
+    // const SkillEntry = ({ name, competents }) => (
+    //   <View>
+    //     <Text style={styles.skillstext}>{name}</Text>
+    //     <List>
+    //       {competents.map((skill, i) => (
+    //         <Item key={i}>{skill}</Item>))}
+    //     </List>
+    //   </View>
+    // );
           
-    const CoreCompetents = () => (
+    // const CoreCompetencies = () => (
+    //   <View style={styles.skillsrightcontainer}>
+    //     <View style={styles.skillstitleRow}>
+    //       <Text>Core  </Text>
+    //       <Text style={styles.skillstitleRed}>Competencies</Text>
+    //     </View>
+    //     <SkillEntry
+    //       name="Combat Abilities"
+    //       competents={[
+    //         'Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire',
+    //         'Defeated the Rancor and rescued Princess Leia from Jabba the Hutt',
+    //         'Competent fighter pilot as well as an excelent shot with nearly any weapon',
+    //       ]}
+    //     />
+    //   </View>
+    // );
+
+    const CoreCompetencies = () => (
       <View style={styles.skillsrightcontainer}>
         <View style={styles.skillstitleRow}>
           <Text>Core  </Text>
-          <Text style={styles.skillstitleRed}>Competents</Text>
+          <Text style={styles.skillstitleRed}>Competencies</Text>
         </View>
-        <SkillEntry
-          name="Combat Abilities"
-          competents={[
-            'Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire',
-            'Defeated the Rancor and rescued Princess Leia from Jabba the Hutt',
-            'Competent fighter pilot as well as an excelent shot with nearly any weapon',
-          ]}
-        />
+          <Text style={[styles.skillstext, {whiteSpace: "pre-line"}]}>{props.resumeState.core_competencies.body}</Text>
       </View>
     );
-    /// END of Skills and Qualification
-    ///Achievements
+    
     const Achievments = () => (
       <View style={styles.skillsmaincontainer}>  
         <View style={styles.rowcontainer}>
           <View style={styles.skillstitleRow}>
-              <Text style={styles.skillstitleRed}>Achievements</Text>
+            <Text style={styles.skillstitleRed}>Achievements</Text>
           </View>
-    <Text style={styles.skillstext}>{props.resumeState.achievements.body}</Text>
+            <Text style={styles.skillstext}>{props.resumeState.achievements.body}</Text>
         </View>
       </View>
     );
 
-    const ExperienceEntry = ({ name, competents }) => (
-      <View>
-        <Text style={styles.skillstext}>{name}</Text>
-        <List>
-          {competents.map((skill, i) => (
-            <Item key={i}>{skill}</Item>))}
-        </List>
-      </View>
+    const ExperienceEntry = ({ experienceArray }) => (
+      experienceArray.map((experience, i) => (
+        <View>
+        <View style={styles.expRow}>
+          <Text style={{fontFamily: "Lato Bold"}}>{experience.job_title} • </Text>
+          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.employer_name} • </Text>
+          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.city} • </Text>
+          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.start_date} - </Text>
+          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.end_date}</Text>
+        </View>
+            <Text style={styles. skillsdescrip}>{experience.employer_description}</Text>
+            <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
+            <Text style={styles.skillstext}>{experience.responsibilities}</Text>
+        </View>
+      ))
     );
 
     const Experience = () => (
@@ -334,29 +374,20 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
             <Text >Professional </Text>
             <Text style={styles.skillstitleRed}>Experience</Text>
           </View>
-          <View style={styles.expRow}>
-            <Text style={{fontFamily: "Lato Bold"}}>Job Title •</Text>
-            <Text>name company •</Text>
-            <Text>city •</Text>
-            <Text>start date - </Text>
-            <Text>end date</Text>
-          </View>
-          <Text style={styles.exptitle}>Description of company</Text>
-          <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
-          <Text style={styles.skillstext}>description </Text>
+          <ExperienceEntry 
+            experienceArray = {resumeObj.experiences}
+          />
         </View>
-        
       </View>
     );
 
-    ///And of Experience
     const EducationEntry = ({ educationArray }) => (
       educationArray.map((education) => (
-      <View style={styles.expRow}>
-        <Text style={{fontFamily: "Lato Bold"}}>{education.type_degree}</Text>
-        <Text style={styles.skillstext}> • {education.institution}• </Text>
-        <Text style={styles.skillstext}> {education.country} •</Text>
-        <Text style={styles.skillstext}> {education.graduat_date}</Text>
+      <View style={[styles.responsRow, {whiteSpace: "pre-line"}]}>
+        <Text style={{fontFamily: "Lato Bold", whiteSpace: "pre-line"}}>{education.type_degree} </Text>
+        <Text style={[styles.text1, {fontFamily: "Lato", whiteSpace: "pre-line"}]}> • {education.institution} • </Text>
+        <Text style={[styles.text1, {fontFamily: "Lato"}]}>{education.country} • </Text>
+        <Text style={[styles.text1, {fontFamily: "Lato"}]}>{education.graduat_date}</Text>
       </View>))
     );
 
@@ -364,7 +395,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       <View style={styles.rowcontainer}>
         <View style={styles.skillstitleRow}>
           <Text>Education & </Text>
-            <Text style={styles.skillstitleRed}>Qalification</Text>
+            <Text style={styles.skillstitleRed}>Qualification</Text>
         </View>
         <EducationEntry 
           educationArray = {resumeObj.educations}
@@ -372,41 +403,33 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       </View>
     );
 
-  const Resume = (props) => (
-    <Page {...props} style={styles.page}>
-      <Profile/>
-      <View style={styles.container}>
-        <View style={styles.leftColumn}>
-          <Summary/>
-        </View>  
-        <Achievments/>
-        <Experience/>
-        <Education/>
-      </View>
-    </Page>
-  )
+    const Resume = (props) => (
+      <Page {...props} style={styles.page}>
+        <Profile/>
+        <View style={styles.container}>
+          <View style={styles.leftColumn}>
+            <Summary/>
+          </View>  
+          <Achievments/>
+          <Experience/>
+          <Education/>
+        </View>
+      </Page>
+    )
   
-  const Output = () => (
-    <Document
-      author="Luke Skywalker"
-      keywords="awesome, resume, start wars"
-      subject="The resume of Luke Skywalker"
-      title="Resume"
-    >
-    <Resume size="A4" />
-    </Document>
-  );
+    const Output = () => (
+      <Document>
+      <Resume size="A4" />
+      </Document>
+    );
     
-  return(
-    <header>
-      <main className="container flex flex-column items-center justify-center signup">
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>
-          <PDFViewer style={styles.pdfbody}><Output /></PDFViewer>
-        </div>
-      </main>
-  </header>
+    return (
+      <header>
+        <main className="container flex flex-column items-center justify-center signup">
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>
+            <PDFViewer style={styles.pdfbody}><Output /></PDFViewer>
+          </div>
+        </main>
+    </header>
   );
 }
-
-
-

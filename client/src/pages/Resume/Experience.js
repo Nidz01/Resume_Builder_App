@@ -156,17 +156,21 @@ export default function Experience(props) {
       <Form.Group controlId="responsibilities">
         <Form.Label>Job Duties/Responsibilities:</Form.Label>
         <Form.Control 
-          type="text" 
+          as="textarea" rows="10" 
           placeholder="List the variety of tasks yuo performed on job"
           required
           defaultValue = {props.resumeState.responsibilities} 
-          onChange= {Change}/>
+          onChange= {Change}
+        />
           <Form.Control.Feedback type="invalid">
             Please provide a job dueties.
           </Form.Control.Feedback>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button 
+        variant="primary"
+        type="submit"
+      >
       Save Experience
       </Button>
       <Button variant="primary" onClick={deleteExperience} type="button">
