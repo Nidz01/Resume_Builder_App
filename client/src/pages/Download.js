@@ -283,8 +283,8 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
           </View>
         </View>
         <View style={styles.headertitle_row}>
-          <Text style={styles.headertitle}>{prof_title[0]}</Text>   
-          <Text style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold'}]}>{prof_title[1]}</Text>  
+          <Text debug={true} style={styles.headertitle}>{prof_title[0]}</Text>   
+          <Text debug={true} style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold'}]}>{prof_title[1]}</Text>  
         </View>
       </View>
     );
@@ -351,8 +351,8 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     );
 
     const ExperienceEntry = ({ experienceArray }) => (
-      experienceArray.map((experience, i) => (
-        <View>
+      experienceArray.map((experience, index) => (
+        <View key={index}>
         <View style={styles.expRow}>
           <Text style={{fontFamily: "Lato Bold"}}>{experience.job_title} • </Text>
           <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.employer_name} • </Text>
@@ -382,8 +382,8 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     );
 
     const EducationEntry = ({ educationArray }) => (
-      educationArray.map((education) => (
-      <View style={[styles.responsRow, {whiteSpace: "pre-line"}]}>
+      educationArray.map((education, index) => (
+      <View key={index} style={[styles.responsRow, {whiteSpace: "pre-line"}]}>
         <Text style={{fontFamily: "Lato Bold", whiteSpace: "pre-line"}}>{education.type_degree} </Text>
         <Text style={[styles.text1, {fontFamily: "Lato", whiteSpace: "pre-line"}]}> • {education.institution} • </Text>
         <Text style={[styles.text1, {fontFamily: "Lato"}]}>{education.country} • </Text>

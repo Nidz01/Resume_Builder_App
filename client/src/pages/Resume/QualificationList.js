@@ -68,11 +68,11 @@ export default function QualificationList(props) {
       <div>
           {renderEducation()} 
       </div> 
-       <Button variant="primary" type="submit" onClick= {addQualification} >
-        Add more Qualification
-      </Button>
+      <div  style={{display: "flex", flexDirection: "column", padding: "25px", alignItems: "center"}}>
+      <Button style={{ width: "300px", height: "40px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit" onClick= {addQualification}>Add more Qualification</Button>
       <br/>
-      <Button type="submit" onClick= {saveResume} >Save All</Button>
+      <Button style={{backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", border: "transparent"}}type="submit" onClick= {saveResume} >Save All</Button>
+      </div>
     </div>
     )
 }

@@ -28,7 +28,7 @@ export default function Achievements(props) {
   
   return (
     <Form noValidate validated={validated}
-      style={{padding:  "50px"}}
+      style={{padding:  "20px"}}
       onSubmit={handleSubmit}
     >
       <Form.Group controlId="body">
@@ -38,7 +38,7 @@ export default function Achievements(props) {
             Please provide an achievements.
         </Form.Control.Feedback>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit">
       Save and Next
       </Button>
     </Form>

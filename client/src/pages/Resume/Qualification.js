@@ -51,76 +51,77 @@ export default function Qualification(props) {
   };
   
   return (
-    <Form noValidate validated={validated}
-      style={{padding:  "50px"}}
-      onSubmit={handleSubmit}
-    >
+    <div>
+      <Form noValidate validated={validated}
+        style={{padding:  "20px", width: "100%"}}
+        onSubmit={handleSubmit}
+      >
 
-  <Form.Group controlId="institution">
-      <Form.Label>Institution Name: </Form.Label>
-      <Form.Control 
-        type="text" 
-        placeholder="Enter Name of Institute" 
-        required
-        defaultValue = {props.resumeState.institution} 
-        onChange= {Change}
-      />
-      <Form.Control.Feedback type="invalid">
-            Please provide a Institution Name.
-          </Form.Control.Feedback>
-    </Form.Group>
-
-    <Form.Group  controlId="type_degree">
-      <Form.Label>Credential or Degree Title: </Form.Label>
-      <Form.Control 
-        type="text" 
-        placeholder="Enter Your title of teh degree earned" 
-        required
-        defaultValue ={props.resumeState.type_degree} 
-        onChange= {Change}
-      />
-       <Form.Control.Feedback type="invalid">
-            Please provide a Degree Title.
-          </Form.Control.Feedback>
-    </Form.Group>
-  <Form.Row>
-  <Form.Group controlId="graduat_date">
-      <Form.Label>Completion Year: </Form.Label>
-      <Form.Control 
-        type="number" 
-        required
-        placeholder="Enter year in which completed" 
-        defaultValue ={props.resumeState.graduat_date} 
-        onChange= {Change}
-      />
-       <Form.Control.Feedback type="invalid">
-            Please provide a Completion Year.
-          </Form.Control.Feedback>
+    <Form.Group controlId="institution">
+        <Form.Label>Institution Name: </Form.Label>
+        <Form.Control 
+          type="text" 
+          placeholder="Enter Name of Institute" 
+          required
+          defaultValue = {props.resumeState.institution} 
+          onChange= {Change}
+        />
+        <Form.Control.Feedback type="invalid">
+              Please provide a Institution Name.
+            </Form.Control.Feedback>
       </Form.Group>
 
-    <Form.Group controlId="country">
-      <Form.Label>Country of Institute</Form.Label>
-      <Form.Control 
-        type="text" 
-        required
-        placeholder="e.g Canada" 
-        defaultValue ={props.resumeState.country} 
-        onChange= {Change}
-      />
-       <Form.Control.Feedback type="invalid">
-            Please provide a Country of Institute.
-          </Form.Control.Feedback>
-    </Form.Group>
-    </Form.Row>
-    
-    <Button variant="primary" type="submit" >
-        Save Qualification
-      </Button>
+      <Form.Group  controlId="type_degree">
+        <Form.Label>Credential or Degree Title: </Form.Label>
+        <Form.Control 
+          type="text" 
+          placeholder="Enter Your title of teh degree earned" 
+          required
+          defaultValue ={props.resumeState.type_degree} 
+          onChange= {Change}
+        />
+        <Form.Control.Feedback type="invalid">
+              Please provide a Degree Title.
+            </Form.Control.Feedback>
+      </Form.Group>
+    <Form.Row>
+    <Form.Group controlId="graduat_date">
+        <Form.Label>Completion Year: </Form.Label>
+        <Form.Control 
+          type="number" 
+          required
+          placeholder="Enter year in which completed" 
+          defaultValue ={props.resumeState.graduat_date} 
+          onChange= {Change}
+        />
+        <Form.Control.Feedback type="invalid">
+              Please provide a Completion Year.
+            </Form.Control.Feedback>
+        </Form.Group>
 
-      <Button variant="primary" onClick={deleteQualification}  type="button" >
-        Delete Qualification
-      </Button>
-
-</Form>
+      <Form.Group controlId="country">
+        <Form.Label>Country of Institute</Form.Label>
+        <Form.Control 
+          type="text" 
+          required
+          placeholder="e.g Canada" 
+          defaultValue ={props.resumeState.country} 
+          onChange= {Change}
+        />
+        <Form.Control.Feedback type="invalid">
+              Please provide a Country of Institute.
+            </Form.Control.Feedback>
+      </Form.Group>
+      </Form.Row>
+      <div style={{display: "flex", flexDirection: "row", alignItem: "center", justifyContent: "space-between"}}>
+      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" onClick={deleteQualification}  type="button" >
+          Delete Qualification
+        </Button>
+      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit">Save Qualification</Button>
+      </div>
+  </Form>
+    </div>
   )
 }
+
+  

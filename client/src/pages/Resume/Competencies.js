@@ -37,7 +37,7 @@ export default function Competencies(props) {
             Please provide a core competencies.
           </Form.Control.Feedback>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit">
       Save and Next
       </Button>
     </Form>

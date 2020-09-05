@@ -305,7 +305,7 @@ const MyDocument = () => (
   </div>
 )
       return(
-        <form>
+        <form style={{width: "50%"}}>
             <div>
             <MyDocument/>
             </div>

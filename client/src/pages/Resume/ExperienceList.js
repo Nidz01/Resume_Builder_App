@@ -39,9 +39,11 @@ export default function ExperienceList(props) {
       <div>
           {renderExperience()} 
       </div> 
-       <Button variant="primary" type="submit" onClick= {addExperience} >
+      <div style={{display: "flex",flexDirection: "column", padding: "25px", alignItems: "center"}}>
+      <Button style={{width: "300px", height: "40px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit" onClick= {addExperience} >
         Add more Experience
       </Button> 
+      </div>
     </div>
     )
 }
