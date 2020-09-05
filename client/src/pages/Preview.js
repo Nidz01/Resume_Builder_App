@@ -1,6 +1,13 @@
 import React from "react";
 import './preview.css';
 import profTitle from '../helpers/pdfResume';
+import LatoBold from "./fonts/Lato/Lato-Bold.ttf";
+import LatoItalic from "./fonts/Lato/Lato-Italic.ttf";
+import LatoRegular from "./fonts/Lato/Lato-Regular.ttf";
+import LatoLight from "./fonts/Lato/Lato-Light.ttf";
+import LatoBoldItalic from "./fonts/Lato/Lato-BoldItalic.ttf";
+import OpenSansRegular from "./fonts/Open_Sans/OpenSans-Regular.ttf";
+import RobotoRegular from "./fonts/Roboto/Roboto-Regular.ttf";
 
 export default function Preview (props) {
     const resumeObj = props.resumeState;
@@ -23,7 +30,9 @@ export default function Preview (props) {
     //Profile
       headercontainer: {
         boxSizing: "border-box",
-        flexBasis: "50%",
+        //flexBasis: "50%",
+        wordWrap: "break-word",
+        overflowWrap: "break-word",
         flexFlow: "row wrap",
         borderWidth: "5",
         borderColor: '#ffccb3',
@@ -190,13 +199,13 @@ export default function Preview (props) {
         textTransform: "capitalize", 
         fontWeight: "normal", 
         marginLeft: "3px",
-        content: "\\2022" 
+        fontFamily: "Lato"
       }
     };
 
     const EducationEntry = ({ educationArray }) => (
-      educationArray.map((education) => (
-    <div style={styles.experiencetitleRow}>
+      educationArray.map((education, index) => (
+    <div key={index} style={styles.experiencetitleRow}>
     <div>{education.type_degree}</div>
     <div style={styles.titledetails}>{education.institution},</div>
     <div style={styles.titledetails}>{education.country}</div>
@@ -205,15 +214,15 @@ export default function Preview (props) {
     );
 
     const ExperienceEntry = ({ experienceArray }) => (
-      experienceArray.map((experience) => (
-        <div>
+      experienceArray.map((experience, index) => (
+        <div key={index}>
           <div style={styles.experiencetitleRow}>
-            <div style={{fontFamily: "Lato Bold"}}>{experience.job_title} • </div>
-            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.employer_name} • </div>
-            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.city}, </div>
-            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.country} • </div>
-            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.start_date} -</div>
-            <div style={[styles.titledetails, {fontFamily: "Lato"}]}>{experience.end_date}</div>
+            <div >{experience.job_title} • </div>
+            <div style={styles.titledetails}>{experience.employer_name} • </div>
+            <div style={styles.titledetails}>{experience.city} , </div>
+            <div style={styles.titledetails}>{experience.country} • </div>
+            <div style={styles.titledetails}>{experience.start_date} -</div>
+            <div style={styles.titledetails}>{experience.end_date}</div> 
           </div>
           <div style={styles.text}>{experience.employer_description}</div> 
           <div style={{fontWeight: "bold", marginRight: "3px", fontSize: 9, fontStyle: "italic"}}>Responsibilities:</div>
@@ -281,7 +290,7 @@ const MyDocument = () => (
         <div>Professional </div>
             <div style={styles.titleRed}>Experience</div>
         </div>
-        {/* <ExperienceEntry experienceArray={experienceArray}/> */}
+        <ExperienceEntry experienceArray={experienceArray}/>
       </div>
     </div>
     <div style={styles.subheadercontainer}>
