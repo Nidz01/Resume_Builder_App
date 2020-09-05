@@ -1,5 +1,5 @@
 import  React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useLocation } from "react-router-dom";
 import "./style.css";
 import Profile from './Resume/Profile';
 import Summary from './Resume/Summary';
@@ -10,10 +10,15 @@ import ExperienceList from './Resume/ExperienceList';
 import Preview from './Preview';
 import Download from './Download';
 
+const MaybePreview = (props) => {
+  const location = useLocation();
+  if (location.pathname !== "/download") { return <Preview {...props} /> }
+  return null;
+};
 
 export default function Resume(props) {
   const { userId, resumeState, setResumeState, isResumeCompleted } = props;
-  
+
   /////////////
   // const [resumeState, setResumeState] = useState(null);
   // useEffect(() => {
@@ -100,8 +105,8 @@ export default function Resume(props) {
               <Download userId={userId} resumeState={resumeState}/>
             </Route>
           </Switch>
-    </Router>
-    {!isResumeCompleted(resumeState) && <Preview userId={userId} resumeState={resumeState} isResumeCompleted={isResumeCompleted} />}
+          <MaybePreview userId={userId} resumeState={resumeState}/>
+    </Router>    
     </main>
     </header>
   );

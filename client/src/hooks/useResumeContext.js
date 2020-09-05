@@ -50,38 +50,63 @@ export default function useResumeContext(props) {
   // }
 
   const isResumeCompleted = (props) => {
-    let profileCount = 0;
+    //let profileCount = 0;
 
     for (let key in props.profile) {
-            if (props.profile[key] !== "") {
-                profileCount++ }       
+      if (props.profile[key] === ''){
+        return false
+      }
     }
-    let educationCount = 0;
+    // for (let key in props.profile) {
+    //         if (props.profile[key] !== "") {
+    //             profileCount++ }       
+    // }
+    // let educationCount = 0;
 
-    props.educations.map((education) => {
-        for (let key in education) {
-            if (education[key] !== "" && key !== "id") {
-                educationCount++ 
-            }
+    // props.educations.map((education) => {
+    //     for (let key in education) {
+    //         if (education[key] === "" && key !== "id") {
+    //             educationCount++ 
+    //         }
+    //     }
+    //     return education;
+    // });
+
+    for (let education of props.educations) { 
+      for (let key in education) {
+        if (education[key] === '') {
+          return false
         }
-        return education;
-    });
+      }
+    }
 
-    let experienceCount = 0;
-    props.experiences.map((experience) => {
-        for (let key in experience) {
-            if (experience[key] !== "" && key !== "id") {
-                experienceCount++ 
-            }
+    for (let experience of props.experiences) { 
+      for (let key in experience) {
+        if (experience[key] === '') {
+          return false
         }
-        return experienceCount;
-    });
+      }
+    }
 
-    if (props.summary.body === "" || 
-    props.core_competencies.body === "" ||
-    props.achievements.body === "" || profileCount === 0 ||
-    (educationCount < 4) || (experienceCount < 8)) {
-        return false;
+    // let experienceCount = 0;
+    // props.experiences.map((experience) => {
+    //     for (let key in experience) {
+    //         if (experience[key] !== "" && key !== "id") {
+    //             experienceCount++ 
+    //         }
+    //     }
+    //     return experienceCount;
+    // });
+
+    // if (props.summary.body === "" || 
+    // props.core_competencies.body === "" ||
+    // props.achievements.body === "" || profileCount === 0 ||
+    // (educationCount < 4) || (experienceCount < 8)) {
+    //     return false;
+    // }
+
+    if (props.summary.body === "" || props.core_competencies.body === "" || props.achievements.body === "") {
+      return false
     }
     else {
         return true;

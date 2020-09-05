@@ -1,0 +1,301 @@
+/*@font-face {
+  font-family: 'LatoBold';
+  src: url('./fonts/Lato/Lato-Bold.ttf');
+
+  font-family: 'LatoItalic';
+  src: url('./fonts/Lato/Lato-Italic.ttf');
+  
+  font-family: 'LatoRegular';
+  src: url('./fonts/Lato/Lato-Regular.ttf');
+
+  font-family: 'LatoLight';
+  src: url('./fonts/Lato/Lato-Light.ttf');
+
+  font-family: 'LatoBoldItalic';
+  src: url('./fonts/Lato/Lato-BoldItalic.ttf');
+  
+  font-family: 'OpenSansRegular';
+  src: url('./fonts/Open_Sans/OpenSans-Regular.ttf');
+
+  font-family: 'RobotoRegular';
+  src: url('./fonts/Roboto/Roboto-Regular.ttf')
+}
+
+.page {
+  display: flex;
+  text-align: left;  
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Profile */
+/*
+.headercontainer {
+  border-width: 5;
+  border-color: #ffccb3;
+  border-style: solid;
+}
+.headercontainer_address {
+  display: flex;
+  flex-direction: row;
+  border-bottom-width: 0.5;
+  border-bottom-color: #ffccb3;
+  border-bottom-style: solid;
+  padding: 20px 20px 0px
+}
+.headerdetailColumn {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  justify-content: flex-end
+}
+
+.headerdetailRow {
+  display: flex;
+  flex-direction: row
+}
+.headertitle_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1px;
+  text-transform: uppercase
+}
+.headerlinkColumn {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  align-items: flex-end;
+}
+.headerfirstname {
+  font-size: 30
+}
+
+.headertitle {
+  font-size: 14;
+  font-weight: bold;
+  text-align: center;
+  color: red
+}
+
+.headertitle_black {
+  font-size: 14;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  margin-left: 5px
+}
+
+.headerlastname {
+  font-size: 30;
+  color: red;
+  margin-left: 5px
+}
+.headersubtitle {
+  font-size: 10;
+  justify-self: flex-end
+}
+.headerlink {
+  font-size: 12;
+  color: black;
+  text-decoration: none;
+  align-self: flex-end;
+  justify-self: flex-end;
+  text-transform: capitalize
+
+}
+.headerlinkcode {
+  font-size: 12;
+  color: black;
+  text-decoration: none;
+  align-self: flex-end;
+  justify-self: flex-end;
+  text-transform: uppercase
+
+}
+.headeraddress {
+  font-size: 12;
+  color: red;
+  text-decoration: none;
+  align-self: flex-end;
+  justify-self: flex-end;
+  text-transform: capitalize
+}
+.headeremail {
+  font-size: 12;
+  color: red;
+  text-decoration: none;
+  align-self: flex-end;
+  justify-self: flex-end;
+  text-transform: lowercase
+}
+//End of Profile
+
+.subheadercontainer {
+  display: flex;
+  flex-direction: row;
+  border-width: 5;
+  border-color: #ffccb3;
+  border-style: solid;
+  border-top: none
+}
+
+/*Summary of Qualification*/
+/*
+.summarysubcontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 60%;
+  border-right-width: 5;
+  border-right-color: #ffccb3;
+  border-right-style: solid
+}  
+
+.titleRow {
+  display: flex;
+  flex-direction: row;
+  font-size: 12;
+  margin-bottom: 3px;
+  font-weight: bold;
+  text-transform: uppercase
+}
+.text {
+  font-size: 8
+}
+.titleRed {
+  color:red;
+  font-weight: bold;
+  margin-left: 5px
+}
+
+/*  Core Competencies */
+/*
+.competenciessubcontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 40%
+}  
+.sectioncontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 5px
+}  
+//Experience
+.experiencetitleRow {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 9;
+  text-transform: capitalize
+}
+.titledetails {
+  text-transform: capitalize;
+  font-weight: normal;
+  margin-left: 3px;
+  content: \2022 
+}
+
+
+const MyDocument = (resumeState) => (
+    //   <div className = "page">
+    //     <div className = "headercontainer">
+    //       <div className = "headercontainer_address">    
+    //         <div className = "headerdetailColumn">
+    //           <div className = "headerdetailRow">
+    //             <div className = "headerfirstname">{resumeObj.profile.first_name}</div>
+    //             <div className = "headerlastname">{resumeObj.profile.last_name}</div>
+    //           </div>
+    //         </div>
+      
+    //         <div className = "headerlinkColumn">
+    //           <div className = "headerdetailRow">
+    //             <div className = "headeraddress">{resumeObj.profile.address}, </div>
+    //             <div className = "headerlink">{resumeObj.profile.city}, </div>
+    //             <div className = "headerlink">{resumeObj.profile.province}, </div>
+    //             <div className = "headerlinkcode">{resumeObj.profile.postal_code}</div>
+    //           </div>
+    //           <div className = "headerdetailRow">
+    //             <div className = "headerlink">{newPhone},  </div>
+    //             <div className = "headeremail">{resumeObj.profile.email}</div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className = "headertitle_row">
+    //         <div className = "headertitle">{prof_title[0]}</div>   
+    //         <div className = "headertitle_black">{prof_title[1]}</div>  
+    //       </div>
+    //     </div>
+    //     <div className = "subheadercontainer"> 
+    //         <div className = "summarysubcontainer">
+    //           <div className = "titleRow">
+    //             <div>Summary of </div>
+    //             <div className = "titleRed">Qualification</div>
+    //           </div>
+    //           <div className = "text">{resumeObj.summary.body}</div>
+    //         </div>
+    //         <div className = "competenciessubcontainer">
+    //           <div className = "titleRow">
+    //             <div>Core </div>
+    //             <div className = "titleRed">Competencies</div>
+    //           </div>
+    //           <div className = "text">
+    //                 Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
+    //                 Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
+    //           </div>
+    //         </div>
+    //     </div>
+    //     <div className = "subheadercontainer">
+    //       <div className = "sectioncontainer">
+    //         <div className = "titleRow">
+    //           <div style={{color:"red"}}>Achievements</div>
+    //         </div>
+    //         <div className = "text">{props.resumeState.achievements.body}</div> 
+    //       </div>
+    //     </div>
+    //     <div className = "subheadercontainer">
+    //       <div className = "sectioncontainer">
+    //         <div className = "titleRow">
+    //         <div>Professional </div>
+    //             <div className = "titleRed">Experience</div>
+    //         </div>
+    //         <div className = "experiencetitleRow">
+    //           <div>senior technical buyer</div>
+    //           <div className = "titledetails">YYZ inc</div>
+    //           <div className = "titledetails">houston,texas</div>
+    //           <div className = "titledetails">April 2018 - April 2018</div>
+    //         </div>
+    //         <div className = "text">
+    //             Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
+    //             Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
+    //             Competent fighter pilot as well as an excelent shot with nearly any weapon.
+    //         </div> 
+    //         <div style={{fontWeight: "bold", marginRight: "3px", fontSize: 9, fontStyle: "italic"}}>Responsibilities:</div>
+    //         <div className = "text">
+    //             Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire.
+    //             Defeated the Rancor and rescued Princess Leia from Jabba the Hutt.
+    //             Competent fighter pilot as well as an excelent shot with nearly any weapon.
+    //         </div> 
+    //       </div>
+    //     </div>
+    //     <div className = "subheadercontainer">
+    //       <div className = "sectioncontainer">
+    //         <div className = "titleRow">
+    //         <div>Education & </div>
+    //             <div className = "titleRed">Qualifications</div>
+    //         </div>
+    //         <EducationEntry educationArray={educationArray}/>
+    //       </div>
+    //     </div>
+    //   </div>
+    // )
+    //       return(
+    //         <form>
+    //             <div>
+    //             <MyDocument/>
+    //             </div>
+    //         </form>
+    //     );
+    // }
+    */
