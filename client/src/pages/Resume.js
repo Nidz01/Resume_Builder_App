@@ -1,4 +1,4 @@
-import  React from 'react';
+import  React, {useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useLocation } from "react-router-dom";
 import "./style.css";
 import Profile from './Resume/Profile';
@@ -9,6 +9,7 @@ import QualificationList from './Resume/QualificationList';
 import ExperienceList from './Resume/ExperienceList';
 import Preview from './Preview';
 import Download from './Download';
+import getResume from '../helpers/getResume';
 
 const MaybePreview = (props) => {
   const location = useLocation();
@@ -18,14 +19,55 @@ const MaybePreview = (props) => {
 
 export default function Resume(props) {
   const { userId, resumeState, setResumeState, isResumeCompleted } = props;
-
-  /////////////
-  // const [resumeState, setResumeState] = useState(null);
-  // useEffect(() => {
-  //   getResume(props.userId)
-  //   .then(data => setResumeDate(data))
-  // },[]);
+  console.log('befor',userId)
 ///////////
+ useEffect(() => {
+    getResume(userId)
+    .then(response => {
+      if(response.data.length !== 0) {
+       setResumeState(response.data[0].resume_data)
+      }  else {
+        setResumeState({
+          summary: {body: ''},
+          core_competencies: {body: ''},
+          achievements: {body: ''},
+          educations: [
+            {id:1, 
+              institution:'', 
+              type_degree:'', 
+              graduat_date:'', 
+              country:''
+            }
+          ],
+          profile: {
+              prof_title: '',
+              first_name: '',
+              last_name: '',
+              email: '',
+              phone_number: '',
+              address: '',
+              city: '',
+              province: '',
+              postal_code: ''
+          },
+          experiences: [
+            {
+            id: 1,
+            job_title: '',
+            employer_name: '',
+            employer_description: '',
+            city: '',
+            country: '',
+            start_date: '',
+            end_date: '',
+            responsibilities: ''
+            }
+          ]
+        })
+      }
+    })
+ },[]);
+/////////
 
   const routes = [
     {
@@ -55,7 +97,6 @@ export default function Resume(props) {
       main: () => <ExperienceList resumeState={resumeState} setResumeState={setResumeState}/>
     },
     {
-      
       path: "/qualification",
       sidebar: () => <div>EDUCATION AND QUALIFICATIONS</div>,
       main: () => (
@@ -65,7 +106,6 @@ export default function Resume(props) {
   ];
 
   return(
-    
     <header>
       <main className="container flex items-start signup">
     <Router>

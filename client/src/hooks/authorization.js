@@ -26,13 +26,15 @@ export default function Autorization (props) {
   const setUsername = name => {
     setState(prev => ({...prev, userName: name}))
   }
-
+  const setUserId = id => {
+    setState(prev => ({...prev, userId: id}))
+  }
 
   const remove = () => {
-    setState(prev => ({...prev, userName: null}))
+    setState(prev => ({...prev, userName: null, userId: null}))
     cookies.remove('userName')
     cookies.remove('userId')
   }
   
-  return {state, remove, setState, setUsername}
+  return {state, remove, setState, setUsername, setUserId }
 }

@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default function Register(props) {
   const history = useHistory();
  
-  const { setUsername } = props;
-  const [state, setState] = useState({
-    userName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  })
+  const { setUsername, state, setUserId, setState } = props;
+
+  // const [state, setState] = useState({
+  //   userName: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: ""
+  // })
  
   const [error, setError] = useState({
     userError: "",
@@ -100,7 +102,8 @@ export default function Register(props) {
         );
           return
         } else { 
-            setUsername(state.userName)  
+            setUsername(state.userName) 
+            setUserId(cookies.get('userId')) 
             history.push('/templates')
         }
       })

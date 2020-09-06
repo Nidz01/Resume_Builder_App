@@ -9,7 +9,7 @@ export default function Guidelines(props) {
             While most people walk up the hiring ladder, you put on your crimson cape and soar upwards at supersonic speed.
             This how to write a resume guide outlines the most important building blocks for creating exactly this type of amazing resume.
           </p>
-          <h2>Top 10 Resume Facts You Need to Know</h2>
+          <h2 >Top 10 Resume Facts You Need to Know</h2>
           <p>As you write your resume, keep your audience–as well as our top 10 facts–in mind:
             <ol>
               <li class="loaded">"Recruiters spend an average of only about" <b>6 seconds</b> "on each resume before making a decision for interview call."</li>

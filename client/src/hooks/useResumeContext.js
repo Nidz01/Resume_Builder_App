@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 export default function useResumeContext(props) {
-
   const [resumeState, setResumeState] = useState({
     summary: {body: ''},
     core_competencies: {body: ''},
@@ -39,15 +38,6 @@ export default function useResumeContext(props) {
       }
     ]
   });
-
-  // const { state } = Autorization();
-  // if (state.userId) {
-  //   console.log(state.userId)
-  // axios.post('/resume/resume', { userId: state.userId })
-  //       .then(response => {console.log(response)
-  //       })
-  //       .catch(error => console.log('Error:', error));
-  // }
 
   const isResumeCompleted = (props) => {
     //let profileCount = 0;

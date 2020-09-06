@@ -42,17 +42,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       flexDirection: 'column',
       alignItems: 'stretch'
     },
-    headertitle_row: {
-      flexDirection: 'row',
-      textAlign: 'center',
-      padding: 5,
-      
-    },
-    headerdetailColumn: {
-      flexDirection: 'column',
-      flexGrow: 9,
-      textTransform: 'uppercase',
-    },
     headerlinkColumn: {
       flexDirection: 'column',
       flexGrow: 3,
@@ -60,22 +49,33 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       justifySelf: 'flex-end',
       fontFamily: 'Lato Italic'
     },
+    headerdetailColumn: {
+      flexDirection: 'column',
+      flexGrow: 9,
+      textTransform: 'uppercase',
+    },
     headerdetailRow: {
       flexDirection: 'row',
       flexGrow: 9,
-      
     },
     headername: {
       fontSize: 24,
       fontFamily: 'Roboto Regular',
     },
-  
+    headertitle_row: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: "center",
+      padding: "1px",
+      textTransform: 'uppercase'
+    },
     headertitle: {
+      textAlign: "justify",
+      display: 'flex',
       fontSize: 14,
-      textAlign: 'center',
+      fontFamily: 'Lato Bold',
       color: "red",
     },
-  
     headersubtitle: {
       fontSize: 10,
       justifySelf: 'flex-end',
@@ -87,7 +87,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       textDecoration: 'none',
       alignSelf: 'flex-end',
       justifySelf: 'flex-end',
-  
     },
     
     //End of Profile
@@ -283,8 +282,8 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
           </View>
         </View>
         <View style={styles.headertitle_row}>
-          <Text debug={true} style={styles.headertitle}>{prof_title[0]}</Text>   
-          <Text debug={true} style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold'}]}>{prof_title[1]}</Text>  
+          <Text style={styles.headertitle}>{prof_title[0]}</Text>   
+          <Text style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold', marginLeft: "5px"}]}>{prof_title[1]}</Text>  
         </View>
       </View>
     );
