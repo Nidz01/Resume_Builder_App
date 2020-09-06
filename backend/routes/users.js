@@ -48,7 +48,7 @@ module.exports = (db) => {
         }    
       }) 
       .catch(err => console.log(err));
-    });
+  });
 
   router.post('/login', (req, res) => {
     const {userName, password} = req.body;

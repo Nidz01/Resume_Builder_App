@@ -15,23 +15,23 @@ export default function QualificationList(props) {
   //     setShow(false);
   //the function saves the new resume to DB 
   const saveResume=() => {
-    // if (isResumeCompleted(resumeState)) {
-    //   const resumeData = {
-    //     profile: resumeState.profile,
-    //     summary: resumeState.summary,
-    //     educations: resumeState.educations,
-    //     achievements: resumeState.achievements,
-    //     experiences: resumeState.experiences,
-    //     core_competencies: resumeState.core_competencies
-    //   } 
-    //   axios.post('/resume', {resume_data: resumeData, user_id: userId })
-    //       .then(response => {setResumeState(response.data.resume_data)
+    if (isResumeCompleted(resumeState)) {
+      const resumeData = {
+        profile: resumeState.profile,
+        summary: resumeState.summary,
+        educations: resumeState.educations,
+        achievements: resumeState.achievements,
+        experiences: resumeState.experiences,
+        core_competencies: resumeState.core_competencies
+      } 
+      axios.post('/resume', {resume_data: resumeData, user_id: userId })
+          .then(response => {setResumeState(response.data.resume_data)
           history.push("/download");
-    //       })
-    //     .catch(error => console.log('Error:', error));
-    //   } else {
-    //   console.log('please enter data');
-    // }
+          })
+        .catch(error => console.log('Error:', error));
+      } else {
+      console.log('please enter data');
+    }
   }
 
   //the function adds new empty education object to the resumeState and shows a new education form

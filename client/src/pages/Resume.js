@@ -19,8 +19,7 @@ const MaybePreview = (props) => {
 
 export default function Resume(props) {
   const { userId, resumeState, setResumeState, isResumeCompleted } = props;
-  console.log('befor',userId)
-///////////
+//
  useEffect(() => {
     getResume(userId)
     .then(response => {
@@ -67,7 +66,6 @@ export default function Resume(props) {
       }
     })
  },[]);
-/////////
 
   const routes = [
     {
