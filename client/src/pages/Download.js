@@ -150,8 +150,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       fontSize: 11,
     
     },
-    
-    
     skillstitleRow: {
       fontFamily: 'Lato Bold',
       flexDirection: 'row',
@@ -177,7 +175,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     //End of Achievents
       pdfbody: {
           width: 800,
-          height: 720
+          height: 1140
       },
       page: {
         padding: 30,

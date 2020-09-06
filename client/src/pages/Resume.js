@@ -19,7 +19,8 @@ const MaybePreview = (props) => {
 
 export default function Resume(props) {
   const { userId, resumeState, setResumeState, isResumeCompleted } = props;
-//
+
+//Pass to the getResume function user_id and check if the user_id exists in resume table. If it does then show resume date from db otherwise setResumeState by default 
  useEffect(() => {
     getResume(userId)
     .then(response => {
