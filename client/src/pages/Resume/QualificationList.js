@@ -7,12 +7,7 @@ import { useHistory } from 'react-router-dom';
 export default function QualificationList(props) {
   const { resumeState, setResumeState, userId, isResumeCompleted} = props;
   const history = useHistory();
-  //const [show, setShow] = useState(true);
   
-  // console.log('successful',Object.values(resumeState.profile))
-  //   //if (resumeState.profile !== '' || resumeState.summary !== '' || resumeState.educations !== '' || resumeState.achievement !== '' || resumeState.experiences !== '' || resumeState.core_competencies !== '') {
-  //     if (Object.keys(resumeState.profile).length > 9) {
-  //     setShow(false);
   //the function saves the new resume to DB 
   const saveResume=() => {
     if (isResumeCompleted(resumeState)) {
@@ -68,10 +63,36 @@ export default function QualificationList(props) {
       <div>
           {renderEducation()} 
       </div> 
-      <div  style={{display: "flex", flexDirection: "column", padding: "25px", alignItems: "center"}}>
-      <Button style={{ width: "300px", height: "40px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit" onClick= {addQualification}>Add more Qualification</Button>
-      <br/>
-      <Button style={{backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", border: "transparent"}}type="submit" onClick= {saveResume} >Save All</Button>
+      <div  
+        style={{
+          display: "flex", 
+          flexDirection: "column", 
+          padding: "20px", 
+          alignItems: "center"}}>
+        <Button 
+          style={{ 
+            width: "300px", 
+            height: "40px", 
+            border: "transparent", 
+            borderRadius: "20px", 
+            textAlign: "center", 
+            backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", 
+            color: "#fff", 
+            fontFamily: "Montserrat, sans-serif", 
+            fontSize: "1rem", 
+            textTransform: "capitalize", 
+            cursor: "pointer"}} 
+            variant="primary" type="submit" onClick= {addQualification}>
+          Add more Qualification
+        </Button>
+        <br/>
+        <Button 
+          style={{
+            backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", 
+            border: "transparent"}}
+            type="submit" onClick= {saveResume} >
+          Save All
+        </Button>
       </div>
     </div>
     )

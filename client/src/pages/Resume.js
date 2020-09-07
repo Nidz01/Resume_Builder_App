@@ -28,11 +28,18 @@ export default function Resume(props) {
        setResumeState(response.data[0].resume_data)
       }  else {
         setResumeState({
-          summary: {body: ''},
-          core_competencies: {body: ''},
-          achievements: {body: ''},
+          summary: {
+            body: ''
+          },
+          core_competencies: {
+            body: ''
+          },
+          achievements: {
+            body: ''
+          },
           educations: [
-            {id:1, 
+            {
+              id:1, 
               institution:'', 
               type_degree:'', 
               graduat_date:'', 
@@ -52,15 +59,15 @@ export default function Resume(props) {
           },
           experiences: [
             {
-            id: 1,
-            job_title: '',
-            employer_name: '',
-            employer_description: '',
-            city: '',
-            country: '',
-            start_date: '',
-            end_date: '',
-            responsibilities: ''
+              id: 1,
+              job_title: '',
+              employer_name: '',
+              employer_description: '',
+              city: '',
+              country: '',
+              start_date: '',
+              end_date: '',
+              responsibilities: ''
             }
           ]
         })
@@ -107,10 +114,11 @@ export default function Resume(props) {
   return(
     <header>
       <main className="container flex items-start signup">
-    <Router>
+        <Router>
           <aside className= "resume_nav" >
             <ul>
-              <br/><br/>
+              <br/>
+              <br/>
               <li>
                 <Link to="/profile">PROFILE</Link>
               </li>
@@ -129,24 +137,24 @@ export default function Resume(props) {
               </li>
             </ul>
           </aside>
-          <Switch>
-            {routes.map((route, index) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                exact={route.exact}
-                children={route.main}
-              />
-            ))}
-          </Switch>
-          <Switch>
-            <Route path="/download">
-              <Download userId={userId} resumeState={resumeState}/>
-            </Route>
-          </Switch>
-          <MaybePreview userId={userId} resumeState={resumeState}/>
-    </Router>    
-    </main>
+        <Switch>
+          {routes.map((route, index) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              exact={route.exact}
+              children={route.main}
+            />
+          ))}
+        </Switch>
+        <Switch>
+          <Route path="/download">
+            <Download userId={userId} resumeState={resumeState}/>
+          </Route>
+        </Switch>
+        <MaybePreview userId={userId} resumeState={resumeState}/>
+        </Router>    
+      </main>
     </header>
   );
 }

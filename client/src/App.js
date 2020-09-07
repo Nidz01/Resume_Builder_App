@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,12 +16,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Templates from "./pages/Templates";
 import Resume from './pages/Resume';
-import getResume from './helpers/getResume';
 
 function App(props) {
   const { state, remove, setUsername, setUserId, setState } = Autorization();
   const {resumeState, setResumeState, isResumeCompleted} = useResumeContext();
-console.log('app.js',state.userId)
 
   return (
     <div className="App">
@@ -35,27 +33,24 @@ console.log('app.js',state.userId)
           <li> <Link onClick={remove} to="/">{state.userName ? 'Logout' : null} </Link></li>
          </ul> 
         <Switch>
-            <Route exact path="/">
-              <Home/>
-            </Route>
-            <Route path="/guidelines">
-              <Guidelines/>
-            </Route>
-            <Route path="/templates">
-              <Templates setUsername={setUsername}/>
-            </Route>
-            <Route path="/login">
-              <Login setUsername={setUsername} setUserId={setUserId} state ={state} setState={setState}/>
-            </Route>
-            <Route path="/register">
-              <Register setUsername={setUsername} setUserId={setUserId} state ={state} setState={setState}/>
-            </Route>
-            <Route path="/resume">
-              {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted}/> : <Login setUsername={setUsername} setUserId={setUserId} state ={state} setState={setState}/>}
-            </Route>
-            {/* <Route path="/pdf">
-              <PDF/>
-            </Route> */}
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/guidelines">
+            <Guidelines/>
+          </Route>
+          <Route path="/templates">
+            <Templates setUsername={setUsername}/>
+          </Route>
+          <Route path="/login">
+            <Login setUsername={setUsername} setUserId={setUserId} state ={state} setState={setState}/>
+          </Route>
+          <Route path="/register">
+            <Register setUsername={setUsername} setUserId={setUserId} state ={state} setState={setState}/>
+          </Route>
+          <Route path="/resume">
+            {state.userName ? <Resume userId={state.userId} resumeState={resumeState} setResumeState={setResumeState} isResumeCompleted={isResumeCompleted}/> : <Login setUsername={setUsername} setUserId={setUserId} state ={state} setState={setState}/>}
+          </Route>
         </Switch>
       </Router>
     </div>

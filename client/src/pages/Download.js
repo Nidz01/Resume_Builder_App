@@ -357,7 +357,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
           <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.start_date} - </Text>
           <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.end_date}</Text>
         </View>
-            <Text style={styles. skillsdescrip}>{experience.employer_description}</Text>
+            <Text style={styles.skillsdescrip}>{experience.employer_description}</Text>
             <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
             <Text style={styles.skillstext}>{experience.responsibilities}</Text>
         </View>

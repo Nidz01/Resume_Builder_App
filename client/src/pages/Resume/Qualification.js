@@ -113,11 +113,42 @@ export default function Qualification(props) {
             </Form.Control.Feedback>
       </Form.Group>
       </Form.Row>
-      <div style={{display: "flex", flexDirection: "row", alignItem: "center", justifyContent: "space-between"}}>
-      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" onClick={deleteQualification}  type="button" >
+      <div 
+        style={{
+          display: "flex", 
+          flexDirection: "row", 
+          alignItem: "center", 
+          justifyContent: "space-between"}}>
+        <Button 
+          style={{ 
+            height: "40px", 
+            border: "transparent", 
+            borderRadius: "20px", 
+            textAlign: "center", 
+            backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", 
+            color: "#fff", 
+            fontFamily: "Montserrat, sans-serif", 
+            fontSize: "1rem", 
+            textTransform: "capitalize", 
+            cursor: "pointer"}} 
+            variant="primary" onClick={deleteQualification}  type="button" >
           Delete Qualification
         </Button>
-      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit">Save Qualification</Button>
+        <Button 
+          style={{ 
+            height: "40px", 
+            border: "transparent", 
+            borderRadius: "20px", 
+            textAlign: "center", 
+            backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", 
+            color: "#fff", 
+            fontFamily: "Montserrat, sans-serif", 
+            fontSize: "1rem", 
+            textTransform: "capitalize", 
+            cursor: "pointer"}} 
+            variant="primary" type="submit">
+          Save Qualification
+        </Button>
       </div>
   </Form>
     </div>

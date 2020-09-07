@@ -9,13 +9,6 @@ export default function Register(props) {
   const history = useHistory();
  
   const { setUsername, state, setUserId, setState } = props;
-
-  // const [state, setState] = useState({
-  //   userName: "",
-  //   email: "",
-  //   password: "",
-  //   confirmPassword: ""
-  // })
  
   const [error, setError] = useState({
     userError: "",

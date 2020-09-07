@@ -168,10 +168,35 @@ export default function Experience(props) {
       </Form.Group>
 
       <div style={{display: "flex", flexDirection: "row", alignItem: "center", justifyContent: "space-between"}}>
-      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" onClick={deleteExperience} type="button">
-        Delete Experience
+      <Button 
+        style={{ 
+          height: "40px", 
+          border: "transparent", 
+          borderRadius: "20px", 
+          textAlign: "center", 
+          backgroundImage: "linear-gradient(to right, #8a4278, #cc0099)", 
+          color: "#fff", 
+          fontFamily: "Montserrat, sans-serif", 
+          fontSize: "1rem", 
+          textTransform: "capitalize", 
+          cursor: "pointer"}} 
+        variant="primary" onClick={deleteExperience} type="button">
+          Delete Experience
       </Button>
-      <Button style={{ flexBasis: "auto", height: "30px", border: "transparent", borderRadius: "20px", textAlign: "center", backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", color: "#fff", fontFamily: "Montserrat, sans-serif", fontSize: "1rem", textTransform: "capitalize", cursor: "pointer"}} variant="primary" type="submit">Save Experience</Button>
+      <Button 
+        style={{ 
+          height: "40px", 
+          border: "transparent", 
+          borderRadius: "20px", 
+          textAlign: "center", 
+          backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", 
+          color: "#fff", 
+          fontFamily: "Montserrat, sans-serif", 
+          fontSize: "1rem", 
+          textTransform: "capitalize", 
+          cursor: "pointer"}} 
+          variant="primary" type="submit">
+          Save Experience</Button>
       </div>
     </Form>
   )

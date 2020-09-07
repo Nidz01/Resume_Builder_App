@@ -40,7 +40,7 @@ export default function Templates(props) {
       <main className="container flex flex-column items-center justify-center signup">
         <form style={{ display: 'flex', flexDirection: 'column' ,border: "60px solid #fff", alignItems: 'center', justifyContent: "space-between" }}>
           <div className="flex flex-column justify-center items-center">
-            <h1>Here are your templates</h1><br/>
+            <h1 >Here are your templates</h1><br/>
             <h2>Pick one that suits your work experience.</h2><br/>
           </div>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>

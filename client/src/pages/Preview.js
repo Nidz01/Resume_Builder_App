@@ -1,13 +1,5 @@
 import React from "react";
-import './preview.css';
 import profTitle from '../helpers/pdfResume';
-import LatoBold from "./fonts/Lato/Lato-Bold.ttf";
-import LatoItalic from "./fonts/Lato/Lato-Italic.ttf";
-import LatoRegular from "./fonts/Lato/Lato-Regular.ttf";
-import LatoLight from "./fonts/Lato/Lato-Light.ttf";
-import LatoBoldItalic from "./fonts/Lato/Lato-BoldItalic.ttf";
-import OpenSansRegular from "./fonts/Open_Sans/OpenSans-Regular.ttf";
-import RobotoRegular from "./fonts/Roboto/Roboto-Regular.ttf";
 
 export default function Preview (props) {
     const resumeObj = props.resumeState;
@@ -15,8 +7,6 @@ export default function Preview (props) {
     const prof_title = profTitle(props.resumeState.profile.prof_title)
     const educationArray = resumeObj.educations;
     const experienceArray = resumeObj.experiences;
-
-    console.log('from preview, props:', props);
     
     const styles = {
       page: {
@@ -32,7 +22,6 @@ export default function Preview (props) {
     //Profile
       headercontainer: {
         boxSizing: "border-box",
-        //flexBasis: "50%",
         wordWrap: "break-word",
         overflowWrap: "break-word",
         flexFlow: "row wrap",
@@ -167,9 +156,6 @@ export default function Preview (props) {
       text: {
         fontSize: 8,
         whiteSpace: "pre-line",
-        // flexBasis: "50%",
-        // flexFlow: "row wrap"
-        //marginBottom: "5px",
       },
       titleRed: {
         color:"red",

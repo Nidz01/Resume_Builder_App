@@ -8,12 +8,6 @@ const cookies = new Cookies();
 export default function Login(props) {
   const history = useHistory();
   const { setUsername, setUserId, state, setState} = props;
-
-  // const [state, setState] = useState({
-  //   userName: "",
-  //   password: "",
-  //   userId: ""
-  // })
   
   const [error, setError] = useState({
     userError:"",
