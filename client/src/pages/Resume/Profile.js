@@ -27,7 +27,7 @@ export default function Profile(props) {
 
   return (
     <Form noValidate validated={validated}
-      style={{padding:  "50px", flexDirection: "row"}}
+      style={{padding:  "25px", flexDirection: "row", width: "40%"}}
       onSubmit={handleSubmit}
     >
       <Form.Row>
@@ -43,12 +43,14 @@ export default function Profile(props) {
       <Form.Row>
           <Form.Group controlId="first_name">
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Profile Title" required defaultValue ={(props.profileState==null) ? "" : props.profileState.first_name} onChange={Change}/>
+            <Form.Control type="text" placeholder="Enter Your First Name" required defaultValue ={(props.profileState==null) ? "" : props.profileState.first_name} onChange={Change}/>
             <Form.Control.Feedback type="invalid">
                   Please provide a name.
                 </Form.Control.Feedback>
           </Form.Group>
+      </Form.Row>
 
+      <Form.Row>
           <Form.Group controlId="last_name">
             <Form.Label>Last Name</Form.Label>
             <Form.Control type="text" placeholder="Enter Your Last Name" required defaultValue ={(props.profileState==null) ? "" : props.profileState.last_name} onChange={Change}/>
@@ -66,7 +68,9 @@ export default function Profile(props) {
                   Please provide a valid email.
                 </Form.Control.Feedback>
         </Form.Group>
+        </Form.Row>
 
+        <Form.Row>
           <Form.Group controlId="phone_number">
             <Form.Label>Phone Number</Form.Label>
             <Form.Control type="number" placeholder="only numbers e.g 2227771990" required defaultValue ={(props.profileState==null) ? "" : props.profileState.phone_number} onChange={Change} />

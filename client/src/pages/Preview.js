@@ -15,6 +15,8 @@ export default function Preview (props) {
     const prof_title = profTitle(props.resumeState.profile.prof_title)
     const educationArray = resumeObj.educations;
     const experienceArray = resumeObj.experiences;
+
+    console.log('from preview, props:', props);
     
     const styles = {
       page: {

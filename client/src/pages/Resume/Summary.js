@@ -28,7 +28,7 @@ export default function Summary(props) {
 
    return (
       <Form noValidate validated={validated}
-        style={{padding:  "50px"}}
+      style={{padding:  "25px", flexDirection: "row", width: "40%"}}
         onSubmit={handleSubmit}
       >
         <Form.Group controlId="body">

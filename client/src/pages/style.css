@@ -63,7 +63,7 @@ button {
 }
 
 .container {
-  max-width: 90%;
+  max-width: 98%;
   margin: 0 auto;
 }
 
@@ -290,8 +290,9 @@ ol li.loaded::before{
 .resume_nav{
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
-  width: 15%;
+  padding-left: 10px;
+  justify-content: space-between;
+  width: 25%;
   background-image: linear-gradient(to right, #bc4e9cd1, #f80759b3);
 }
 

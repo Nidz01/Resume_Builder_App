@@ -109,7 +109,7 @@ export default function Resume(props) {
       <main className="container flex items-start signup">
     <Router>
           <aside className= "resume_nav" >
-            <ul style={{}}>
+            <ul>
               <br/><br/>
               <li>
                 <Link to="/profile">PROFILE</Link>

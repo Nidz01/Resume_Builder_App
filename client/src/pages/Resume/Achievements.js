@@ -28,7 +28,7 @@ export default function Achievements(props) {
   
   return (
     <Form noValidate validated={validated}
-      style={{padding:  "20px"}}
+      style={{padding:  "25px", flexDirection: "row", width: "40%"}}
       onSubmit={handleSubmit}
     >
       <Form.Group controlId="body">

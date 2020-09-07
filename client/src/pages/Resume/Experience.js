@@ -53,7 +53,7 @@ export default function Experience(props) {
 
   return (
     <Form noValidate validated={validated}
-      style={{padding: "20px", width: "100%" }}
+    style={{padding:  "25px", flexDirection: "row", width: "100%"}}
       onSubmit={handleSubmit}
     >
       <Form.Group controlId="job_title">
