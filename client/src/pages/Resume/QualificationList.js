@@ -91,7 +91,7 @@ export default function QualificationList(props) {
             backgroundImage: "linear-gradient(to right, #bc4e9c, #f80759)", 
             border: "transparent"}}
             type="submit" onClick= {saveResume} >
-          Save All
+          Preview in Pdf
         </Button>
       </div>
     </div>

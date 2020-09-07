@@ -45,8 +45,8 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     headerlinkColumn: {
       flexDirection: 'column',
       flexGrow: 3,
-      alignSelf: 'flex-end',
-      justifySelf: 'flex-end',
+      alignItems: 'flex-end',
+      justifyContent: 'flex-end',
       fontFamily: 'Lato Italic'
     },
     headerdetailColumn: {
@@ -175,7 +175,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     //End of Achievents
       pdfbody: {
           width: 800,
-          height: 1140
+          height: 1015
       },
       page: {
         padding: 30,

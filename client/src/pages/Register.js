@@ -9,6 +9,12 @@ export default function Register(props) {
   const history = useHistory();
  
   const { setUsername, state, setUserId, setState } = props;
+
+  const [registerState, setRegisterState] = useState( {
+    userName: "",
+    password: "",
+    userId: ""
+  });
  
   const [error, setError] = useState({
     userError: "",
@@ -19,7 +25,7 @@ export default function Register(props) {
  
   const Change = (event) => { 
   const { name, value } = event.target
-  setState(prev => ({
+  setRegisterState(prev => ({
     ...prev,
    [name]: value
     }))
@@ -30,7 +36,7 @@ export default function Register(props) {
     setError('')
     let anyError = false;
     
-    if (state.userName === '') {
+    if (registerState.userName === '') {
      setError(prev => ({
        ...prev,
        userError:"Required field" 
@@ -39,7 +45,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.email=== '') {
+    if (registerState.email=== '') {
       setError(prev => ({
         ...prev,
         emailError:"Required field" 
@@ -48,7 +54,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.password=== '') {
+    if (registerState.password=== '') {
       setError(prev => ({
         ...prev,
         passwordError:"Required field" 
@@ -57,7 +63,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.confirmPassword=== '') {
+    if (registerState.confirmPassword=== '') {
       setError(prev => ({
         ...prev,
         confirmError:"Required field" 
@@ -66,7 +72,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.password !== state.confirmPassword){
+    if (registerState.password !== registerState.confirmPassword){
       setError(prev => ({
         ...prev,
         confirmError:"Passwords do not match" 
@@ -75,7 +81,7 @@ export default function Register(props) {
     anyError = true;
     }
 
-    if (state.password.length < 6) {
+    if (registerState.password.length < 6) {
       setError(prev => ({
         ...prev,
         passwordError:"Passwords must consist of at least 6 characters." 
@@ -85,7 +91,7 @@ export default function Register(props) {
     }
 
     if (anyError === false) {
-      axios.post('/users', { email: state.email, password: state.password, name: state.userName,withCredentials: true  })
+      axios.post('/users', { email: registerState.email, password: registerState.password, name: registerState.userName,withCredentials: true  })
       .then(response => {
         if(response.data === false) {
           setError(prev => ({
@@ -95,7 +101,7 @@ export default function Register(props) {
         );
           return
         } else { 
-            setUsername(state.userName) 
+            setUsername(registerState.userName) 
             setUserId(cookies.get('userId')) 
             history.push('/templates')
         }

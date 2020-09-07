@@ -7,7 +7,13 @@ const cookies = new Cookies();
 
 export default function Login(props) {
   const history = useHistory();
-  const { setUsername, setUserId, state, setState} = props;
+  const { setUsername, setUserId} = props;
+
+  const [loginState, setLoginState] = useState( {
+    userName: "",
+    password: "",
+    userId: ""
+  });
   
   const [error, setError] = useState({
     userError:"",
@@ -17,18 +23,19 @@ export default function Login(props) {
   
   const Change = (event) => {
     const { name, value } = event.target
-      setState(prev => ({
+      setLoginState(prev => ({
         ...prev,
         [name]: value
       }))
   }
   
   const login = (event) => {
+    console.log('from login')
     event.preventDefault()
     
     setError('');
     let anyError = false;
-    if (state.userName === '') {
+    if (loginState.userName === '') {
       setError(prev => ({
         ...prev,
         userError:"Username is required" 
@@ -37,7 +44,7 @@ export default function Login(props) {
       anyError = true;
     }
 
-    if (state.password === '') {
+    if (loginState.password === '') {
       setError(prev => ({
         ...prev,
         passwordError:"Password is required" 
@@ -48,14 +55,14 @@ export default function Login(props) {
    
     if(anyError === false) {
       event.preventDefault()
-      axios.post('/users/login', { userName: state.userName, password:state.password, withCredentials: true})
+      axios.post('/users/login', { userName: loginState.userName, password:loginState.password, withCredentials: true})
       .then(response => {
         //it doesn't work since Login.js component doesn't receive anything from the backend to identify if the password is correct
         if(response.data === false){
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
         } else {
           //I left those comment so far since I may need to use this construction in another component. Most likely in App.js
-              setUsername(state.userName) 
+              setUsername(loginState.userName) 
               setUserId(cookies.get('userId'))
               history.push('/templates')
         }
