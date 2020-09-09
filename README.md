@@ -4,17 +4,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A resume builder web app that takes the hassle out of resume writing. It lets the user register on website, login and choose resume template list. After choosing template, the user can follow easy prompts to create the perfect job-ready resume effortlessly. It also offers to edit and save resume moreover download a pdf copy for their own record.
 
 ## Project Glimpse
-!["Home Page"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Home.png)
+!["Home Page"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Home.png?raw=true)
 
-!["Registration"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Registration.gif)
+!["Registration"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Registration.gif?raw=true)
 
-!["Login"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Login.gif)
+!["Login"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Login.gif?raw=true)
 
-!["Template Selection "](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Template.gif)
+!["Template Selection "](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Template.gif?raw=true)
 
-!["Create Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Create_Resume.gif)
+!["Create Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Create_Resume.gif?raw=true)
 
-!["Pdf Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/pdf_Resume.gif)
+!["Pdf Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/pdf_Resume.gif?raw=true)
 
 ## Features
 Login/Registration
