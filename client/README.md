@@ -6,15 +6,15 @@ A resume builder web app that takes the hassle out of resume writing. It lets th
 ## Project Glimpse
 !["Home Page"](https://github.com/Nidz01/Resume_Builder_App/blob/master/docs/Home.png?raw=true)
 
-!["Registration"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Registration.gif?raw=true)
+!["Registration"](https://github.com/Nidz01/Resume_Builder_App/blob/master/docs/Registration.gif?raw=true)
 
-!["Login"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Login.gif?raw=true)
+!["Login"](https://github.com/Nidz01/Resume_Builder_App/blob/master/docs/Login.gif?raw=true)
 
-!["Template Selection "](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Template.gif?raw=true)
+!["Template Selection "](https://github.com/Nidz01/Resume_Builder_App/blob/master/docs/Template.gif?raw=true)
 
 !["Create Resume"](https://github.com/Nidz01/Resume_Builder_App/blob/master/docs/Create_Resume.gif?raw=true)
 
-!["Pdf Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/pdf_Resume.gif?raw=true)
+!["Pdf Resume"](https://github.com/Nidz01/Resume_Builder_App/blob/master/docs/pdf_Resume.gif?raw=true)
 
 ## Features
 Login/Registration
