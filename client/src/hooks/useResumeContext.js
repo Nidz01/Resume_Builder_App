@@ -47,6 +47,7 @@ export default function useResumeContext(props) {
     ]
   });
 
+  //Validation fields 
   const isResumeCompleted = (props) => {
 
     for (let key in props.profile) {

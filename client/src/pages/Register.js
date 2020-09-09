@@ -7,8 +7,7 @@ const cookies = new Cookies();
 
 export default function Register(props) {
   const history = useHistory();
- 
-  const { setUsername, state, setUserId, setState } = props;
+  const { setUsername, setUserId, } = props;
 
   const [registerState, setRegisterState] = useState( {
     userName: "",
@@ -23,6 +22,7 @@ export default function Register(props) {
     confirmError: ""
   })
  
+  //Update local state when any field changes. The 'name' variable is the key of the field
   const Change = (event) => { 
   const { name, value } = event.target
   setRegisterState(prev => ({
@@ -90,6 +90,7 @@ export default function Register(props) {
     anyError = true;
     }
 
+    //If field validation successful then pass userName, email and password to db. If the userName or email exists in db then show error message otherwise save the data to db and setUsername from local state and setUserId from cookies and riderect them to templates form.
     if (anyError === false) {
       axios.post('/users', { email: registerState.email, password: registerState.password, name: registerState.userName,withCredentials: true  })
       .then(response => {

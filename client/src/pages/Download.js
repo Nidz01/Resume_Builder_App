@@ -16,21 +16,6 @@ const newPhone = `(${props.resumeState.profile.phone_number.slice(0,3)})-${props
 const prof_title = profTitle(props.resumeState.profile.prof_title)
 
   const styles = StyleSheet.create ({
-    //List
-    item: {
-      flexDirection: 'row',
-      marginBottom: 5,
-    },
-    bulletPoint: {
-      width: 10,
-      fontSize: 10,
-    },
-    itemContent: {
-      flex: 1,
-      fontSize: 10,
-      fontFamily: 'Lato',
-    },
-    //End of List
     //Profile
     headercontainer_address: {
       flexDirection: 'row',
@@ -53,15 +38,15 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     headerdetailColumn: {
       flexDirection: 'column',
       flexGrow: 9,
-      textTransform: 'uppercase',
+      textTransform: 'uppercase'
     },
     headerdetailRow: {
       flexDirection: 'row',
-      flexGrow: 9,
+      flexGrow: 9
     },
     headername: {
       fontSize: 24,
-      fontFamily: 'Roboto Regular',
+      fontFamily: 'Roboto Regular'
     },
     headertitle_row: {
       display: 'flex',
@@ -75,23 +60,21 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       display: 'flex',
       fontSize: 14,
       fontFamily: 'Lato Bold',
-      color: "red",
+      color: "red"
     },
     headersubtitle: {
       fontSize: 10,
       justifySelf: 'flex-end',
-      fontFamily: 'Lato',
+      fontFamily: 'Lato'
     },
     headerlink: {
       fontSize: 8,
       color: 'black',
       textDecoration: 'none',
       alignSelf: 'flex-end',
-      justifySelf: 'flex-end',
+      justifySelf: 'flex-end'
     },
-    
-    //End of Profile
-    //exp
+    //Experience
     exptitle: {
       fontSize: 11
     },
@@ -106,8 +89,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       fontSize: 11,
       margin: 0
     },
-    //Experience Styling ends
-
     //Skills and Qualification
     skillsmaincontainer: {
       flexDirection: 'row',
@@ -138,19 +119,12 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     skillsdescrip: {
       fontFamily: 'Roboto Regular',
       fontSize: 10,
-      marginBottom: 5,
-
+      marginBottom: 5
     },
-    
+   
     text: {
       fontFamily: 'Lato',
-      fontSize: 11,
-      marginBottom: 11,
-    },
-    text1: {
-      fontFamily: 'Lato',
-      fontSize: 11,
-    
+      fontSize: 11
     },
     skillstitleRow: {
       fontFamily: 'Lato Bold',
@@ -162,9 +136,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     skillstitleRed: {
       color:"red"
     },
-    
-    //END of Skills and Qualification
-
     //Achievements
     rowcontainer: {
       flexDirection: 'column',
@@ -174,227 +145,227 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       padding: 10,
       width: 532
     },
-
-    //End of Achievents
-
-      pdfbody: {
-          width: 800,
-          height: 1015
-      },
-      page: {
-        padding: 30,
-      },
-      container: {
-        flex: 1,
+    //page
+    pdfbody: {
+        width: 800,
+        height: 1015
+    },
+    page: {
+      padding: 30,
+    },
+    container: {
+      flex: 1,
+      flexDirection: 'column',
+      '@media max-width: 400': {
         flexDirection: 'column',
-        '@media max-width: 400': {
-          flexDirection: 'column',
-        },
-        borderWidth: 3,
-        borderColor: '#ffccb3',
       },
-      image: {
-        marginBottom: 10,
-      },
-      leftColumn: {
-        flexDirection: 'column',
-        paddingTop: 0,
+      borderWidth: 3,
+      borderColor: '#ffccb3',
+    },
+    image: {
+      marginBottom: 10,
+    },
+    leftColumn: {
+      flexDirection: 'column',
+      paddingTop: 0,
+      paddingRight: 0,
+      '@media max-width: 400': {
+        width: '100%',
         paddingRight: 0,
-        '@media max-width: 400': {
-          width: '100%',
-          paddingRight: 0,
-        },
-        '@media orientation: landscape': {
-          width: 200,
-        }
       },
-      rightColumn: {
-        flexDirection: 'column',
-        width: 230,
-        paddingTop: 0,
+      '@media orientation: landscape': {
+        width: 200,
+      }
+    },
+    rightColumn: {
+      flexDirection: 'column',
+      width: 230,
+      paddingTop: 0,
+      paddingRight: 0,
+      '@media max-width: 400': {
+        width: '100%',
         paddingRight: 0,
-        '@media max-width: 400': {
-          width: '100%',
-          paddingRight: 0,
-        },
-        '@media orientation: landscape': {
-          width: 200,
-        },
       },
-    });
-    Font.register( {
-      family: 'Open Sans',
-      src: OpenSansRegular
-    });
-    Font.register( {
-      family: 'Lato',
-      src: LatoRegular,
-    });
-    Font.register( {
-      family: 'Lato Light',
-      src: LatoLight,
-    });
-    Font.register( {
-      family: 'Lato Italic',
-      src: LatoItalic,
-    });
-    Font.register( {
-      family: 'Lato Bold',
-      src: LatoBold,
-    });
-    Font.register( {
-      family: 'Lato BoldItalic',
-      src: LatoBoldItalic,
-    });
-    
-    Font.register( {
-      family: 'Roboto Regular',
-      src: RobotoRegular,
-    });
-     
-    const Profile = () => (
-      <View style={styles.headercontainer}>
-        <View style={styles.headercontainer_address}>
-          <View style={styles.headerdetailColumn}>
-            <View style={styles.headerdetailRow}>
-              <Text style={styles.headername}>{resumeObj.profile.first_name} </Text>
-              <Text style={[styles.headername, {color: "red"}]}>{resumeObj.profile.last_name}</Text>
-            </View>
-          </View>
-          <View style={styles.headerlinkColumn}>
-            <View style={styles.headerdetailRow}>
-              <Text style={[styles.headerlink, {color: 'red'}]}>{resumeObj.profile.address}, </Text>
-              <Text style={styles.headerlink}>{resumeObj.profile.city}, </Text>
-              <Text style={styles.headerlink}>{resumeObj.profile.province}, </Text>
-              <Text style={styles.headerlink}>{resumeObj.profile.postal_code}</Text>
-            </View>
-            <View style={styles.headerdetailRow}>
-              <Text style={styles.headerlink}>{newPhone}, </Text>
-              <Text style={[styles.headerlink, {color: 'red'}]}>{resumeObj.profile.email}</Text>
-            </View>
+      '@media orientation: landscape': {
+        width: 200,
+      },
+    },
+  });
+  Font.register( {
+    family: 'Open Sans',
+    src: OpenSansRegular
+  });
+  Font.register( {
+    family: 'Lato',
+    src: LatoRegular,
+  });
+  Font.register( {
+    family: 'Lato Light',
+    src: LatoLight,
+  });
+  Font.register( {
+    family: 'Lato Italic',
+    src: LatoItalic,
+  });
+  Font.register( {
+    family: 'Lato Bold',
+    src: LatoBold,
+  });
+  Font.register( {
+    family: 'Lato BoldItalic',
+    src: LatoBoldItalic,
+  });
+  
+  Font.register( {
+    family: 'Roboto Regular',
+    src: RobotoRegular,
+  });
+   
+  const Profile = () => (
+    <View style={styles.headercontainer}>
+      <View style={styles.headercontainer_address}>
+        <View style={styles.headerdetailColumn}>
+          <View style={styles.headerdetailRow}>
+            <Text style={styles.headername}>{resumeObj.profile.first_name} </Text>
+            <Text style={[styles.headername, {color: "red"}]}>{resumeObj.profile.last_name}</Text>
           </View>
         </View>
-        <View style={styles.headertitle_row}>
-          <Text style={styles.headertitle}>{prof_title[0]}</Text>   
-          <Text style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold', marginLeft: "5px"}]}>{prof_title[1]}</Text>  
+        <View style={styles.headerlinkColumn}>
+          <View style={styles.headerdetailRow}>
+            <Text style={[styles.headerlink, {color: 'red'}]}>{resumeObj.profile.address}, </Text>
+            <Text style={styles.headerlink}>{resumeObj.profile.city}, </Text>
+            <Text style={styles.headerlink}>{resumeObj.profile.province}, </Text>
+            <Text style={styles.headerlink}>{resumeObj.profile.postal_code}</Text>
+          </View>
+          <View style={styles.headerdetailRow}>
+            <Text style={styles.headerlink}>{newPhone}, </Text>
+            <Text style={[styles.headerlink, {color: 'red'}]}>{resumeObj.profile.email}</Text>
+          </View>
         </View>
       </View>
-    );
-           
-    const Summary = () => (
-      <View style={styles.skillsmaincontainer}>  
-        <View style={styles.skillsleftcontainer}>
-          <View style={styles.skillstitleRow}>
-            <Text>Summary of </Text>
-            <Text style={styles.skillstitleRed}>Qualification</Text>
-          </View>
-            <Text style={styles.skillstext}>{resumeObj.summary.body}</Text>
-          </View>
-        <CoreCompetencies/>
+      <View style={styles.headertitle_row}>
+        <Text style={styles.headertitle}>{prof_title[0]}</Text>   
+        <Text style={[styles.headertitle, {color: "black",fontFamily: 'Lato Bold', marginLeft: "5px"}]}>{prof_title[1]}</Text>  
       </View>
-    );
-
-    const CoreCompetencies = () => (
-      <View style={styles.skillsrightcontainer}>
+    </View>
+  );
+          
+  const Summary = () => (
+    <View style={styles.skillsmaincontainer}>  
+      <View style={styles.skillsleftcontainer}>
         <View style={styles.skillstitleRow}>
-          <Text>Core  </Text>
-          <Text style={styles.skillstitleRed}>Competencies</Text>
+          <Text>Summary of </Text>
+          <Text style={styles.skillstitleRed}>Qualification</Text>
         </View>
-          <Text style={[styles.skillstext, {whiteSpace: "pre-line"}]}>{props.resumeState.core_competencies.body}</Text>
+          <Text style={styles.skillstext}>{resumeObj.summary.body}</Text>
+        </View>
+      <CoreCompetencies/>
+    </View>
+  );
+
+  const CoreCompetencies = () => (
+    <View style={styles.skillsrightcontainer}>
+      <View style={styles.skillstitleRow}>
+        <Text>Core  </Text>
+        <Text style={styles.skillstitleRed}>Competencies</Text>
       </View>
-    );
-    
-    const Achievments = () => (
-      <View style={styles.skillsmaincontainer}>  
-        <View style={styles.rowcontainer}>
-          <View style={styles.skillstitleRow}>
-            <Text style={styles.skillstitleRed}>Achievements</Text>
-          </View>
-            <Text style={styles.skillstext}>{props.resumeState.achievements.body}</Text>
-        </View>
-      </View>
-    );
-
-    const ExperienceEntry = ({ experienceArray }) => (
-      experienceArray.map((experience, index) => (
-        <View key={index}>
-        <View style={styles.expRow}>
-          <Text style={{fontFamily: "Lato Bold"}}>{experience.job_title} • </Text>
-          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.employer_name} • </Text>
-          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.city} • </Text>
-          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.start_date} - </Text>
-          <Text style={[styles.text1, {fontFamily: "Lato"}]}>{experience.end_date}</Text>
-        </View>
-            <Text style={styles.skillsdescrip}>{experience.employer_description}</Text>
-            <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
-            <Text style={styles.skillstext}>{experience.responsibilities}</Text>
-        </View>
-      ))
-    );
-
-    const Experience = () => (
-      <View style={styles.skillsmaincontainer}>   
-        <View style={styles.rowcontainer}>
-          <View style={styles.skillstitleRow}>
-            <Text >Professional </Text>
-            <Text style={styles.skillstitleRed}>Experience</Text>
-          </View>
-          <ExperienceEntry 
-            experienceArray = {resumeObj.experiences}
-          />
-        </View>
-      </View>
-    );
-
-    const EducationEntry = ({ educationArray }) => (
-      educationArray.map((education, index) => (
-      <View key={index} style={[styles.responsRow, {whiteSpace: "pre-line"}]}>
-        <Text style={{fontFamily: "Lato Bold", whiteSpace: "pre-line"}}>{education.type_degree} </Text>
-        <Text style={[styles.text1, {fontFamily: "Lato", whiteSpace: "pre-line"}]}> • {education.institution} • </Text>
-        <Text style={[styles.text1, {fontFamily: "Lato"}]}>{education.country} • </Text>
-        <Text style={[styles.text1, {fontFamily: "Lato"}]}>{education.graduat_date}</Text>
-      </View>))
-    );
-
-    const Education = () => (
+        <Text style={[styles.skillstext, {whiteSpace: "pre-line"}]}>{props.resumeState.core_competencies.body}</Text>
+    </View>
+  );
+  
+  const Achievments = () => (
+    <View style={styles.skillsmaincontainer}>  
       <View style={styles.rowcontainer}>
         <View style={styles.skillstitleRow}>
-          <Text>Education & </Text>
-            <Text style={styles.skillstitleRed}>Qualification</Text>
+          <Text style={styles.skillstitleRed}>Achievements</Text>
         </View>
-        <EducationEntry 
-          educationArray = {resumeObj.educations}
+          <Text style={styles.skillstext}>{props.resumeState.achievements.body}</Text>
+      </View>
+    </View>
+  );
+
+  const ExperienceEntry = ({ experienceArray }) => (
+    experienceArray.map((experience, index) => (
+      <View key={index}>
+      <View style={styles.expRow}>
+        <Text style={{fontFamily: "Lato Bold"}}>{experience.job_title} • </Text>
+        <Text style={[styles.text, {fontFamily: "Lato"}]}>{experience.employer_name} • </Text>
+        <Text style={[styles.text, {fontFamily: "Lato"}]}>{experience.city} • </Text>
+        <Text style={[styles.text, {fontFamily: "Lato"}]}>{experience.start_date} - </Text>
+        <Text style={[styles.text, {fontFamily: "Lato"}]}>{experience.end_date}</Text>
+      </View>
+          <Text style={styles.skillsdescrip}>{experience.employer_description}</Text>
+          <Text style={[styles.exptitle, {fontFamily: "Lato BoldItalic"}]}>Responsibilities:</Text>
+         
+          <Text style={styles.skillstext}>{experience.responsibilities}</Text>
+          
+      </View>
+    ))
+  );
+
+  const Experience = () => (
+    <View style={styles.skillsmaincontainer}>   
+      <View style={styles.rowcontainer}>
+        <View style={styles.skillstitleRow}>
+          <Text >Professional </Text>
+          <Text style={styles.skillstitleRed}>Experience</Text>
+        </View>
+        <ExperienceEntry 
+          experienceArray = {resumeObj.experiences}
         />
       </View>
-    );
+    </View>
+  );
 
-    const Resume = (props) => (
-      <Page {...props} style={styles.page}>
-        <Profile/>
-        <View style={styles.container}>
-          <View style={styles.leftColumn}>
-            <Summary/>
-          </View>  
-          <Achievments/>
-          <Experience/>
-          <Education/>
-        </View>
-      </Page>
-    )
+  const EducationEntry = ({ educationArray }) => (
+    educationArray.map((education, index) => (
+    <View key={index} style={[styles.responsRow, {flexWrap: "wrap"}]}>
+      <Text style={{fontFamily: "Lato Bold", whiteSpace: "pre-line"}}>{education.type_degree} </Text>
+      <Text style={[styles.text, {fontFamily: "Lato", whiteSpace: "pre-line"}]}> • {education.institution} • </Text>
+      <Text style={[styles.text, {fontFamily: "Lato"}]}>{education.country} • </Text>
+      <Text style={[styles.text, {fontFamily: "Lato"}]}>{education.graduat_date}</Text>
+    </View>))
+  );
+
+  const Education = () => (
+    <View style={styles.rowcontainer}>
+      <View style={styles.skillstitleRow}>
+        <Text>Education & </Text>
+          <Text style={styles.skillstitleRed}>Qualification</Text>
+      </View>
+      <EducationEntry 
+        educationArray = {resumeObj.educations}
+      />
+    </View>
+  );
+
+  const Resume = (props) => (
+    <Page {...props} style={styles.page}>
+      <Profile/>
+      <View style={styles.container}>
+        <View style={styles.leftColumn}>
+          <Summary/>
+        </View>  
+        <Achievments/>
+        <Experience/>
+        <Education/>
+      </View>
+    </Page>
+  )
+
+  const Output = () => (
+    <Document>
+    <Resume size="A4" />
+    </Document>
+  );
   
-    const Output = () => (
-      <Document>
-      <Resume size="A4" />
-      </Document>
-    );
-    
-    return (
-      <header>
-        <main className="container flex flex-column items-center justify-center signup">
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>
-            <PDFViewer style={styles.pdfbody}><Output /></PDFViewer>
-          </div>
-        </main>
+  return (
+    <header>
+      <main className="container flex flex-column items-center justify-center signup">
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center"}}>
+          <PDFViewer style={styles.pdfbody}><Output /></PDFViewer>
+        </div>
+      </main>
     </header>
   );
 }

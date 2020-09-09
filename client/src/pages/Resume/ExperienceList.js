@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 export default function ExperienceList(props) {
   const { resumeState, setResumeState } = props;
   
+  //the function adds new empty experience object to the resumeState and shows a new experience form
   const addExperience = () => {
     setResumeState(prev => ({...prev, 
       experiences:[...prev.experiences,
@@ -21,6 +22,8 @@ export default function ExperienceList(props) {
       ]
     }))
   }
+  
+  //the function goes through experiences array and pusses one experience object and index of current object to the Experience.js 
   const renderExperience =() => {
     const experienceData = resumeState.experiences.map((experience, experienceIndex) => {
     return ( 

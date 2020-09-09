@@ -13,8 +13,8 @@ export default function Achievements(props) {
         ({...prev, achievements: {[id]: value } }))
   }
 
+  //Fields validation, if successful to redirect to experience form  
   const [validated, setValidated] = useState(false);
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {

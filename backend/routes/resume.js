@@ -34,7 +34,7 @@ module.exports = (db) => {
             .query(query)
             .then(result => res.json(result[0]))
             .catch(err => console.log(err));
-          // return the newly created resume back
+            // return the newly created resume back
         } else {
            // create an update query in the db
           const query = {
@@ -49,9 +49,10 @@ module.exports = (db) => {
         }
       })
       .catch(err => console.log(err));
-
   });
 
+  //Checking if the user_id exists in the resume table. If it does then return specific user data 
+  //we use it in getResume.js
   router.post('/resume', (req, res) => {
     const { userId } = req.body;
     const query = {
@@ -62,6 +63,5 @@ module.exports = (db) => {
       .then(result => res.json(result))
       .catch(err => console.log(err));
   });
-
   return router;
 }

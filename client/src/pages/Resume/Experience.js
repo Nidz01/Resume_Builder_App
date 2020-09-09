@@ -37,8 +37,8 @@ export default function Experience(props) {
     }
   }
 
+  //Fields validation, if successful to redirect to qualification form  
   const [validated, setValidated] = useState(false);
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {

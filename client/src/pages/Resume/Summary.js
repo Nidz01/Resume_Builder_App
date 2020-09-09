@@ -6,14 +6,14 @@ import { useHistory } from 'react-router-dom';
 export default function Summary(props) {
   const history = useHistory();
   
-    //Update state when any field changes. The 'id' variable is the key of the item of summary object
+  //Update state when any field changes. The 'id' variable is the key of the item of summary object
   const Change = (event) => {
     const { id, value } = event.target;
     props.setResumeState(prev => ({...prev, summary: {[id]: value } }))
   }
 
+  //Fields validation, if successful to redirect to competencies form  
   const [validated, setValidated] = useState(false);
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -21,7 +21,6 @@ export default function Summary(props) {
       event.stopPropagation();
     }
     else {
-      
       history.push("/competencies");
     }
     setValidated(true);

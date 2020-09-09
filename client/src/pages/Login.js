@@ -21,6 +21,7 @@ export default function Login(props) {
     userpassError:""
   })
   
+  //Update local state when any field changes. The 'name' variable is the key of the field
   const Change = (event) => {
     const { name, value } = event.target
       setLoginState(prev => ({
@@ -30,11 +31,10 @@ export default function Login(props) {
   }
   
   const login = (event) => {
-    console.log('from login')
     event.preventDefault()
-    
     setError('');
     let anyError = false;
+
     if (loginState.userName === '') {
       setError(prev => ({
         ...prev,
@@ -52,7 +52,8 @@ export default function Login(props) {
       );
       anyError = true;
     } 
-   
+
+    //If field validation successful then pass userName and password to db. If the userName exists in DB then setUsername from local state and setUserId from cookies and riderect them to templates form.
     if(anyError === false) {
       event.preventDefault()
       axios.post('/users/login', { userName: loginState.userName, password:loginState.password, withCredentials: true})
@@ -68,8 +69,7 @@ export default function Login(props) {
       .catch(error => console.log(error))
     }
   }
-
-  
+ 
   return (
     <header>
       <main className="container flex flex-column items-center justify-center login">
