@@ -57,11 +57,9 @@ export default function Login(props) {
       event.preventDefault()
       axios.post('/users/login', { userName: loginState.userName, password:loginState.password, withCredentials: true})
       .then(response => {
-        //it doesn't work since Login.js component doesn't receive anything from the backend to identify if the password is correct
         if(response.data === false){
           setError(prev => ({...prev, userpassError: "Wrong username or password"}))
         } else {
-          //I left those comment so far since I may need to use this construction in another component. Most likely in App.js
               setUsername(loginState.userName) 
               setUserId(cookies.get('userId'))
               history.push('/templates')

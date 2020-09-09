@@ -1,19 +1,71 @@
-# Resume Builder App
+# First Impression - The Resume Builder Web Application
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A resume builder web app that takes the hassle out of resume writing. It lets the user register on website, login and choose resume template list. After choosing template, the user can follow easy prompts to create the perfect job-ready resume effortlessly. It also offers to edit and save resume moreover download a pdf copy for their own record.
+
+## Project Glimpse
+!["Home Page"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Home.png)
+
+!["Registration"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Registration.gif)
+
+!["Login"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Login.gif)
+
+!["Template Selection "](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Template.gif)
+
+!["Create Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Create_Resume.gif)
+
+!["Pdf Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/pdf_Resume.gif)
+
+## Features
+Login/Registration
+Minimal Design
+Create/Edit/Delete Your Resume
+User Profile
+
+## Dependencies
+Following is the list of both client side and backend dependencies.
+
+### Client Side Dependencies
+  - axios
+  - classnames
+  - normalize.css
+  - react
+  - react-pdf/renderer
+  - body-parser
+  - react-bootstrap
+  - react-dom
+  - react-router-dom
+  - universal-cookie
+
+### Backend Dependencies
+  - bcryptjs
+  - cookie-parser
+  - debug
+  - ejs
+  - express
+  - http-errors
+  - morgan
+  - pg
+
+## Project Setup
+Navigate the current working directory to : cd dir.
 The project has 2 main folders:
 
  - client (React Front-End)
  - backend (Express Back-End)
 
- Run npm install in both folders to install the dependencies.
+  Run npm install in both folders to install the dependencies.
 
- To start both servers:
+### Frontend Setup
+Install the all frontend dependencies using npm: npm install.
+Run the client using this command on terminal: npm start.
 
- `npm start` in the client folder
- `npm run dev` in the backend folder
+Client will automatically open [http://localhost:3030](http://localhost:3002) to view app, in the browser.
 
- ## Back-End Setup
+### Backend Setup
 
+You will need to set up your database to fully enjoy this app.
+#### Create Databse:
 - create a postgres database. At the terminal, type the following:
 
   `createdb database_name -O username`
@@ -31,16 +83,21 @@ The project has 2 main folders:
 "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "reset": "psql -U labber -d final_project < ./db/schema/create.sql && psql -U labber -d final_project < ./db/schema/seed.sql"
+    "reset": "psql -U development -d resume_builder < ./db/schema/create.sql && psql -U development -d resume_builder < ./db/schema/seed.sql"
   },
 ```
-- replace `labber` with your own username and `final_project` with your database name
+- replace `development` with your own username and `resume_builder` with your database name
 
-- currently, the users route is setup with a get and a post as examples. Modify it according to your needs and/or create additional route files.
 
-## Client Setup
+Install the all backend dependencies using npm: npm install.
+Run the server using this command on terminal: npm start.
 
-- A custom hook in `hooks/useApplicationData.js` contains the state.
-- a `useEffect` with an axios request is adding the users in the state. Modify the initial state and the useEffect according to your needs. 
+Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
+
+## Creating The First Resume
+Make sure that both Backend and Frontend Servers are running.
+YOU should be on localhost [http://localhost:3030](http://localhost:3002) in the browser.
+On home page, click Register in the top navigation bar incase if you are not registered.
+If you are already registered then click Login and enter your username and password.
 
 

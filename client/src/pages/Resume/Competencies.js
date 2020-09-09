@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 export default function Competencies(props) {
   const history = useHistory();
 
+    //Update state when any field changes. The 'id' variable is the key of the item of competencies object
   const Change = (event) => {
     const { id, value } = event.target;
     props.setResumeState(prev => ({...prev, core_competencies: {[id]: value } }))

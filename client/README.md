@@ -1,68 +1,107 @@
+# First Impression - The Resume Builder Web Application
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A resume builder web app that takes the hassle out of resume writing. It lets the user register on website, login and choose resume template list. After choosing template, the user can follow easy prompts to create the perfect job-ready resume effortlessly. It also offers to edit and save resume moreover download a pdf copy for their own record.
+
+## Project Glimpse
+!["Home Page"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Home.png)
+
+!["Registration"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Registration.gif)
+
+!["Login"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Login.gif)
+
+!["Template Selection "](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Template.gif)
+
+!["Create Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/Create_Resume.gif)
+
+!["Pdf Resume"](https://github.com/Nidz01/Resume_Builder_App/tree/master/docs/pdf_Resume.gif)
+
+## Features
+Login/Registration
+Minimal Design
+Create/Edit/Delete Your Resume
+User Profile
+
+## Dependencies
+Following is the list of both client side and backend dependencies.
+
+### Client Side Dependencies
+  - axios
+  - classnames
+  - normalize.css
+  - react
+  - react-pdf/renderer
+  - body-parser
+  - react-bootstrap
+  - react-dom
+  - react-router-dom
+  - universal-cookie
+
+### Backend Dependencies
+  - bcryptjs
+  - cookie-parser
+  - debug
+  - ejs
+  - express
+  - http-errors
+  - morgan
+  - pg
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+## Project Setup
+Navigate the current working directory to : cd dir.
+The project has 2 main folders:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ - client (React Front-End)
+ - backend (Express Back-End)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  Run npm install in both folders to install the dependencies.
 
-### `yarn test`
+### Frontend Setup
+Install the all frontend dependencies using npm: npm install.
+Run the client using this command on terminal: npm start.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Client will automatically open [http://localhost:3030](http://localhost:3002) to view app, in the browser.
 
-### `yarn build`
+### Backend Setup
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You will need to set up your database to fully enjoy this app.
+#### Create Databse:
+- create a postgres database. At the terminal, type the following:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  `createdb database_name -O username`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  replace database_name with your database name and username with your own user.
 
-### `yarn eject`
+- create a `.env` file with your database settings. Look at .env.example for usage.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Modify the sql scripts under `db/schema/` to create the tables and seed the data.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- run `npm run reset` that will run the reset scripts in package.json to reset the database. Modify the reset script in package.json accordingly:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```json
+"scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "reset": "psql -U development -d resume_builder < ./db/schema/create.sql && psql -U development -d resume_builder < ./db/schema/seed.sql"
+  },
+```
+- replace `development` with your own username and `resume_builder` with your database name
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Install the all backend dependencies using npm: npm install.
+Run the server using this command on terminal: npm start.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
 
-### Code Splitting
+## Creating The First Resume
+Make sure that both Backend and Frontend Servers are running.
+YOU should be on localhost [http://localhost:3030](http://localhost:3002) in the browser.
+On home page, click Register in the top navigation bar incase if you are not registered.
+If you are already registered then click Login and enter your username and password.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

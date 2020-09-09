@@ -1,6 +1,7 @@
 import React from "react";
 import { Document, Page, Text, View, StyleSheet, PDFViewer, Font } from "@react-pdf/renderer";
 import profTitle from '../helpers/pdfResume';
+
 import LatoBold from "./fonts/Lato/Lato-Bold.ttf";
 import LatoItalic from "./fonts/Lato/Lato-Italic.ttf";
 import LatoRegular from "./fonts/Lato/Lato-Regular.ttf";
@@ -105,7 +106,8 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       fontSize: 11,
       margin: 0
     },
-    //exp end
+    //Experience Styling ends
+
     //Skills and Qualification
     skillsmaincontainer: {
       flexDirection: 'row',
@@ -162,6 +164,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     },
     
     //END of Skills and Qualification
+
     //Achievements
     rowcontainer: {
       flexDirection: 'column',
@@ -173,6 +176,7 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
     },
 
     //End of Achievents
+
       pdfbody: {
           width: 800,
           height: 1015
@@ -194,7 +198,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       },
       leftColumn: {
         flexDirection: 'column',
-        //width: 300,
         paddingTop: 0,
         paddingRight: 0,
         '@media max-width: 400': {
@@ -248,14 +251,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
       family: 'Roboto Regular',
       src: RobotoRegular,
     });
-
-    // const List = ({ children }) => children;
-    // const Item = ({ children }) => (
-    //   <View style={styles.item}>
-    //     <Text style={styles.bulletPoint}>•</Text>
-    //     <Text style={styles.itemContent}>{children}</Text>
-    //   </View>
-    // );
      
     const Profile = () => (
       <View style={styles.headercontainer}>
@@ -298,33 +293,6 @@ const prof_title = profTitle(props.resumeState.profile.prof_title)
         <CoreCompetencies/>
       </View>
     );
-        
-    // const SkillEntry = ({ name, competents }) => (
-    //   <View>
-    //     <Text style={styles.skillstext}>{name}</Text>
-    //     <List>
-    //       {competents.map((skill, i) => (
-    //         <Item key={i}>{skill}</Item>))}
-    //     </List>
-    //   </View>
-    // );
-          
-    // const CoreCompetencies = () => (
-    //   <View style={styles.skillsrightcontainer}>
-    //     <View style={styles.skillstitleRow}>
-    //       <Text>Core  </Text>
-    //       <Text style={styles.skillstitleRed}>Competencies</Text>
-    //     </View>
-    //     <SkillEntry
-    //       name="Combat Abilities"
-    //       competents={[
-    //         'Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire',
-    //         'Defeated the Rancor and rescued Princess Leia from Jabba the Hutt',
-    //         'Competent fighter pilot as well as an excelent shot with nearly any weapon',
-    //       ]}
-    //     />
-    //   </View>
-    // );
 
     const CoreCompetencies = () => (
       <View style={styles.skillsrightcontainer}>
